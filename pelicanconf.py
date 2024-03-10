@@ -3,7 +3,7 @@ SITENAME = 'grupy-sao-marcos'
 SITEURL = ""
 
 PATH = "content"
-
+THEME = 'theme'
 TIMEZONE = 'America/Sao_Paulo'
 
 DEFAULT_LANG = 'pt'
