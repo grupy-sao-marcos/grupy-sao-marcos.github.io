@@ -1,8 +1,8 @@
 AUTHOR = 'Perceu Bertoletti'
-SITENAME = 'grupy-sao-marcos'
-SITEURL = ""
+SITENAME = 'Grupy Sao Marcos'
+SITEURL = ''
 
-PATH = "content"
+PATH = 'content'
 THEME = 'theme'
 TIMEZONE = 'America/Sao_Paulo'
 
@@ -20,6 +20,8 @@ LINKS = ()
 
 # Social widget
 SOCIAL = ()
+
+FORM_INSCRICAO="https://forms.gle/p87e2mnrL3cjUSym9"
 
 DEFAULT_PAGINATION = 10
 
