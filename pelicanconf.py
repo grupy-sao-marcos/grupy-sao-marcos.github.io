@@ -1,5 +1,5 @@
 AUTHOR = 'Perceu Bertoletti'
-SITENAME = 'Grupy Sao Marcos'
+SITENAME = 'Grupy São Marcos'
 SITEURL = ''
 
 PATH = 'content'

@@ -4,7 +4,7 @@ Modified: 2024-03-16 11:30
 Category: Evento
 Tags: evento, encontro
 Slug: terceiro-encontro
-Authors: Perceu Bertoletti, Gabriel Taufer
+Authors: Perceu Bertoletti
 Summary: Terceiro evento para divulgar conhecimento.
 
 Estamos contruindo a pauta para o terceiro evento, venha enviar sua palestra para o repositório:

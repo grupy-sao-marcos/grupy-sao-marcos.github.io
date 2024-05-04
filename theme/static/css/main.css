@@ -17,7 +17,7 @@
 /***** Global *****/
 /* Body */
 body {
-    background: #F5F4EF;
+    background: #FFF;
     color: #000305;
     font-size: 87.5%; /* Base font size: 14px */
     font-family: "Rubik", sans-serif;
@@ -50,20 +50,16 @@ hr { border: 2px solid #EEEEEE; }
 a {outline: 0;}
 a img {border: 0px; text-decoration: none;}
 a:link, a:visited {
-	color: #C74350;
-	padding: 0 1px;
-	text-decoration: underline;
+	color: #000080;
+	text-decoration: none;
 }
 a:hover, a:active {
-	background-color: #C74350;
-	color: #d4d4d4;
-	text-decoration: none;
-	padding: 3px;
-	text-shadow: 1px 1px 1px #333;
+	color: #000080;
+	text-decoration: underline;
 }
 
 h1 a:hover {
-    background-color: inherit
+	text-decoration: underline;
 }
 
 /* Paragraphs */
@@ -192,7 +188,7 @@ div.figure p.caption, figure p.caption { /* margin provided by figure */
 	}
 	#banner h1 a:hover, #banner h1 a:active {
 		background: none;
-		color: #C74350;
+		color: #000080;
 		text-shadow: none;
 	}
 
@@ -226,7 +222,7 @@ div.figure p.caption, figure p.caption { /* margin provided by figure */
 	}
 	#banner nav a:hover, #banner nav a:active,
 	#banner nav .active a:link, #banner nav .active a:visited {
-		background: #C74451;
+		background: #000080;
 		color: #fff;
 		text-shadow: none !important;
 	}
@@ -250,10 +246,7 @@ div.figure p.caption, figure p.caption { /* margin provided by figure */
 	overflow: hidden;
 	padding: 20px;
 	max-width: 760px;
-
-	border-radius: 10px;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
+	border: 1px #000080 solid;
 }
 
 #featured figure {
@@ -264,25 +257,23 @@ div.figure p.caption, figure p.caption { /* margin provided by figure */
 }
 #featured figure img {display: block; float: right;}
 
-#featured h2 {color: #C74451; font-size: 1.714em; margin-bottom: 0.333em;}
+#featured h2 {color: #000080; font-size: 1.714em; margin-bottom: 0.333em;}
 #featured h3 {font-size: 1.429em; margin-bottom: .5em;}
 
-#featured h3 a:link, #featured h3 a:visited {color: #000305; text-decoration: none;}
-#featured h3 a:hover, #featured h3 a:active {color: #fff;}
+#featured h3 a:link, #featured h3 a:visited {color: #000080; text-decoration: none;}
+#featured h3 a:hover, #featured h3 a:active {color: #000080;}
 
 /*
 	Body
 *****************/
 #content {
 	background: #fff;
+	border-left: 1px #000080 solid;
+	border-right: 1px #000080 solid;
 	margin-bottom: 2em;
 	overflow: hidden;
 	padding: 20px 20px;
 	max-width: 760px;
-
-	border-radius: 10px;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
 }
 
 /*
@@ -293,14 +284,14 @@ div.figure p.caption, figure p.caption { /* margin provided by figure */
 #extras ul {list-style: none; margin: 0;}
 #extras li {border-bottom: 1px solid #fff;}
 #extras h2 {
-	color: #C74350;
+	color: #000080;
 	font-size: 1.429em;
 	margin-bottom: .25em;
 	padding: 0 3px;
 }
 
 #extras a:link, #extras a:visited {
-	color: #444;
+	color: #000080;
 	display: block;
 	border-bottom: 1px solid #F4E3E3;
 	text-decoration: none;
@@ -365,8 +356,9 @@ li:first-child .hentry, #content > .hentry {border: 0; margin: 0;}
 #content > .hentry {padding: 1em 0;}
 .hentry img{display : none ;}
 .entry-title {font-size: 2em; margin-bottom: 10px; margin-top: 0;}
-.entry-title a:link, .entry-title a:visited {text-decoration: none; color: #333;}
+.entry-title a:link, .entry-title a:visited {text-decoration: none; color: #000080;}
 .entry-title a:visited {background-color: #fff;}
+.entry-title a:hover {text-decoration: underline;}
 
 .hentry .post-info * {font-style: normal;}
 
