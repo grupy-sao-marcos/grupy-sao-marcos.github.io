@@ -6,7 +6,7 @@ color:#408090;
 font-style:italic;
 }
 .err {
-border:1px solid #FF0000;
+border:1px solid #000080;
 }
 .k {
 color:#007020;
@@ -31,13 +31,13 @@ background-color:#FFF0F0;
 color:#408090;
 }
 .gd {
-color:#A00000;
+color:#000080;
 }
 .ge {
 font-style:italic;
 }
 .gr {
-color:#FF0000;
+color:#000080;
 }
 .gh {
 color:#000080;
