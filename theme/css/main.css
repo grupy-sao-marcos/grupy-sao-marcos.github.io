@@ -204,10 +204,6 @@ div.figure p.caption, figure p.caption { /* margin provided by figure */
 		padding: 0;
 		text-align: center;
 		max-width: 800px;
-
-		border-radius: 5px;
-		-moz-border-radius: 5px;
-		-webkit-border-radius: 5px;
 	}
 
 	#banner nav ul {list-style: none; margin: 0 auto; max-width: 800px;}
@@ -268,8 +264,7 @@ div.figure p.caption, figure p.caption { /* margin provided by figure */
 *****************/
 #content {
 	background: #fff;
-	border-left: 1px #000080 solid;
-	border-right: 1px #000080 solid;
+	border: 1px #000080 solid;
 	margin-bottom: 2em;
 	overflow: hidden;
 	padding: 20px 20px;
