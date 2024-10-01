@@ -10,13 +10,19 @@
         <img src="https://picsum.photos/seed/picsum/500/300" alt="imagem do grupo" class="rounded img-fluid">
     </div>
     <div class="col-12 col-lg-6">
-        <p>Proximo Evento</p>
-        <h3><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h3>
-        <p>Dia: {{ article.locale_date }}</p>
-        <hr>
+        <h3>Proximo <span class="purple-text">Evento</span></h3>
+        <h4 class="mt-4">{{ article.title }}</h4>
+        <p class="mb-0 border-divisor"><span class="purple-text">Dia</span>: {{ article.locale_date }}</p>
         <p>
             {{ article.content }}
         </p>
+    </div>
+    <div class="text-end">
+        {% if FORM_INSCRICAO %}
+            <br>
+            <br>
+            <a href="{{FORM_INSCRICAO}}" target="_blank" class="custom-buttom">Inscrever-se</a>
+        {% endif %}
     </div>
 </div>
 {% endif %}
@@ -24,48 +30,58 @@
 {% endif %}
 <div class="row mt-5 pt-5">
     <div class="col-12">
-        <h2>
-            Somos uma comunidade de desenvolvedores, que segue os princípios do Small Acts Manifesto.
+        <h2 class="text-center">
+            Somos uma comunidade de desenvolvedores, que segue os princípios do <span class="purple-text">Small Acts Manifesto</span>.
         </h2>
-        <h3>
-            Temos como principais objetivos compartilhar conhecimento, treinar e capacitar desenvolvedores em hard and
-            soft skills, divulgar a linguagem python mas não exclusivamente e criar oportunidades de inovação e
-            empreendedorismo.
-        </h3>
+        <h4 class="text-center">
+            Temos como principais objetivos compartilhar conhecimento, treinar e capacitar desenvolvedores em <span class="purple-text">hard and
+                soft skills</span>, divulgar a linguagem python mas não exclusivamente e criar oportunidades de <span class="purple-text">inovação e
+                    empreendedorismo</span>.
+        </h4>
     </div>
 </div>
+
 <div class="row mt-5 pt-5">
     <div class="col-12 col-lg-6">
         <h2>
-            Chamada para trabalhos
+            Chamada para <span class="purple-text">trabalhos</span>
         </h2>
+        <p>
+            O evento é um sucesso graças a voluntarios que se disponibilizam a palestrar e divulgar seu conhecimento, estamos com a chamada de trabalhos sempre aberta no <span class="purple-text">Github</span>  basta abrir uma issue em:
+        </p>
+        {% if C4PAPERS %}
+            <br>
+            <br>
+            <a href="{{C4PAPERS}}" target="_blank" class="custom-buttom">Call for Papers</a>
+        {% endif %}
+        
     </div>
     <div class="col-12 col-lg-6">
         <img src="https://picsum.photos/seed/picsum/500/500" alt="imagem do grupo" class="rounded img-fluid">
     </div>
 </div>
+
 <div class="row mt-5 pt-5">
     <div class="col-12 col-lg-6">
-        <h1>Eventos Anteriores</h1>
+        <h2 class="text-start">Eventos <span class="purple-text">Anteriores</span></h2>
         <img src="https://picsum.photos/seed/picsum/500/500" alt="imagem do grupo" class="rounded img-fluid">
     </div>
     <div class="col-12 col-lg-6">
         {% for article in articles_page.object_list %}
-        {% if not loop.first  %}
-        <h1><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"
-                title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a></h1>
-        <hr>
-        {% endif %}
+            {% if not loop.first  %}
+            <h4 class="mt-4">{{ article.title }}</h4>
+            <p class="mb-0 border-divisor"><span class="purple-text">Dia</span>: {{ article.locale_date }}</p>
+            {% endif %}
         {% endfor %}
     </div>
 </div>
 
 <div class="row mt-5 pt-5">
     <div class="col-12">
-        <h1>Conheça nossos patrocinadores</h1>
+        <h2>Conheça nossos <span class="purple-text">patrocinadores</span></h2>
     </div>
     <div class="col-12">
-        <h3>Diamante</h3>
+        <h3 class="text-center">Diamante</h3>
         <div>
             {% for article in articles_page.object_list %}
             {% if article.category == 'diamante'  %}
@@ -75,7 +91,7 @@
         </div>
     </div>
     <div class="col-12">
-        <h3>Platina</h3>
+        <h3 class="text-center">Platina</h3>
         <div>
             {% for article in articles_page.object_list %}
             {% if article.category == 'platina'  %}
@@ -85,7 +101,7 @@
         </div>
     </div>
     <div class="col-12">
-        <h3>Ouro</h3>
+        <h3 class="text-center">Ouro</h3>
         <div>
             {% for article in articles_page.object_list %}
             {% if article.category == 'ouro'  %}
@@ -95,7 +111,7 @@
         </div>
     </div>
     <div class="col-12">
-        <h3>Prata</h3>
+        <h3 class="text-center">Prata</h3>
         <div>
             {% for article in articles_page.object_list %}
             {% if article.category == 'prata'  %}
@@ -105,7 +121,7 @@
         </div>
     </div>
     <div class="col-12">
-        <h3>Bronze</h3>
+        <h3 class="text-center">Bronze</h3>
         <div>
             {% for article in articles_page.object_list %}
             {% if article.category == 'bronze'  %}
@@ -117,15 +133,15 @@
 </div>
 <div class="row mt-4 pt-4">
     <div class="col-12 col-lg-6">
-        <h5>Que tal apoiar o evento ?</h5>
+        <h3 class="text-start">Que tal apoiar o <span class="purple-text">evento</span> ?</h3>
         <p>
-            Temos uma proposta de apoio anual de outubro a dezembro abrimos as vendas de cotas e elas tem duração de 1 ano, para todos os eventos da comunidade alem dos espaços no site.
-Venha conversar conosco.
+            Temos uma proposta de apoio anual que incluem a divulgação em todos os eventos da comunidade de são marcos - rs além dos espaços no site. <br>
+            Venha conversar conosco.
         </p>
     </div>
     <div class="col-12 col-lg-6">
-        <p class="text-center">
-            <a href="{{ SITEURL }}/static/plano-patrocinio.pdf" target="_blank" class="custom-buttom">
+        <p class="text-center pt-4">
+            <a href="{{ SITEURL }}/theme/plano_de_patrocinio_2025.pdf" target="_blank" class="custom-buttom mt-4">
                 Plano de patrocinio
             </a>
         </p>
@@ -134,12 +150,10 @@ Venha conversar conosco.
 <div class="row my-4 py-4">
     <div class="col-12 col-lg-6">
         <img src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/img/logopython.png" alt="logo" width="80px">
-        <h1>GRUPY <br>
-            São marcos - RS
-        </h1>
+        <h5>GRUPY São marcos - RS</h5>
     </div>
     <div  class="col-12 col-lg-6">
-        <h3>Fale conosco</h3>
+        <h3 class="text-start">Fale <span class="purple-text">conosco</span></h3>
         <p>
             whatsapp: (54) 9 9662-2121<br>
             email: perceubertoletti@gmail.com

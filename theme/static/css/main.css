@@ -1,5 +1,23 @@
 html, body {
-	background-color: #101728
+	background-color: #101728;
+	color: #fff;
+	font-family: "Passion One", sans-serif;
+}
+
+.custom-buttom {
+	color: #fff;
+	font-family: "Passion One", sans-serif;
+	text-decoration: none;
+	background: rgb(38,14,105);
+	background: linear-gradient(90deg, rgba(38,14,105,1) 0%, rgba(147,64,255,1) 100%);
+	padding: 16px 64px;
+	border-radius: 32px;
+	transition: background .5s;
+}
+
+.custom-buttom:hover {
+	background: linear-gradient(90deg, rgba(147,64,255,1) 0%,rgba(38,14,105,1)  100%);
+	transition: background .5s;
 }
 
 h1{
@@ -14,7 +32,35 @@ h2{
 }
 
 h3{
+	text-align: right;
+	color: #fff;
+	font-size: 3rem;
+}
+
+h4 {
+	text-align: left;
 	color: #fff;
 	font-size: 2rem;
-	text-align: center;
+	margin-bottom: 0;
+	& a {
+		color:#fff;
+		text-decoration: none;
+		transition: all .3s;
+	}
+	& a:hover {
+		color:rgba(147,64,255,1);
+		transition: all .3s;
+	}
+}
+
+.purple-text {
+	color: rgba(147,64,255,1);
+}
+
+.border-divisor {
+	border-bottom: 1px solid #fff;
+}
+
+p {
+	font-size: 1.4rem
 }
