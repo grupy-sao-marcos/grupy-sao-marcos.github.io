@@ -26,7 +26,7 @@
     </div>
 </div>
 {% if articles %}
-{% for article in articles_page.object_list %}
+{% for article in articles_page.object_list if article.category == "Evento"%}
 {# First item #}
 {% if loop.first and not articles_page.has_previous() %}
 <div class="row mt-5 pt-5">
@@ -91,7 +91,7 @@
         <img src="https://picsum.photos/seed/picsum/500/500" alt="imagem do grupo" class="rounded img-fluid">
     </div>
     <div class="col-12 col-lg-6">
-        {% for article in articles_page.object_list %}
+        {% for article in articles_page.object_list if article.category == "Evento"%}
             {% if not loop.first  %}
             <h4 class="mt-4">{{ article.title }}</h4>
             <p class="mb-0 border-divisor"><span class="purple-text">Dia</span>: {{ article.locale_date }}</p>
@@ -107,50 +107,52 @@
     <div class="col-12">
         <h3 class="text-center">Diamante</h3>
         <div>
-            {% for article in articles_page.object_list %}
-            {% if article.category == 'diamante'  %}
-            <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a>
-            {% endif %}
+            {% for article in articles_page.object_list if article.category == "Patrocinio Diamante"%}
+            <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">
+                <img src="https://picsum.photos/seed/picsum/200/200" alt="imagem do grupo" class="rounded img-fluid"><br>
+                {{ article.title }}
+            </a>
             {% endfor %}
         </div>
     </div>
     <div class="col-12">
         <h3 class="text-center">Platina</h3>
         <div>
-            {% for article in articles_page.object_list %}
-            {% if article.category == 'platina'  %}
-            <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a>
-            {% endif %}
+            {% for article in articles_page.object_list if article.category == "Patrocinio Platina"%}
+            <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">
+                <img src="https://picsum.photos/seed/picsum/200/200" alt="imagem do grupo" class="rounded img-fluid"><br>
+                {{ article.title }}
+            </a>
             {% endfor %}
         </div>
     </div>
     <div class="col-12">
         <h3 class="text-center">Ouro</h3>
         <div>
-            {% for article in articles_page.object_list %}
-            {% if article.category == 'ouro'  %}
-            <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a>
-            {% endif %}
+            {% for article in articles_page.object_list if article.category == "Patrocinio Ouro"%}
+            <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">
+                <img src="https://picsum.photos/seed/picsum/200/200" alt="imagem do grupo" class="rounded img-fluid"><br>
+                {{ article.title }}
+            </a>
             {% endfor %}
         </div>
     </div>
     <div class="col-12">
         <h3 class="text-center">Prata</h3>
         <div>
-            {% for article in articles_page.object_list %}
-            {% if article.category == 'prata'  %}
-            <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a>
-            {% endif %}
+            {% for article in articles_page.object_list if article.category == "Patrocinio Prata"%}
+            <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">
+                <img src="https://picsum.photos/seed/picsum/200/200" alt="imagem do grupo" class="rounded img-fluid"><br>
+                {{ article.title }}
+            </a>
             {% endfor %}
         </div>
     </div>
     <div class="col-12">
         <h3 class="text-center">Bronze</h3>
         <div>
-            {% for article in articles_page.object_list %}
-            {% if article.category == 'bronze'  %}
+            {% for article in articles_page.object_list if article.category == "Patrocinio Bronze"%}
             <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a>
-            {% endif %}
             {% endfor %}
         </div>
     </div>
