@@ -7,6 +7,7 @@ THEME = 'theme'
 TIMEZONE = 'America/Sao_Paulo'
 
 DEFAULT_LANG = 'pt'
+DEFAULT_DATE_FORMAT = '%d/%m/%Y'
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
