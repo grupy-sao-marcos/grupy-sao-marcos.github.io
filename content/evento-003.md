@@ -1,4 +1,4 @@
-Title: Terceiro encontro do Grupy São Marcos
+Title: 3° encontro do Grupy São Marcos
 Date: 2024-05-25 08:30
 Modified: 2024-03-16 11:30
 Category: Evento

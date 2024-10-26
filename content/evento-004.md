@@ -1,4 +1,4 @@
-Title: Quarto encontro do Grupy São Marcos
+Title: 4° encontro do Grupy São Marcos
 Date: 2024-11-23 09:00
 Modified: 2024-11-23 12:05
 Category: Evento
