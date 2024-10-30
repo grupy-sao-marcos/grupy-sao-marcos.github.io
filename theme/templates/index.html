@@ -214,7 +214,7 @@
             <div class="row">
                 {% for article in articles if article.category == "patrocinador"%}
                 <div class="col-sm-3 text-center">
-                    <a href="{{ article.link }}" class="partner-box" >
+                    <a href="{{ article.link }}" target="_blank" class="partner-box" >
                         <img
                             src="{{ SITEURL }}{{ article.image }}"
                             alt="{{article.title}}"
