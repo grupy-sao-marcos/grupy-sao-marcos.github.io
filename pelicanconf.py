@@ -22,7 +22,6 @@ LINKS = ()
 # Social widget
 SOCIAL = ()
 
-FORM_INSCRICAO="https://forms.gle/u4qt41hLMu1gfzGQA"
 C4PAPERS="https://github.com/grupy-sao-marcos/call4papers/issues"
 
 DEFAULT_PAGINATION = 10

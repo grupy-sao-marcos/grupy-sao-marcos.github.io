@@ -6,6 +6,7 @@ Tags: evento, encontro
 Slug: quarto-encontro
 Authors: Perceu Bertoletti
 Summary: Evento de encerramento de 2024.
+form_inscricao="https://forms.gle/u4qt41hLMu1gfzGQA"
 
 Nesse quarto evento iremos tomar um corpo maior organizando os seguintes conteudos:
  - 09:00 Abertura
