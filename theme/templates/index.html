@@ -189,7 +189,7 @@
             <div class="row">
                 {% for article in articles if article.category=="evento" %}
                     {% if loop.index > 1 %}
-                        <div class="col-md-4 col-sm-6" style="margin-bottom: 10px;">
+                        <div class="col-md-4 col-sm-6 pa-1" style="margin-bottom: 10px;">
                             <div class="schedule-box">
                                 <div class="time">
                                     {{article.locale_date}}
