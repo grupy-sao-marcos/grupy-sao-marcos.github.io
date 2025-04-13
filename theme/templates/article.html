@@ -1,35 +1,24 @@
 {% extends "base.html" %}
-{% block html_lang %}{{ article.lang }}{% endblock %}
-{% block head -%}
-  {{ super() -}}
-  {% if article.summary %}
-        <meta name="description" content="{{ article.summary | striptags | safe | truncate(150) }}" />
-  {% endif %}
-{% endblock %}
-
-{% block title %}{{ article.title|striptags }}{% endblock %}
-
-{% block extra_head %}
-{% import 'translations.html' as translations with context %}
-{% if translations.entry_hreflang(article) %}
-  {{ translations.entry_hreflang(article) }}
-{% endif %}
-{% endblock %}
-
 {% block content %}
-<section id="content" class="body">
-  <article>
-    <header>
-      <h1 class="entry-title">
-        <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"
-           title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a></h1>
-        Dia: {{ article.locale_date }}
-    </header>
+{% include "internal-navigation.html" %}
 
-    <div class="entry-content">
-      {% include 'article_infos.html' %}
-      {{ article.content }}
-    </div><!-- /.entry-content -->
+<section id="article-content" class="valign-center">
+  <article class="container">
+    <div class="container-line">
+      <header>
+        <h1 class="entry-title">
+          <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{
+            article.title }}</a>
+        </h1>
+        Dia: {{ article.locale_date }}
+      </header>
+
+      <div class="entry-content">
+        <p>
+          {{ article.content }}
+        </p>
+      </div><!-- /.entry-content -->
+    </div>
   </article>
 </section>
 {% endblock %}

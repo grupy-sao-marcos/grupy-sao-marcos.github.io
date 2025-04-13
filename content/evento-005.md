@@ -9,6 +9,7 @@ Summary: Primeiro evento de 2025.
 Inscricao: https://forms.gle/cuDcf3AAAcWHraT98
 
 Estamos organizando os seguintes conteudos:
+
  - 09:00 Abertura
  - 09:05 Palestra 1
  - 10:15 Coffe Break

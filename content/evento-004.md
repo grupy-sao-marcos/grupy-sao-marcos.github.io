@@ -5,10 +5,11 @@ Category: Evento
 Tags: evento, encontro
 Slug: quarto-encontro
 Authors: Perceu Bertoletti
-Summary: Evento de encerramento de 2024.
-form_inscricao="https://forms.gle/u4qt41hLMu1gfzGQA"
+Inscricao: https://forms.gle/u4qt41hLMu1gfzGQA
+Summary: Evento de encerramento de 2024
 
 Nesse quarto evento iremos tomar um corpo maior organizando os seguintes conteudos:
+
  - 09:00 Abertura
  - 09:05 Palestra 1
  - 09:40 Palestra 2

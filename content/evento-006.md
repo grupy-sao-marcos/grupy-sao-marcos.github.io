@@ -9,6 +9,7 @@ Summary: Segundo evento de 2025.
 Inscricao: https://forms.gle/greK3bBRs4FKDuGW8
 
 Estamos organizando os seguintes conteudos:
+
  - 09:00 Abertura
  - 09:05 Palestra 1
  - 10:15 Coffe Break
