@@ -11,7 +11,7 @@ Inscricao: https://forms.gle/cuDcf3AAAcWHraT98
 Estamos organizando os seguintes conteudos:
 
  - 09:00 Abertura
- - 09:05 Palestra 1
+ - 09:05 Introdução a programação criativa
  - 10:15 Coffe Break
- - 11:00 Palestra 2
+ - 11:00 Keynote Rogerio Rizzon
  - 12:05 Encerramento

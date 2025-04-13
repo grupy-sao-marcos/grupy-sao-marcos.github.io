@@ -11,9 +11,7 @@ Summary: Evento de encerramento de 2024
 Nesse quarto evento iremos tomar um corpo maior organizando os seguintes conteudos:
 
  - 09:00 Abertura
- - 09:05 Palestra 1
- - 09:40 Palestra 2
+ - 09:05 Introdução a microserviços
  - 10:15 Coffe Break
- - 11:00 Palestra 3
- - 11:30 Palestra 4
+ - 11:00 Keynote Sergio Fochesato 
  - 12:05 Encerramento
