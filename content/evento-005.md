@@ -13,5 +13,7 @@ Estamos organizando os seguintes conteudos:
  - 09:00 Abertura
  - 09:05 Introdução a programação criativa
  - 10:15 Coffe Break
- - 11:00 Keynote Rogerio Rizzon
+ - 11:00 Keynote: Rogerio Rizzon
  - 12:05 Encerramento
+
+![Foto primeiro evento]({static}/images/evento-5.jpeg){:.img-fluid .event-img}

@@ -13,5 +13,7 @@ Nesse quarto evento iremos tomar um corpo maior organizando os seguintes conteud
  - 09:00 Abertura
  - 09:05 Introdução a microserviços
  - 10:15 Coffe Break
- - 11:00 Keynote Sergio Fochesato 
+ - 11:00 Keynote: Sergio Fochesato 
  - 12:05 Encerramento
+
+![Foto do evento]({static}/images/evento-4.jpeg){:.img-fluid .event-img}

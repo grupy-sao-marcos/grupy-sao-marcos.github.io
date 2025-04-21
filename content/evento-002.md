@@ -7,5 +7,8 @@ Slug: segundo-encontro
 Authors: Perceu Bertoletti, Gabriel Taufer
 Summary: Segundo evento para divulgar conhecimento.
 
-Vamos nesse segundo encontro falar um pouco de docker para o ambiente de desenvolvimento.
-No segundo momento do encontro vamos falar sobre engenharia de dados e um pouco sobre pandas e matplotlib.
+Nesse segundo evento estamos organizando os seguintes conteudos:
+
+ - Desenvolvimento com docker
+ - Coffe Break
+ - Manipulando dados com pandas

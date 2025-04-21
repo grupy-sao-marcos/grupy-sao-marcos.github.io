@@ -7,8 +7,10 @@ Slug: terceiro-encontro
 Authors: Perceu Bertoletti
 Summary: Terceiro evento para divulgar conhecimento.
 
-Nesse terceiro evento estamos organizando os seguintes conteudos:
+Nesse segundo evento estamos organizando os seguintes conteudos:
 
- - Desenvolvimento com docker
+ - Desenvolvendo super-poderes com regex
  - Coffe Break
- - Manipulando dados com pandas
+ - Keynote: Jozimar Santos
+
+![Foto primeiro evento]({static}/images/evento-3.jpeg){:.img-fluid .event-img}
