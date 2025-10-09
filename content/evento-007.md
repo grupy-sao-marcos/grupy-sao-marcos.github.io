@@ -15,3 +15,5 @@ Estamos organizando os seguintes conteudos:
  - 10:00 Coffe Break
  - 11:00 Keynote: Gustavo Miotto
  - 12:00 Encerramento
+
+![Foto do evento]({static}/images/evento-7.jpeg){:.img-fluid .event-img}
