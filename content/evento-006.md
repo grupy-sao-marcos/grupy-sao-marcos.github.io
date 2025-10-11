@@ -11,7 +11,10 @@ Inscricao: https://forms.gle/greK3bBRs4FKDuGW8
 Estamos organizando os seguintes conteudos:
 
  - 09:00 Abertura
- - 09:05 Desenvolvimento de Jogos, Maquina de estados: Bruno Dal'lago
+ - 09:05 Introdução a desenvolvimento com APis
+ - 09:30 Desenvolvimento de Jogos, Maquina de estados
  - 10:15 Coffe Break
  - 11:00 Mesa Redonda: Carreira de desenvolvedor
  - 12:05 Encerramento
+
+![Foto sexto evento]({static}/images/evento-6.jpeg){:.img-fluid .event-img}
