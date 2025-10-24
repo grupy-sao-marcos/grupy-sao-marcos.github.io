@@ -4,7 +4,7 @@ Modified: 2024-11-23 12:05
 Category: Evento
 Tags: evento, encontro
 Slug: quarto-encontro
-Authors: Perceu Bertoletti
+Authors: Sergio Fochesato, Cid Marcos Jr
 Inscricao: https://forms.gle/u4qt41hLMu1gfzGQA
 Summary: Quarto e ultimo evento de 2024 que contara com palestras e coffebreak ja com o nosso segundo keynote.
 

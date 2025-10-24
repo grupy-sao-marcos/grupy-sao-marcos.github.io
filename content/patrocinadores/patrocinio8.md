@@ -5,6 +5,6 @@ Category: patrocinador
 Tags: evento, encontro
 Slug: lepton
 image: /images/lepton.png
-Authors: Perceu Bertoletti
+Authors: Patrocinio
 link: https://www.instagram.com/lepton_tech/profilecard/?igsh=cW1uN3Bkd28waDZ3
 Summary: Soluções em tecnlogia

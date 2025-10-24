@@ -5,6 +5,6 @@ Category: patrocinador
 Tags: evento, encontro
 Slug: hapolo
 image: /images/hapolo.png
-Authors: Perceu Bertoletti
+Authors: Patrocinio
 link: https://hapolo.site/
 Summary: Empresa de rastreamento veiculoar

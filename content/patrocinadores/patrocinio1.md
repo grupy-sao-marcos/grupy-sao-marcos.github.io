@@ -5,6 +5,6 @@ Category: patrocinador
 Tags: evento, encontro
 Slug: concordia-labs
 image: /images/concordia-labs.png
-Authors: Perceu Bertoletti
+Authors: Patrocinio
 link: https://www.concordia.dev.br/
 Summary: Empresa de desenvolvimento personalizado de software

@@ -5,6 +5,6 @@ Category: patrocinador
 Tags: evento, encontro
 Slug: activasoft
 image: /images/activasoft.png
-Authors: Perceu Bertoletti
+Authors: Patrocinio
 link: https://activasoft.com.br/observador/phpob000010.php
 Summary: Activasoft

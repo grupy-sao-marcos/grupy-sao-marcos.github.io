@@ -5,6 +5,6 @@ Category: patrocinador
 Tags: evento, encontro
 Slug: ubl
 image: /images/ubl.png
-Authors: Perceu Bertoletti
+Authors: Patrocinio
 link: https://ulivre.dev/
 Summary: Universidade Brasileira Livre

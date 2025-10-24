@@ -5,6 +5,6 @@ Category: patrocinador
 Tags: evento, encontro
 Slug: infox
 image: /images/infox.png
-Authors: Perceu Bertoletti
+Authors: Patrocinio
 link: https://www.cursosinfox.com.br/
 Summary: Escola de informatica

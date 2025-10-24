@@ -4,7 +4,7 @@ Modified: 2025-05-24 12:05
 Category: Evento
 Tags: evento, encontro
 Slug: sexto-encontro
-Authors: Perceu Bertoletti
+Authors: Cid Marcos Jr, Bruno Dal'lago
 Summary: Segundo evento de 2025, nesse encontro vamos fazer uma mesa redonda de tira duvidas com desenvolvedores que estiverem e quiserem participar.
 Inscricao: https://forms.gle/greK3bBRs4FKDuGW8
 

@@ -3,14 +3,42 @@
 {% block title %}{{ SITENAME|striptags }} - Authors{% endblock %}
 
 {% block content %}
+{% include "navigation.html" %}
+
+<header id="site-header" class="site-header valign-center">
+    <div class="intro container">
+        <h1>Colaboradores</h1>
+        <br>
+        <div class="container">
+            <blockquote>Gostaríamos de agradecer a todos os participantes e colaboradores que dedicaram um tempo para auxiliar nessa iniciativa</blockquote>
+        </div>
+    </div>
+</header>
 
 <section id="content" class="body">
-    <h1>Authors on {{ SITENAME }}</h1>
-    <ul>
-    {% for author, articles in authors|sort %}
-        <li><a href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a> ({{ articles|count }})</li>
-    {% endfor %}
-    </ul>
+    <div class="container content-container">
+        <p>Agradecemos especialmente aos colaboradores que contribuíram com a comunidade, compartilhando seu conhecimento e experiências.</p>
+        <ul>
+            {% for author, articles in authors|sort %}
+            {% if author != 'Patrocinio'%}
+            <li><a href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a> ({{ articles|count }})</li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+        <p>
+            Há várias maneiras de colaborar: os homenageados acima contribuíram escrevendo no blog ou ministrando palestras 
+        </p>
+        <p> Você tambem pode colaborar:
+        <ul>
+            <li>Indo nos eventos</li>
+            <li>Escrevendo no blog</li>
+            <li>Palestrando</li>
+            <li>Contribuindo com código (site, automação, sistema)</li>
+            <li>Divulgando</li>
+            <li>Expondo para empresas essa iniciativa</li>
+        </ul>
+    </p>
+</div>
 </section>
 
 {% endblock %}

@@ -4,7 +4,7 @@ Modified: 2024-03-16 11:30
 Category: Evento
 Tags: evento, encontro
 Slug: terceiro-encontro
-Authors: Perceu Bertoletti
+Authors: Gabriel Taufer, Jozimar Santos
 Summary: Terceiro evento que contara com palestras e coffebreak ja com o nosso primeiro keynote.
 
 Nesse segundo evento estamos organizando os seguintes conteudos:

@@ -4,7 +4,7 @@ Modified: 2025-11-23 12:05
 Category: Evento
 Tags: evento, encontro
 Slug: quinto-encontro
-Authors: Perceu Bertoletti
+Authors: Perceu Bertoletti, Rogerio Rizzon
 Summary: Primeiro evento de 2025 que contara com palestras e keynotes sempre com o classico coffebreak para network.
 Inscricao: https://forms.gle/cuDcf3AAAcWHraT98
 

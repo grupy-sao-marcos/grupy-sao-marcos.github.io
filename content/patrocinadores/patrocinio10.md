@@ -5,6 +5,6 @@ Category: patrocinador
 Tags: evento, encontro
 Slug: ztech
 image: /images/ztech.png
-Authors: Perceu Bertoletti
+Authors: Patrocinio
 link: https://ztech.inf.br/
 Summary: A ZTECH SISTEMAS atua na área desenvolvimento de softwares, atendendo indústria, comércio e prestadores de serviços, através de soluções completas

@@ -5,6 +5,6 @@ Category: patrocinador
 Tags: evento, encontro
 Slug: isadora-scain
 image: /images/isadora-scain.jpeg
-Authors: Perceu Bertoletti
+Authors: Patrocinio
 link: https://www.instagram.com/arq.isadorascain/
 Summary: Escritorio de arquitetura.

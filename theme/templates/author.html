@@ -1,2 +1,24 @@
-{% extends "index.html" %}
-{% block title %}{{ SITENAME|striptags }} - {{ author }}{% endblock %}
+{% extends "base.html" %}
+{% block content %}
+{% include "navigation-blog.html" %}
+<header id="site-header" class="site-article valign-center">
+    <div class="intro blog">
+        <h1>
+          {{author}}</br>
+        </h1>
+    </div>
+</header>
+<section id="article-content" class="valign-center">
+  <article class="container">
+    <div class="container-line">
+
+      <div class="entry-content">
+        <p>
+          Em Construção
+        </p>
+      </div><!-- /.entry-content -->
+    </div>
+  </article>
+</section>
+{% include "footer.html" %}
+{% endblock %}

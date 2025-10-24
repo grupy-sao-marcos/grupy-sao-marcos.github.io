@@ -5,6 +5,6 @@ Category: patrocinador
 Tags: evento, encontro
 Slug: q2
 image: /images/q2.png
-Authors: Perceu Bertoletti
+Authors: Patrocinio
 link: #
 Summary: Sergio

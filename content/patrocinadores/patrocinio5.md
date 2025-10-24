@@ -5,6 +5,6 @@ Category: patrocinador
 Tags: evento, encontro
 Slug: orquestralabs
 image: /images/orquestralabs.png
-Authors: Perceu Bertoletti
+Authors: Patrocinio
 link: https://orquestralabs.dev.br/
 Summary: Orquestralabs
