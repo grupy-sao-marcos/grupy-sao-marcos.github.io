@@ -5,7 +5,7 @@ Category: Evento
 Tags: evento, encontro
 Slug: sexto-encontro
 Authors: Perceu Bertoletti
-Summary: Segundo evento de 2025.
+Summary: Segundo evento de 2025, nesse encontro vamos fazer uma mesa redonda de tira duvidas com desenvolvedores que estiverem e quiserem participar.
 Inscricao: https://forms.gle/greK3bBRs4FKDuGW8
 
 Estamos organizando os seguintes conteudos:

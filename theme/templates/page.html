@@ -10,10 +10,33 @@
 {% endblock %}
 
 {% block content %}
-<section id="content" class="body">
-    <h1 class="entry-title">{{ page.title }}</h1>
-    {% import 'translations.html' as translations with context %}
-    {{ translations.translations_for(page) }}
-    {{ page.content }}
+{% include "navigation-blog.html" %}
+<header id="site-blog" class="site-blog valign-center">
+    <div class="intro blog">
+        <h1>{{ page.title }}</h1>
+        <br>
+        <blockquote>{{ page.content }}</blockquote>
+    </div>
+</header>
+<section id="blog-list">
+  <div class="container">
+    <div class="row">
+      {% for article in articles if article.category== page.title %}
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-title">{{article.title}}</h3>
+            <p class="card-text">
+              {{article.summary}}
+            </p>
+            <a href="/{{article.url}}" class="btn btn-primary">Ler Completo</a>
+            <hr>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
 </section>
+{% include "footer.html" %}
 {% endblock %}

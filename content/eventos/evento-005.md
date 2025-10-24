@@ -5,10 +5,10 @@ Category: Evento
 Tags: evento, encontro
 Slug: quinto-encontro
 Authors: Perceu Bertoletti
-Summary: Primeiro evento de 2025.
+Summary: Primeiro evento de 2025 que contara com palestras e keynotes sempre com o classico coffebreak para network.
 Inscricao: https://forms.gle/cuDcf3AAAcWHraT98
 
-Estamos organizando os seguintes conteudos:
+Nesse 5º evento do grupy são marcos, estamos organizando os seguintes conteudos:
 
  - 09:00 Abertura
  - 09:05 Introdução a programação criativa

@@ -16,6 +16,8 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
+ARTICLE_PATHS = ['blog','eventos', 'patrocinadores']
+
 # Blogroll
 LINKS = ()
 

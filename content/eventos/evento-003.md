@@ -5,7 +5,7 @@ Category: Evento
 Tags: evento, encontro
 Slug: terceiro-encontro
 Authors: Perceu Bertoletti
-Summary: Terceiro evento para divulgar conhecimento.
+Summary: Terceiro evento que contara com palestras e coffebreak ja com o nosso primeiro keynote.
 
 Nesse segundo evento estamos organizando os seguintes conteudos:
 

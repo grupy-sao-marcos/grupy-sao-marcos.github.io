@@ -5,7 +5,7 @@ Category: Evento
 Tags: evento, encontro
 Slug: setimo-encontro
 Authors: Perceu Bertoletti
-Summary: Terceiro evento de 2025.
+Summary: Terceiro evento de 2025, Vamos conhecer mais um keynote que ajuda e move o cenario de tecnologia de são marcos.
 Inscricao: https://forms.gle/ZxQo8yQERhi9fbUR6
 
 Estamos organizando os seguintes conteudos:

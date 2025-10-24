@@ -4,9 +4,11 @@
 
             <!-- logo -->
             <div class="site-branding">
-                <a class="logo" href="/#schedule">
+                <a class="logo" href="/">
+
                     <!-- logo image  -->
                     <img src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/logogrupy.svg" alt="Logo" height="56px">
+
                 </a>
             </div>
 
@@ -19,5 +21,18 @@
             </button>
 
         </div><!-- /.navbar-header -->
+
+        <div class="collapse navbar-collapse" id="navbar-items">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- navigation menu -->
+                <li class="active"><a href="{{ SITEURL }}#about">Sobre</a></li>
+                <li><a href="{{ SITEURL }}/#contribution">Chamada de Trabalhos</a></li>
+                <li><a href="{{ SITEURL }}/#facts">Proximo Evento</a></li>
+                <li><a href="{{ SITEURL }}/#schedule">Eventos Anteriores</a></li>
+                <li><a href="{{ SITEURL }}/#partner">Patrocinadores</a></li>
+                <li><a href="{{ SITEURL }}/#faq">FAQ</a></li>
+                <li><a href="/pages/blog.html">Blog</a></li>
+            </ul>
+        </div>
     </div><!-- /.container -->
 </nav>

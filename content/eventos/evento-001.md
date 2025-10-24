@@ -5,7 +5,7 @@ Category: Evento
 Tags: evento, encontro
 Slug: primeiro-encontro
 Authors: Perceu Bertoletti, Lucas Soranzo
-Summary: Primeiro evento para criarmos uma comunidade de desenvolvimento de são marcos.
+Summary: Primeiro evento com intuito de criarmos a comunidade de desenvolvimento de são marcos.
 
 Primeiro evento para criarmos uma comunidade de desenvolvimento de são marcos.
 Vamos nesse primeiro encontro falar um pouco de flask um micro framework web para desenvolvimento de pequenas aplicações.

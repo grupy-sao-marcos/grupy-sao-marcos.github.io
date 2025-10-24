@@ -5,7 +5,7 @@ Category: Evento
 Tags: evento, encontro
 Slug: segundo-encontro
 Authors: Perceu Bertoletti, Gabriel Taufer
-Summary: Segundo evento para divulgar conhecimento.
+Summary: Segundo evento que contara com palestras e coffebreak.
 
 Nesse segundo evento estamos organizando os seguintes conteudos:
 

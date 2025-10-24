@@ -1,17 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
-{% include "internal-navigation.html" %}
-
+{% include "navigation-blog.html" %}
+<header id="site-header" class="site-article valign-center">
+    <div class="intro blog">
+        <h1>
+          {{article.title }}</br>
+          <small>{{article.date |strftime('%d/%m/%Y') }}</small>
+        </h1>
+        {% if article.category != "blog" %}
+        <br>
+        <blockquote>{{ article.summary }}</blockquote>
+        {% endif %}
+    </div>
+</header>
 <section id="article-content" class="valign-center">
   <article class="container">
     <div class="container-line">
-      <header>
-        <h1 class="entry-title">
-          <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{
-            article.title }}</a>
-        </h1>
-        Dia: {{ article.locale_date }}
-      </header>
 
       <div class="entry-content">
         <p>
@@ -21,4 +25,5 @@
     </div>
   </article>
 </section>
+{% include "footer.html" %}
 {% endblock %}
