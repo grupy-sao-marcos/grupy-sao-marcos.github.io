@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Grupy São Marcos</title>
+
+    <!-- css -->
+    <link rel="stylesheet"
+        href="/theme/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/theme/bower_components/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="/theme/css/main.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+    <link
+        href="/feeds/all.atom.xml"
+        type="application/atom+xml" rel="alternate" title="Grupy São Marcos Atom Feed" />
+</head>
+
+<body data-spy="scroll" data-target="#site-nav">
+<nav id="site-nav" class="navbar navbar-fixed-top navbar-custom">
+    <div class="container">
+        <div class="navbar-header">
+
+            <!-- logo -->
+            <div class="site-branding">
+                <a class="logo" href="/">
+
+                    <!-- logo image  -->
+                    <img src="/theme/images/logogrupy.svg" alt="Logo" height="56px">
+
+                </a>
+            </div>
+
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-items"
+                aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+        </div><!-- /.navbar-header -->
+
+        <div class="collapse navbar-collapse" id="navbar-items">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- navigation menu -->
+                <li class="active"><a href="#about">Sobre</a></li>
+                <li><a href="/#contribution">Chamada de Trabalhos</a></li>
+                <li><a href="/#facts">Proximo Evento</a></li>
+                <li><a href="/#schedule">Eventos Anteriores</a></li>
+                <li><a href="/#partner">Patrocinadores</a></li>
+                <li><a href="/#faq">FAQ</a></li>
+                <li><a href="/pages/blog.html">Blog</a></li>
+            </ul>
+        </div>
+    </div><!-- /.container -->
+</nav><header id="site-header" class="site-article valign-center">
+    <div class="intro blog">
+        <h1>
+          Primeiro Ambiente Vitual</br>
+          <small>23/10/2025</small>
+        </h1>
+    </div>
+</header>
+<section id="article-content" class="valign-center">
+  <article class="container">
+    <div class="container-line">
+
+      <div class="entry-content">
+        <p>
+          <p>No desenvolvilmento de aplicações com python é muito importante sempre trabalharmos com ambientes isolados, tanto para mapear as dependencias do projeto, como para poder trabalhar com multiplas versões de uma mesma biblioteca. 
+ex: Django 4.0, Django 5.0</p>
+<p>Vamos começar vendo se o pacote de virtual env esta instalado no nosso sistema, para isso execute:</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>-m<span class="w"> </span>venv
+</code></pre></div>
+
+<p>Se a saida for parecida com a abaixo seu pacote esta configurado com sucesso.</p>
+<div class="highlight"><pre><span></span><code>usage:<span class="w"> </span>venv<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>--system-site-packages<span class="o">]</span><span class="w"> </span><span class="o">[</span>--symlinks<span class="w"> </span><span class="p">|</span><span class="w"> </span>--copies<span class="o">]</span><span class="w"> </span><span class="o">[</span>--clear<span class="o">]</span><span class="w"> </span><span class="o">[</span>--upgrade<span class="o">]</span><span class="w"> </span><span class="o">[</span>--without-pip<span class="o">]</span><span class="w"> </span><span class="o">[</span>--prompt<span class="w"> </span>PROMPT<span class="o">]</span><span class="w"> </span><span class="o">[</span>--upgrade-deps<span class="o">]</span><span class="w"> </span>ENV_DIR<span class="w"> </span><span class="o">[</span>ENV_DIR<span class="w"> </span>...<span class="o">]</span>
+venv:<span class="w"> </span>error:<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>arguments<span class="w"> </span>are<span class="w"> </span>required:<span class="w"> </span>ENV_DIR
+</code></pre></div>
+
+<p>Caso não apareça uma resposta como essa, é importante que que veja como instalar esse pacote no seu sistema operacional, normalmente em distribuições ubuntu o comando é:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3-venv
+</code></pre></div>
+
+<p>Para começar vamos criar um ambiente virtual com o nome de <code>meuambiente</code> </p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>meuambiente
+</code></pre></div>
+
+<p>Ativando o virtual enviroment, entenda que esse tutorial é todo baseado em um sistema operacional linux ubuntu, existem algumas peculiariedades em ambiente windows mas os comandos são os mesmos para o <strong>IOS</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nb">source</span><span class="w"> </span>meuambiente/bin/activate
+</code></pre></div>
+
+<h5>No windows</h5>
+<div class="highlight"><pre><span></span><code>./meuambiente/Scripts/activate
+</code></pre></div>
+
+<p>Com o ambiente ativo você pode verificar os pacotes instalados no nosso ambiente recem criado.</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>freeze
+</code></pre></div>
+
+<p>Todos os pacotes pode ser instalados via <code>pip install</code> veja os pacotes em officiais em <a href="https://pypi.org/">pypi.org</a></p>
+<h3>Exemplo de como instalar a biblioteca request</h3>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>requests
+</code></pre></div>
+
+<p>existe tambem uma forma de instalar varios pacotes apartir de um arquivo usando o comando </p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</code></pre></div>
+
+<p>existem muitos outras formas de gerenciar pacotes no python atravez de varios outros pacotes mas sempre acontelho usar o pacote venv para evitar dependencias para gerenciar dependencias o venv é o pacote principal e funciona muito bem.</p>
+<p>Tenha sempre cautela para não sobrecarregar seu projeto com varios pacotes.</p>
+<p>Para criar um arquivo com todas as dependencias você pode usar o comando:</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>freeze<span class="w"> </span>&gt;<span class="w"> </span>requirements.txt
+</code></pre></div>
+
+<p>isso gera o arquivo ja com todas as dependencias e suas versões, as vezes pode ser importante limpar esse arquivo para limpar dependencias de dependencias. mas não faça isso sem ter certeza do que esta fazendo.</p>
+<p>outra recomendação é que é possivel fazer herança nesses arquivos as vezes é preciso ter um requirements-dev e um requirements
+para isso você pode colocar uma dependencia dentro da outra ex:</p>
+<h5>requirements-dev.txt</h5>
+<div class="highlight"><pre><span></span><code>-r requirements.txt
+anyio==4.3.0
+blinker==1.7.0
+docutils==0.20.1
+feedgenerator==2.1.0
+</code></pre></div>
+
+<p>Assim todos os pacotes de requirements são instalados e os especificos de desenvolvimento tambem.</p>
+<p>Sugestões e melhorias podem ser enviadas para via Pull Request no <a href="https://github.com/grupy-sao-marcos/grupy-sao-marcos.github.io">repositorio</a></p>
+        </p>
+      </div><!-- /.entry-content -->
+    </div>
+  </article>
+</section>
+<footer class="site-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p class="site-info">Designed and <br> Developed by <a href="http://technextit.com">Technext Limited</a></p>
+            </div>
+            <div class="col-md-12">
+                <p class="site-info">Todas informações reservadas ao Grupy de São Marcos</p>
+            </div>
+        </div>
+    </div>
+</footer>    <!-- script -->
+    <script src="/theme/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/theme/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script
+        src="/theme/bower_components/smooth-scroll/dist/js/smooth-scroll.min.js"></script>
+    <script src="/theme/js/main.js"></script>
+</body>
+
+</html>

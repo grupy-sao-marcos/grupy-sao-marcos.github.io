@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Grupy São Marcos - Blog</title><link href="/" rel="alternate"></link><link href="/feeds/blog.atom.xml" rel="self"></link><id>/</id><updated>2025-10-23T11:30:00-03:00</updated><entry><title>Primeiro Ambiente Vitual</title><link href="/primeiro-ambiente-vitual.html" rel="alternate"></link><published>2025-10-23T08:30:00-03:00</published><updated>2025-10-23T11:30:00-03:00</updated><author><name>Perceu Bertoletti</name></author><id>tag:None,2025-10-23:/primeiro-ambiente-vitual.html</id><summary type="html">&lt;p&gt;Vamos aprender como criar o primeiro virtual enviroment.&lt;/p&gt;</summary><content type="html">&lt;p&gt;No desenvolvilmento de aplicações com python é muito importante sempre trabalharmos com ambientes isolados, tanto para mapear as dependencias do projeto, como para poder trabalhar com multiplas versões de uma mesma biblioteca. 
+ex: Django 4.0, Django 5.0&lt;/p&gt;
+&lt;p&gt;Vamos começar vendo se o pacote de virtual env esta instalado no nosso sistema, para isso execute:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;python3&lt;span class="w"&gt; &lt;/span&gt;-m&lt;span class="w"&gt; &lt;/span&gt;venv
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Se a saida for parecida com a abaixo seu pacote esta configurado com sucesso.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;usage:&lt;span class="w"&gt; &lt;/span&gt;venv&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;-h&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;--system-site-packages&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;--symlinks&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;--copies&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;--clear&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;--upgrade&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;--without-pip&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;--prompt&lt;span class="w"&gt; &lt;/span&gt;PROMPT&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;--upgrade-deps&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;ENV_DIR&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;ENV_DIR&lt;span class="w"&gt; &lt;/span&gt;...&lt;span class="o"&gt;]&lt;/span&gt;
+venv:&lt;span class="w"&gt; &lt;/span&gt;error:&lt;span class="w"&gt; &lt;/span&gt;the&lt;span class="w"&gt; &lt;/span&gt;following&lt;span class="w"&gt; &lt;/span&gt;arguments&lt;span class="w"&gt; &lt;/span&gt;are&lt;span class="w"&gt; &lt;/span&gt;required:&lt;span class="w"&gt; &lt;/span&gt;ENV_DIR
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Caso não apareça uma resposta como essa, é importante que que veja como instalar esse pacote no seu sistema operacional, normalmente em distribuições ubuntu o comando é:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;apt&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;python3-venv
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Para começar vamos criar um ambiente virtual com o nome de &lt;code&gt;meuambiente&lt;/code&gt; &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;python3&lt;span class="w"&gt; &lt;/span&gt;-m&lt;span class="w"&gt; &lt;/span&gt;venv&lt;span class="w"&gt; &lt;/span&gt;meuambiente
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Ativando o virtual enviroment, entenda que esse tutorial é todo baseado em um sistema operacional linux ubuntu, existem algumas peculiariedades em ambiente windows mas os comandos são os mesmos para o &lt;strong&gt;IOS&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;source&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;meuambiente/bin/activate
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h5&gt;No windows&lt;/h5&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;./meuambiente/Scripts/activate
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Com o ambiente ativo você pode verificar os pacotes instalados no nosso ambiente recem criado.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;pip&lt;span class="w"&gt; &lt;/span&gt;freeze
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Todos os pacotes pode ser instalados via &lt;code&gt;pip install&lt;/code&gt; veja os pacotes em officiais em &lt;a href="https://pypi.org/"&gt;pypi.org&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Exemplo de como instalar a biblioteca request&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;pip&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;requests
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;existe tambem uma forma de instalar varios pacotes apartir de um arquivo usando o comando &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;pip&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;-r&lt;span class="w"&gt; &lt;/span&gt;requirements.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;existem muitos outras formas de gerenciar pacotes no python atravez de varios outros pacotes mas sempre acontelho usar o pacote venv para evitar dependencias para gerenciar dependencias o venv é o pacote principal e funciona muito bem.&lt;/p&gt;
+&lt;p&gt;Tenha sempre cautela para não sobrecarregar seu projeto com varios pacotes.&lt;/p&gt;
+&lt;p&gt;Para criar um arquivo com todas as dependencias você pode usar o comando:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;pip&lt;span class="w"&gt; &lt;/span&gt;freeze&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;requirements.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;isso gera o arquivo ja com todas as dependencias e suas versões, as vezes pode ser importante limpar esse arquivo para limpar dependencias de dependencias. mas não faça isso sem ter certeza do que esta fazendo.&lt;/p&gt;
+&lt;p&gt;outra recomendação é que é possivel fazer herança nesses arquivos as vezes é preciso ter um requirements-dev e um requirements
+para isso você pode colocar uma dependencia dentro da outra ex:&lt;/p&gt;
+&lt;h5&gt;requirements-dev.txt&lt;/h5&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;-r requirements.txt
+anyio==4.3.0
+blinker==1.7.0
+docutils==0.20.1
+feedgenerator==2.1.0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Assim todos os pacotes de requirements são instalados e os especificos de desenvolvimento tambem.&lt;/p&gt;
+&lt;p&gt;Sugestões e melhorias podem ser enviadas para via Pull Request no &lt;a href="https://github.com/grupy-sao-marcos/grupy-sao-marcos.github.io"&gt;repositorio&lt;/a&gt;&lt;/p&gt;</content><category term="Blog"></category></entry><entry><title>Primeiro Post do blog</title><link href="/primeiro-post-do-blog.html" rel="alternate"></link><published>2025-10-23T08:30:00-03:00</published><updated>2025-10-23T11:30:00-03:00</updated><author><name>Perceu Bertoletti</name></author><id>tag:None,2025-10-23:/primeiro-post-do-blog.html</id><summary type="html">&lt;p&gt;Vamos iniciar um movimento de criação de conteúdo no grupo&lt;/p&gt;</summary><content type="html">&lt;p&gt;Que tal contribuir com a nossa comunidade, agora você alem de palestrar, auxiliar com codigo, auxiliar na organização dos eventos, tambem é possivel escrever, revisar e incentivar outros a fazerem o mesmo.&lt;/p&gt;
+&lt;p&gt;Agora com o blog é possivel sempre divulgar seu conhecimento de forma simples basta escrever seu artigo em markdown e submeter via pull request no nosso &lt;a href="https://github.com/grupy-sao-marcos/grupy-sao-marcos.github.io"&gt;repositorio&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;É muito importante que você crie e edite os arquivos dentro da pasta &lt;code&gt;blog&lt;/code&gt;, os outros arquivos são referente a eventos e detalhes dos patrocinadores, esses markdowns servem como base de dados para a geração das paginas&lt;/p&gt;
+&lt;p&gt;Desde de já, toda a comunidade agradece.&lt;/p&gt;
+&lt;p&gt;Grupy São Marcos&lt;/p&gt;</content><category term="Blog"></category></entry></feed>
