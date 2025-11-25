@@ -1,5 +1,5 @@
 Title: 8° encontro do Grupy São Marcos
-Date: 2025-11-29 08:00
+Date: 2025-11-29 08:15
 Modified: 2025-08-29 12:00
 Category: Evento
 Tags: evento, encontro

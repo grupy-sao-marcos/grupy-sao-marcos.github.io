@@ -5,7 +5,7 @@
     <div class="intro blog">
         <h1>
           {{article.title }}</br>
-          <small>{{article.date |strftime('%d/%m/%Y') }}</small>
+          <small>{{article.author}} - {{article.date |strftime('%d/%m/%Y') }}</small>
         </h1>
         {% if article.category != "blog" %}
         <br>
