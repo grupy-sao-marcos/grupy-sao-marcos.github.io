@@ -1,5 +1,5 @@
 Title: lepton
-Date: 2024-01-23 09:00
+Date: 2024-01-24 09:00
 Modified: 2024-11-23 12:05
 Category: patrocinador
 Tags: evento, encontro
