@@ -154,13 +154,18 @@
             </div>
         </div>
         <div class="row">
-            {% for article in articles if article.category == "patrocinador"%}
-            <div class="col-sm-3 text-center">
+            {% for article in articles if article.category == "patrocinador" %}
+            <div class="col-sm-3 text-center mt-2">
                 <a href="{{ article.link }}" target="_blank" class="partner-box">
                     <img src="{{ SITEURL }}{{ article.image }}" alt="{{article.title}}" width="300px" />
                 </a>
             </div>
             {% endfor %}
+            <div class="col-md-12 text-center">
+                <div class="mt-4">                    
+                    <a href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/plano_de_patrocinio_2026.pdf" class="btn btn-black"> Seja você tambem um apoiador </a>
+                </div>
+            </div>
         </div>
     </div>
 </section>
