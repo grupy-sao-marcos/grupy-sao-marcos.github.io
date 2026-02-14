@@ -66,3 +66,9 @@ html, body {
     background-color: #eee;
     padding: 16px;
 }
+.mt-4 {
+    margin-top: 32px;
+}
+.mt-2 {
+    margin-top: 16px;
+}
