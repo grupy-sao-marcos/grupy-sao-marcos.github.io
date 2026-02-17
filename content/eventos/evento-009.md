@@ -13,8 +13,8 @@ Estamos organizando os seguintes conteudos:
 |Horario|Atividade|Palestrante| 
 |:-------:|:------|:-------|
 |08:30 |Abertura||
-|08:45 |Padrões de Projeto para RPGs de Turno|Bruno Dal'lago|
-|09:30 |Coffe breack||
+|08:45 |Padrões de Projeto em RPGs de Turno|Bruno Dal'lago|
+|09:30 |Coffee Break||
 |10:15 |Do Widget ao App: entendendo estado no Flutter|Vilson Dauinheimer|
 |11:00 |Pocket talks||
 |11:30 |Encerramento||
