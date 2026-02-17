@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Grupy São Marcos - Evento</title><link href="/" rel="alternate"></link><link href="/feeds/evento.atom.xml" rel="self"></link><id>/</id><updated>2026-02-21T08:30:00-03:00</updated><entry><title>9° encontro do Grupy São Marcos</title><link href="/nono-encontro.html" rel="alternate"></link><published>2026-02-21T08:30:00-03:00</published><updated>2025-08-29T12:00:00-03:00</updated><author><name>Patrocinio</name></author><id>tag:None,2026-02-21:/nono-encontro.html</id><summary type="html">&lt;p&gt;Primeiro evento de 2026 com um modelo um pouco diferente&lt;/p&gt;</summary><content type="html">&lt;p&gt;Estamos organizando os seguintes conteudos:&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Grupy São Marcos - Evento</title><link href="/" rel="alternate"></link><link href="/feeds/evento.atom.xml" rel="self"></link><id>/</id><updated>2026-02-21T08:30:00-03:00</updated><entry><title>9° encontro do Grupy São Marcos</title><link href="/nono-encontro.html" rel="alternate"></link><published>2026-02-21T08:30:00-03:00</published><updated>2025-08-29T12:00:00-03:00</updated><author><name>Bruno Dal'lago</name></author><id>tag:None,2026-02-21:/nono-encontro.html</id><summary type="html">&lt;p&gt;Primeiro evento de 2026 com um modelo um pouco diferente&lt;/p&gt;</summary><content type="html">&lt;p&gt;Estamos organizando os seguintes conteudos:&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -16,8 +16,8 @@
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style="text-align: center;"&gt;08:45&lt;/td&gt;
-&lt;td style="text-align: left;"&gt;Primeira Palestra&lt;/td&gt;
-&lt;td style="text-align: left;"&gt;&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Padrões de Projeto para RPGs de Turno&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Bruno Dal'lago&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style="text-align: center;"&gt;09:30&lt;/td&gt;
@@ -26,8 +26,8 @@
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style="text-align: center;"&gt;10:15&lt;/td&gt;
-&lt;td style="text-align: left;"&gt;Primeira Palestra&lt;/td&gt;
-&lt;td style="text-align: left;"&gt;&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Do Widget ao App: entendendo estado no Flutter&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Vilson Dauinheimer&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style="text-align: center;"&gt;11:00&lt;/td&gt;
