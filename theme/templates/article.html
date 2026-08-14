@@ -5,8 +5,17 @@
     <div class="intro blog">
         <h1>
           {{article.title }}</br>
-          <small>{{article.author}} - {{article.date |strftime('%d/%m/%Y') }}</small>
+          <small>
+            {% for autor in article.authors %}
+              <a href="{{ SITEURL }}/{{ autor.url }}">{{ autor.name }}</a>{% if not loop.last %}, {% endif %}
+            {% endfor %}
+            - {{article.date |strftime('%d/%m/%Y') }}
+          </small>
         </h1>
+        {% if article.inscricao %}
+        <br>
+        <a class="btn btn-inscricao" target="_blank" href="{{ article.inscricao }}">Inscreva-se no evento</a>
+        {% endif %}
         {% if article.category != "blog" %}
         <br>
         <blockquote>{{ article.summary }}</blockquote>

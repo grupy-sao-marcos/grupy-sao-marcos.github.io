@@ -9,7 +9,9 @@
 
         <h1>{{ultimo_evento.title}}</h1>
 
-        <a class="btn btn-white" target="_blank" href="{{ultimo_evento.inscricao}}">Inscreva-se</a>
+        {% if ultimo_evento.inscricao %}
+        <a class="btn btn-inscricao" target="_blank" href="{{ultimo_evento.inscricao}}">Inscreva-se</a>
+        {% endif %}
 
     </div>
 </header>
@@ -73,9 +75,9 @@
             </div>
             <div class="col-sm-3">
                 <i class="ion-speakerphone"></i>
-                <a target="_blank" href="{{ultimo_evento.inscricao}}">
-                    <h3>Inscreva-se</h3>
-                </a>
+                {% if ultimo_evento.inscricao %}
+                <a class="btn btn-inscricao" target="_blank" href="{{ultimo_evento.inscricao}}">Inscreva-se</a>
+                {% endif %}
             </div>
             <div class="col-sm-12" style="margin-top: 36px;">
                 <a class="btn btn-white" href="{{ultimo_evento.url}}">Veja a grade</a>

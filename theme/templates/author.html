@@ -4,21 +4,59 @@
 <header id="site-header" class="site-article valign-center">
     <div class="intro blog">
         <h1>
-          {{author}}</br>
+            {{ author.name }}
         </h1>
+        {% set artigos = articles | selectattr('category', 'equalto', 'blog') | list %}
+        {% set eventos = articles | selectattr('category', 'equalto', 'evento') | list %}
+        <small>contribuiu com {{ artigos|length }} artigo(s) e {{ eventos|length }} evento(s)</small>
     </div>
 </header>
-<section id="article-content" class="valign-center">
-  <article class="container">
-    <div class="container-line">
 
-      <div class="entry-content">
-        <p>
-          Em Construção
-        </p>
-      </div><!-- /.entry-content -->
+<section id="blog-list">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-12">
+                <h2>Artigos no blog ({{ artigos|length }})</h2>
+                {% for artigo in artigos %}
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">{{ artigo.title }}</h3>
+                        <p class="card-text">
+                            {{ artigo.summary }}
+                        </p>
+                        <p class="card-text"><small>{{ artigo.date | strftime('%d/%m/%Y') }}</small></p>
+                        <a href="/{{ artigo.url }}" class="btn btn-primary">Ler Completo</a>
+                        <hr>
+                    </div>
+                </div>
+                {% else %}
+                <p>Este colaborador ainda não publicou artigos no blog.</p>
+                {% endfor %}
+            </div>
+
+            <div class="col-md-12">
+                <h2>Eventos ({{ eventos|length }})</h2>
+                {% for evento in eventos %}
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">{{ evento.title }}</h3>
+                        <p class="card-text">
+                            {{ evento.summary }}
+                        </p>
+                        <p class="card-text"><small>{{ evento.locale_date }}</small></p>
+                        <a href="/{{ evento.url }}" class="btn btn-primary">Ver evento</a>
+                        <hr>
+                    </div>
+                </div>
+                {% else %}
+                <p>Este colaborador ainda não participou de eventos.</p>
+                {% endfor %}
+            </div>
+
+        </div>
     </div>
-  </article>
 </section>
+
 {% include "footer.html" %}
 {% endblock %}
