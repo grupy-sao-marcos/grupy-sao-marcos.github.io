@@ -1,3 +1,14 @@
+import pelican
+
+
+def adicionar_ultimo_evento(generator):
+    eventos = [a for a in generator.articles if a.category == "evento"]
+    generator.context["ultimo_evento"] = eventos[0] if eventos else None
+
+
+pelican.signals.article_generator_finalized.connect(adicionar_ultimo_evento)
+
+
 AUTHOR = 'Perceu Bertoletti'
 SITENAME = 'Grupy São Marcos'
 SITEURL = ''

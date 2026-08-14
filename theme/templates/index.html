@@ -5,11 +5,11 @@
 <header id="site-header" class="site-header valign-center">
     <div class="intro">
 
-        <h2>{{articles.0.locale_date}}</h2>
+        <h2>{{ultimo_evento.locale_date}}</h2>
 
-        <h1>{{articles.0.title}}</h1>
+        <h1>{{ultimo_evento.title}}</h1>
 
-        <a class="btn btn-white" target="_blank" href="{{articles.0.inscricao}}">Inscreva-se</a>
+        <a class="btn btn-white" target="_blank" href="{{ultimo_evento.inscricao}}">Inscreva-se</a>
 
     </div>
 </header>
@@ -61,7 +61,7 @@
         <div class="row">
             <div class="col-sm-3">
                 <i class="ion-ios-calendar"></i>
-                <h3>{{articles.0.locale_date}}</h3>
+                <h3>{{ultimo_evento.locale_date}}</h3>
             </div>
             <div class="col-sm-3">
                 <i class="ion-ios-location"></i>
@@ -69,16 +69,16 @@
             </div>
             <div class="col-sm-3">
                 <i class="ion-ios-time"></i>
-                <h3>Inicio: {{articles.0.date|strftime('%H:%M')}}</h3>
+                <h3>Inicio: {{ultimo_evento.date|strftime('%H:%M')}}</h3>
             </div>
             <div class="col-sm-3">
                 <i class="ion-speakerphone"></i>
-                <a target="_blank" href="{{articles.0.inscricao}}">
+                <a target="_blank" href="{{ultimo_evento.inscricao}}">
                     <h3>Inscreva-se</h3>
                 </a>
             </div>
             <div class="col-sm-12" style="margin-top: 36px;">
-                <a class="btn btn-white" href="{{articles.0.url}}">Veja a grade</a>
+                <a class="btn btn-white" href="{{ultimo_evento.url}}">Veja a grade</a>
             </div>
         </div><!-- row -->
     </div><!-- container -->
