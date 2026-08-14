@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Grupy São Marcos</title>
+
+    <!-- css -->
+    <link rel="stylesheet"
+        href="/theme/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/theme/bower_components/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="/theme/css/main.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+    <link
+        href="/feeds/all.atom.xml"
+        type="application/atom+xml" rel="alternate" title="Grupy São Marcos Atom Feed" />
+</head>
+
+<body data-spy="scroll" data-target="#site-nav">
+<nav id="site-nav" class="navbar navbar-fixed-top navbar-custom">
+    <div class="container">
+        <div class="navbar-header">
+
+            <!-- logo -->
+            <div class="site-branding">
+                <a class="logo" href="/">
+
+                    <!-- logo image  -->
+                    <img src="/theme/images/logogrupy.svg" alt="Logo" height="56px">
+
+                </a>
+            </div>
+
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-items"
+                aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+        </div><!-- /.navbar-header -->
+
+        <div class="collapse navbar-collapse" id="navbar-items">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- navigation menu -->
+                <li class="active"><a href="#about">Sobre</a></li>
+                <li><a href="/#contribution">Chamada de Trabalhos</a></li>
+                <li><a href="/#facts">Proximo Evento</a></li>
+                <li><a href="/#schedule">Eventos Anteriores</a></li>
+                <li><a href="/#partner">Patrocinadores</a></li>
+                <li><a href="/#faq">FAQ</a></li>
+                <li><a href="/pages/blog.html">Blog</a></li>
+            </ul>
+        </div>
+    </div><!-- /.container -->
+</nav><header id="site-header" class="site-article valign-center">
+    <div class="intro blog">
+        <h1>
+          Automatizando tarefas do dia a dia com Python</br>
+          <small>Perceu Bertoletti - 15/08/2026</small>
+        </h1>
+    </div>
+</header>
+<section id="article-content" class="valign-center">
+  <article class="container">
+    <div class="container-line">
+
+      <div class="entry-content">
+        <p>
+          <p>Quantas vezes você já perdeu tempo fazendo tarefas repetitivas no computador: renomear dezenas de arquivos, organizar fotos em pastas, converter um monte de arquivos, montar um relatório manualmente?</p>
+<p>O Python é uma excelente ferramenta para <strong>automação</strong>. Com algumas linhas de código, você transforma tarefas que levariam horas em algo que roda em segundos. Vamos ver exemplos práticos que você pode adaptar para o seu caso.</p>
+<h2>Trabalhando com arquivos e pastas</h2>
+<p>O módulo <code>os</code> e <code>shutil</code> são os pilares para manipular arquivos no Python.</p>
+<h3>Renomear vários arquivos de uma vez</h3>
+<p>Imagine que você tem várias fotos chamadas <code>IMG_2026_001.jpg</code>, <code>IMG_2026_002.jpg</code> e quer renomeá-las para algo mais organizado:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">caminho</span> <span class="o">=</span> <span class="s2">&quot;minhas_fotos&quot;</span>
+<span class="k">for</span> <span class="n">arquivo</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">caminho</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">arquivo</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.jpg&quot;</span><span class="p">):</span>
+        <span class="n">novo_nome</span> <span class="o">=</span> <span class="n">arquivo</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;IMG_2026_&quot;</span><span class="p">,</span> <span class="s2">&quot;ferias_&quot;</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">caminho</span><span class="p">,</span> <span class="n">arquivo</span><span class="p">),</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">caminho</span><span class="p">,</span> <span class="n">novo_nome</span><span class="p">),</span>
+        <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Arquivos renomeados com sucesso!&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>Organizar arquivos em pastas</h3>
+<p>Que tal separar os downloads por tipo de arquivo? Uma automação clássica:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+
+<span class="k">def</span> <span class="nf">organizar</span><span class="p">(</span><span class="n">pasta</span><span class="p">):</span>
+    <span class="n">categorias</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;.jpg&quot;</span><span class="p">:</span> <span class="s2">&quot;imagens&quot;</span><span class="p">,</span> <span class="s2">&quot;.png&quot;</span><span class="p">:</span> <span class="s2">&quot;imagens&quot;</span><span class="p">,</span> <span class="s2">&quot;.gif&quot;</span><span class="p">:</span> <span class="s2">&quot;imagens&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;.pdf&quot;</span><span class="p">:</span> <span class="s2">&quot;documentos&quot;</span><span class="p">,</span> <span class="s2">&quot;.docx&quot;</span><span class="p">:</span> <span class="s2">&quot;documentos&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;.mp3&quot;</span><span class="p">:</span> <span class="s2">&quot;musica&quot;</span><span class="p">,</span> <span class="s2">&quot;.mp4&quot;</span><span class="p">:</span> <span class="s2">&quot;videos&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="n">arquivo</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">pasta</span><span class="p">):</span>
+        <span class="n">origem</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">pasta</span><span class="p">,</span> <span class="n">arquivo</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">origem</span><span class="p">):</span>
+            <span class="k">continue</span>
+        <span class="n">extensao</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">arquivo</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">destino</span> <span class="o">=</span> <span class="n">categorias</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">extensao</span><span class="p">,</span> <span class="s2">&quot;outros&quot;</span><span class="p">)</span>
+        <span class="n">destino_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">pasta</span><span class="p">,</span> <span class="n">destino</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">destino_path</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">origem</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">destino_path</span><span class="p">,</span> <span class="n">arquivo</span><span class="p">))</span>
+
+<span class="n">organizar</span><span class="p">(</span><span class="s2">&quot;downloads&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>Lendo e escrevendo arquivos de texto</h2>
+<p>A automação de relatórios geralmente envolve ler dados de um arquivo e gerar outro. Vamos somar os valores de uma planilha simples em texto:</p>
+<div class="highlight"><pre><span></span><code><span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;vendas.txt&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">arquivo</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">linha</span> <span class="ow">in</span> <span class="n">arquivo</span><span class="p">:</span>
+        <span class="n">valor</span> <span class="o">=</span> <span class="n">linha</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">valor</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
+            <span class="n">total</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">valor</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;resumo.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">saida</span><span class="p">:</span>
+    <span class="n">saida</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total de vendas: </span><span class="si">{</span><span class="n">total</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Relatorio gerado, total: </span><span class="si">{</span><span class="n">total</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Perceba o uso do <code>with</code>: ele garante que o arquivo seja fechado corretamente, mesmo se ocorrer um erro no meio.</p>
+<h2>Trabalhando com datas e agendamento</h2>
+<p>O módulo <code>datetime</code> permite trabalhar com datas facilmente:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+
+<span class="n">hoje</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<span class="n">amanha</span> <span class="o">=</span> <span class="n">hoje</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">hoje</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">/%m/%Y %H:%M&quot;</span><span class="p">))</span>  <span class="c1"># 14/08/2026 09:00</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Amanha:&quot;</span><span class="p">,</span> <span class="n">amanha</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">/%m/%Y&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<h2>Buscando dados na web</h2>
+<p>Para tarefas que dependem de informações online, usamos a biblioteca <code>requests</code>. Por exemplo, consultar a cotação de uma moeda:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">resposta</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://api.exchangerate-api.com/v4/latest/USD&quot;</span><span class="p">)</span>
+<span class="n">dados</span> <span class="o">=</span> <span class="n">resposta</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="n">cotacao_brl</span> <span class="o">=</span> <span class="n">dados</span><span class="p">[</span><span class="s2">&quot;rates&quot;</span><span class="p">][</span><span class="s2">&quot;BRL&quot;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;1 USD vale R$ </span><span class="si">{</span><span class="n">cotacao_brl</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Lembre-se de instalar a biblioteca com <code>pip install requests</code> (veja como gerenciar dependências no nosso <a href="/primeiro-ambiente-vitual.html">artigo sobre ambientes virtuais</a>).</p>
+<h2>Dica: use o <code>pathlib</code></h2>
+<p>Desde o Python 3.4 existe o <code>pathlib</code>, que deixa o trabalho com caminhos muito mais legível e moderno:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">pasta</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;minhas_fotos&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">arquivo</span> <span class="ow">in</span> <span class="n">pasta</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;*.jpg&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">arquivo</span><span class="o">.</span><span class="n">stem</span><span class="p">)</span>  <span class="c1"># nome sem extensao</span>
+</code></pre></div>
+
+<h2>Começando do simples</h2>
+<p>A melhor forma de aprender automação é começando pequeno. Escolha uma tarefa que você faz toda semana e tente automatizar:</p>
+<ol>
+<li>Liste os passos que você faz manualmente;</li>
+<li>Quebre o problema em pequenas partes;</li>
+<li>Teste cada parte isolada no terminal;</li>
+<li>Junte tudo e rode o script completo.</li>
+</ol>
+<p>Com o tempo, você vai perceber que o Python não serve apenas para construir grandes sistemas, mas também para <strong>eliminar o trabalho repetitivo</strong> e dar mais tempo para o que realmente importa.</p>
+<p>Tem alguma automação que você gostaria de ver por aqui? Sugira nos comentários ou contribua com um artigo no nosso <a href="https://github.com/grupy-sao-marcos/grupy-sao-marcos.github.io">repositorio</a>.</p>
+        </p>
+      </div><!-- /.entry-content -->
+    </div>
+  </article>
+</section>
+<footer class="site-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="/theme/images/logogrupy.svg" alt="Logo" height="56px">
+            </div>
+            <div class="col-md-4">
+                <p class="site-info">Theme Designed and Developed <br> by <a href="http://technextit.com">Technext Limited</a></p>
+                <p class="site-info">Todas informações reservadas ao <br>Grupy de São Marcos</p>
+            </div>
+            <div class="col-md-4">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <a href="/authors.html">
+                            Colaboradores
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>    <!-- script -->
+    <script src="/theme/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/theme/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script
+        src="/theme/bower_components/smooth-scroll/dist/js/smooth-scroll.min.js"></script>
+    <script src="/theme/js/main.js"></script>
+</body>
+
+</html>

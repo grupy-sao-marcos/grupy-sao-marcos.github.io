@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Grupy São Marcos</title>
+
+    <!-- css -->
+    <link rel="stylesheet"
+        href="/theme/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/theme/bower_components/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="/theme/css/main.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+    <link
+        href="/feeds/all.atom.xml"
+        type="application/atom+xml" rel="alternate" title="Grupy São Marcos Atom Feed" />
+</head>
+
+<body data-spy="scroll" data-target="#site-nav">
+<nav id="site-nav" class="navbar navbar-fixed-top navbar-custom">
+    <div class="container">
+        <div class="navbar-header">
+
+            <!-- logo -->
+            <div class="site-branding">
+                <a class="logo" href="/">
+
+                    <!-- logo image  -->
+                    <img src="/theme/images/logogrupy.svg" alt="Logo" height="56px">
+
+                </a>
+            </div>
+
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-items"
+                aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+        </div><!-- /.navbar-header -->
+
+        <div class="collapse navbar-collapse" id="navbar-items">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- navigation menu -->
+                <li class="active"><a href="#about">Sobre</a></li>
+                <li><a href="/#contribution">Chamada de Trabalhos</a></li>
+                <li><a href="/#facts">Proximo Evento</a></li>
+                <li><a href="/#schedule">Eventos Anteriores</a></li>
+                <li><a href="/#partner">Patrocinadores</a></li>
+                <li><a href="/#faq">FAQ</a></li>
+                <li><a href="/pages/blog.html">Blog</a></li>
+            </ul>
+        </div>
+    </div><!-- /.container -->
+</nav><header id="site-header" class="site-article valign-center">
+    <div class="intro blog">
+        <h1>
+          Sua primeira API com Flask: do zero ao primeiro endpoint</br>
+          <small>Perceu Bertoletti - 16/08/2026</small>
+        </h1>
+    </div>
+</header>
+<section id="article-content" class="valign-center">
+  <article class="container">
+    <div class="container-line">
+
+      <div class="entry-content">
+        <p>
+          <p>Se você já conhece o básico de Python e quer dar os primeiros passos no mundo web, o <a href="https://flask.palletsprojects.com/">Flask</a> é uma ótima porta de entrada. Ele é leve, simples e você consegue criar sua primeira API em poucos minutos.</p>
+<p>Neste artigo vamos construir uma API de tarefas (a clássica <em>todo list</em>) usando JSON.</p>
+<h2>Preparando o ambiente</h2>
+<p>Antes de começar, crie um ambiente virtual (se tiver dúvidas, veja nosso <a href="/primeiro-ambiente-vitual.html">artigo sobre ambientes virtuais</a>) e instale o Flask:</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+pip<span class="w"> </span>install<span class="w"> </span>flask
+</code></pre></div>
+
+<h2>Criando a aplicação</h2>
+<p>Crie um arquivo chamado <code>app.py</code> com o seguinte conteúdo:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">jsonify</span><span class="p">,</span> <span class="n">request</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="n">tarefas</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">proximo_id</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/tarefas&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;GET&quot;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">listar_tarefas</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">(</span><span class="n">tarefas</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Para rodar, execute:</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>app.py
+</code></pre></div>
+
+<p>Acesse <code>http://localhost:5000/tarefas</code> no navegador. Você verá uma lista vazia <code>[]</code>. Pronto, sua primeira API está no ar!</p>
+<h2>O que acabamos de fazer?</h2>
+<p>Vamos entender as peças desse código:</p>
+<ul>
+<li><code>@app.route("/tarefas", methods=["GET"])</code> registra uma <strong>rota</strong>: quando alguém acessar <code>/tarefas</code>, a função abaixo será executada.</li>
+<li><code>methods=["GET"]</code> define o <strong>método HTTP</strong> aceito. O <code>GET</code> é usado para consultar informações.</li>
+<li><code>jsonify</code> transforma um objeto Python (como uma lista) em JSON, o formato usado para trocar dados entre aplicações.</li>
+</ul>
+<h2>Adicionando novas tarefas</h2>
+<p>Uma API não serve apenas para consultar, ela também deve permitir <strong>criar</strong>, <strong>atualizar</strong> e <strong>deletar</strong> informações. Para isso usamos os métodos HTTP:</p>
+<table>
+<thead>
+<tr>
+<th>Método</th>
+<th>Ação</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td>listar tarefas</td>
+<td>/tarefas</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>criar uma nova tarefa</td>
+<td>/tarefas</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>ver uma tarefa específica</td>
+<td>/tarefas/1</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>atualizar uma tarefa</td>
+<td>/tarefas/1</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>remover uma tarefa</td>
+<td>/tarefas/1</td>
+</tr>
+</tbody>
+</table>
+<p>Vamos adicionar a rota de criação:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/tarefas&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;POST&quot;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">criar_tarefa</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">proximo_id</span>
+    <span class="n">dados</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_json</span><span class="p">()</span>
+
+    <span class="n">nova_tarefa</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">proximo_id</span><span class="p">,</span>
+        <span class="s2">&quot;titulo&quot;</span><span class="p">:</span> <span class="n">dados</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;titulo&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">),</span>
+        <span class="s2">&quot;concluida&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="n">tarefas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nova_tarefa</span><span class="p">)</span>
+    <span class="n">proximo_id</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">(</span><span class="n">nova_tarefa</span><span class="p">),</span> <span class="mi">201</span>
+</code></pre></div>
+
+<p>O <code>201</code> no <code>return</code> é o código HTTP de <strong>Created</strong>, indicando que o recurso foi criado com sucesso.</p>
+<h2>Testando com curl</h2>
+<p>Para enviar uma requisição <code>POST</code> com dados, usamos o <code>curl</code> no terminal:</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:5000/tarefas<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;titulo&quot;: &quot;Escrever artigo do blog&quot;}&#39;</span>
+</code></pre></div>
+
+<p>Você deve receber como resposta:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;titulo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Escrever artigo do blog&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;concluida&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h2>Consultando e atualizando uma tarefa</h2>
+<p>Agora vamos implementar as rotas para uma tarefa específica:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">encontrar_tarefa</span><span class="p">(</span><span class="n">tarefa_id</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">tarefa</span> <span class="ow">in</span> <span class="n">tarefas</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">tarefa</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">tarefa_id</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">tarefa</span>
+    <span class="k">return</span> <span class="kc">None</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/tarefas/&lt;int:tarefa_id&gt;&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;GET&quot;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">ver_tarefa</span><span class="p">(</span><span class="n">tarefa_id</span><span class="p">):</span>
+    <span class="n">tarefa</span> <span class="o">=</span> <span class="n">encontrar_tarefa</span><span class="p">(</span><span class="n">tarefa_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">tarefa</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;erro&quot;</span><span class="p">:</span> <span class="s2">&quot;Tarefa nao encontrada&quot;</span><span class="p">}),</span> <span class="mi">404</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">(</span><span class="n">tarefa</span><span class="p">)</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/tarefas/&lt;int:tarefa_id&gt;&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;PUT&quot;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">atualizar_tarefa</span><span class="p">(</span><span class="n">tarefa_id</span><span class="p">):</span>
+    <span class="n">tarefa</span> <span class="o">=</span> <span class="n">encontrar_tarefa</span><span class="p">(</span><span class="n">tarefa_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">tarefa</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;erro&quot;</span><span class="p">:</span> <span class="s2">&quot;Tarefa nao encontrada&quot;</span><span class="p">}),</span> <span class="mi">404</span>
+
+    <span class="n">dados</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_json</span><span class="p">()</span>
+    <span class="n">tarefa</span><span class="p">[</span><span class="s2">&quot;titulo&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dados</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;titulo&quot;</span><span class="p">,</span> <span class="n">tarefa</span><span class="p">[</span><span class="s2">&quot;titulo&quot;</span><span class="p">])</span>
+    <span class="n">tarefa</span><span class="p">[</span><span class="s2">&quot;concluida&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dados</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;concluida&quot;</span><span class="p">,</span> <span class="n">tarefa</span><span class="p">[</span><span class="s2">&quot;concluida&quot;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">(</span><span class="n">tarefa</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Note o uso de <code>&lt;int:tarefa_id&gt;</code> na rota: o Flask converte o trecho da URL em um inteiro e o passa como argumento para a função.</p>
+<p>Para deletar, criamos a última rota:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/tarefas/&lt;int:tarefa_id&gt;&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;DELETE&quot;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">deletar_tarefa</span><span class="p">(</span><span class="n">tarefa_id</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">tarefas</span>
+    <span class="n">tarefas</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tarefas</span> <span class="k">if</span> <span class="n">t</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="n">tarefa_id</span><span class="p">]</span>
+    <span class="k">return</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="mi">204</span>
+</code></pre></div>
+
+<p>O código <code>204</code> significa <strong>No Content</strong>: a operação funcionou, mas não há nada para retornar.</p>
+<h2>Teste completo da sua API</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># criar duas tarefas</span>
+curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:5000/tarefas<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;titulo&quot;: &quot;Estudar Flask&quot;}&#39;</span>
+curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:5000/tarefas<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;titulo&quot;: &quot;Estudar Docker&quot;}&#39;</span>
+
+<span class="c1"># listar todas</span>
+curl<span class="w"> </span>http://localhost:5000/tarefas
+
+<span class="c1"># atualizar a tarefa 1</span>
+curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>http://localhost:5000/tarefas/1<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;concluida&quot;: true}&#39;</span>
+
+<span class="c1"># deletar a tarefa 2</span>
+curl<span class="w"> </span>-X<span class="w"> </span>DELETE<span class="w"> </span>http://localhost:5000/tarefas/2
+</code></pre></div>
+
+<h2>Próximos passos</h2>
+<p>A partir daqui o caminho é longo e divertido:</p>
+<ul>
+<li><strong>Conectar a um banco de dados</strong> para os dados não se perderem ao reiniciar o servidor;</li>
+<li><strong>Organizar o código</strong> em módulos e usar <em>blueprints</em>;</li>
+<li><strong>Adicionar validação</strong> nos dados recebidos;</li>
+<li>Conhecer outros frameworks como o <strong>FastAPI</strong> e o <strong>Django</strong>.</li>
+</ul>
+<p>O Flask é perfeito para começar, pois ele não impõe estrutura e deixa você aprender cada conceito aos poucos. Em breve traremos um artigo mostrando como integrar sua API a um banco de dados.</p>
+<p>Gostou? Compartilhe com a comunidade e envie sua versão da API no nosso <a href="https://github.com/grupy-sao-marcos/grupy-sao-marcos.github.io">repositorio</a>.</p>
+        </p>
+      </div><!-- /.entry-content -->
+    </div>
+  </article>
+</section>
+<footer class="site-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="/theme/images/logogrupy.svg" alt="Logo" height="56px">
+            </div>
+            <div class="col-md-4">
+                <p class="site-info">Theme Designed and Developed <br> by <a href="http://technextit.com">Technext Limited</a></p>
+                <p class="site-info">Todas informações reservadas ao <br>Grupy de São Marcos</p>
+            </div>
+            <div class="col-md-4">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <a href="/authors.html">
+                            Colaboradores
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>    <!-- script -->
+    <script src="/theme/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/theme/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script
+        src="/theme/bower_components/smooth-scroll/dist/js/smooth-scroll.min.js"></script>
+    <script src="/theme/js/main.js"></script>
+</body>
+
+</html>

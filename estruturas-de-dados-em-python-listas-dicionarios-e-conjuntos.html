@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Grupy São Marcos</title>
+
+    <!-- css -->
+    <link rel="stylesheet"
+        href="/theme/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/theme/bower_components/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="/theme/css/main.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+    <link
+        href="/feeds/all.atom.xml"
+        type="application/atom+xml" rel="alternate" title="Grupy São Marcos Atom Feed" />
+</head>
+
+<body data-spy="scroll" data-target="#site-nav">
+<nav id="site-nav" class="navbar navbar-fixed-top navbar-custom">
+    <div class="container">
+        <div class="navbar-header">
+
+            <!-- logo -->
+            <div class="site-branding">
+                <a class="logo" href="/">
+
+                    <!-- logo image  -->
+                    <img src="/theme/images/logogrupy.svg" alt="Logo" height="56px">
+
+                </a>
+            </div>
+
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-items"
+                aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+        </div><!-- /.navbar-header -->
+
+        <div class="collapse navbar-collapse" id="navbar-items">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- navigation menu -->
+                <li class="active"><a href="#about">Sobre</a></li>
+                <li><a href="/#contribution">Chamada de Trabalhos</a></li>
+                <li><a href="/#facts">Proximo Evento</a></li>
+                <li><a href="/#schedule">Eventos Anteriores</a></li>
+                <li><a href="/#partner">Patrocinadores</a></li>
+                <li><a href="/#faq">FAQ</a></li>
+                <li><a href="/pages/blog.html">Blog</a></li>
+            </ul>
+        </div>
+    </div><!-- /.container -->
+</nav><header id="site-header" class="site-article valign-center">
+    <div class="intro blog">
+        <h1>
+          Estruturas de dados em Python: listas, dicionários e conjuntos</br>
+          <small>Perceu Bertoletti - 14/08/2026</small>
+        </h1>
+    </div>
+</header>
+<section id="article-content" class="valign-center">
+  <article class="container">
+    <div class="container-line">
+
+      <div class="entry-content">
+        <p>
+          <p>Quando começamos a programar em Python, uma das primeiras coisas que precisamos dominar são as <strong>estruturas de dados</strong>. Elas são as ferramentas que usamos para guardar e organizar informações dentro do nosso programa: uma lista de nomes, um cadastro de clientes, os itens de um carrinho de compras.</p>
+<p>A boa notícia é que o Python já vem com estruturas prontas e muito poderosas. Vamos conhecer as quatro principais: <strong>listas</strong>, <strong>tuplas</strong>, <strong>dicionários</strong> e <strong>conjuntos</strong>.</p>
+<h2>Listas</h2>
+<p>A lista é provavelmente a estrutura mais usada. Ela guarda elementos em uma ordem definida e permite duplicados, alterações e acesso por índice.</p>
+<div class="highlight"><pre><span></span><code><span class="n">frutas</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="s2">&quot;maca&quot;</span><span class="p">,</span> <span class="s2">&quot;uva&quot;</span><span class="p">]</span>
+<span class="n">frutas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;laranja&quot;</span><span class="p">)</span>       <span class="c1"># adiciona no final</span>
+<span class="n">frutas</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;manga&quot;</span><span class="p">)</span>      <span class="c1"># insere na posicao 1</span>
+<span class="n">frutas</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;uva&quot;</span><span class="p">)</span>           <span class="c1"># remove pelo valor</span>
+<span class="n">frutas</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>                      <span class="c1"># primeiro elemento -&gt; &quot;banana&quot;</span>
+<span class="n">frutas</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>                     <span class="c1"># ultimo elemento -&gt; &quot;laranja&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">frutas</span><span class="p">))</span>             <span class="c1"># 3</span>
+</code></pre></div>
+
+<p>Para percorrer uma lista, usamos um laço <code>for</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">fruta</span> <span class="ow">in</span> <span class="n">frutas</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">fruta</span><span class="p">)</span>
+</code></pre></div>
+
+<p>E para criar listas de forma rápida, existe o famoso <strong>list comprehension</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">dobros</span> <span class="o">=</span> <span class="p">[</span><span class="n">numero</span> <span class="o">*</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">numero</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dobros</span><span class="p">)</span>  <span class="c1"># [0, 2, 4, 6, 8, 10, 12, 14, 16, 18]</span>
+</code></pre></div>
+
+<h2>Tuplas</h2>
+<p>A tupla é parecida com a lista, mas é <strong>imutável</strong>: depois de criada, não dá para adicionar, remover ou alterar elementos. Essa característica é útil quando queremos garantir que um dado não mude, como coordenadas ou configurações fixas.</p>
+<div class="highlight"><pre><span></span><code><span class="n">coordenadas</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">21.9</span><span class="p">,</span> <span class="o">-</span><span class="mf">49.6</span><span class="p">)</span>  <span class="c1"># latitude e longitude</span>
+
+<span class="c1"># coordenadas.append(0)  # erro! tuplas nao aceitam alteracao</span>
+</code></pre></div>
+
+<p>Uma "pegadinha" clássica é usar uma vírgula para criar uma tupla de um elemento:</p>
+<div class="highlight"><pre><span></span><code><span class="n">sozinho</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;sp&quot;</span><span class="p">,)</span>   <span class="c1"># tupla com 1 elemento</span>
+<span class="n">errado</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;sp&quot;</span><span class="p">)</span>     <span class="c1"># string, nao uma tupla!</span>
+</code></pre></div>
+
+<p>Tuplas também são usadas para "desempacotar" valores, o que torna o código bem elegante:</p>
+<div class="highlight"><pre><span></span><code><span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span> <span class="o">=</span> <span class="n">coordenadas</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">latitude</span><span class="p">)</span>   <span class="c1"># -21.9</span>
+</code></pre></div>
+
+<h2>Dicionários</h2>
+<p>O dicionário guarda pares de <strong>chave</strong> e <strong>valor</strong>. É a estrutura ideal para representar coisas do mundo real, como um cadastro:</p>
+<div class="highlight"><pre><span></span><code><span class="n">usuario</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;nome&quot;</span><span class="p">:</span> <span class="s2">&quot;Maria&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;idade&quot;</span><span class="p">:</span> <span class="mi">28</span><span class="p">,</span>
+    <span class="s2">&quot;linguagens&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="s2">&quot;JavaScript&quot;</span><span class="p">],</span>
+<span class="p">}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">usuario</span><span class="p">[</span><span class="s2">&quot;nome&quot;</span><span class="p">])</span>        <span class="c1"># Maria</span>
+<span class="n">usuario</span><span class="p">[</span><span class="s2">&quot;cidade&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;São Marcos&quot;</span>   <span class="c1"># adiciona um novo campo</span>
+
+<span class="k">for</span> <span class="n">chave</span><span class="p">,</span> <span class="n">valor</span> <span class="ow">in</span> <span class="n">usuario</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">chave</span><span class="p">,</span> <span class="s2">&quot;-&gt;&quot;</span><span class="p">,</span> <span class="n">valor</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Para acessar um valor que talvez não exista, prefira o método <code>get</code>, que evita erros:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">usuario</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;telefone&quot;</span><span class="p">))</span>        <span class="c1"># None (nao existe)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">usuario</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;telefone&quot;</span><span class="p">,</span> <span class="s2">&quot;nao informado&quot;</span><span class="p">))</span>  <span class="c1"># valor padrao</span>
+</code></pre></div>
+
+<h2>Conjuntos (sets)</h2>
+<p>O conjunto guarda elementos <strong>únicos</strong> e sem ordem definida. Ele é perfeito para eliminar duplicatas e fazer operações de comparação.</p>
+<div class="highlight"><pre><span></span><code><span class="n">participantes_dia1</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Ana&quot;</span><span class="p">,</span> <span class="s2">&quot;Pedro&quot;</span><span class="p">,</span> <span class="s2">&quot;Lucas&quot;</span><span class="p">}</span>
+<span class="n">participantes_dia2</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Lucas&quot;</span><span class="p">,</span> <span class="s2">&quot;Julia&quot;</span><span class="p">,</span> <span class="s2">&quot;Ana&quot;</span><span class="p">}</span>
+
+<span class="n">unicos</span> <span class="o">=</span> <span class="n">participantes_dia1</span> <span class="o">|</span> <span class="n">participantes_dia2</span>      <span class="c1"># uniao</span>
+<span class="n">ambos</span> <span class="o">=</span> <span class="n">participantes_dia1</span> <span class="o">&amp;</span> <span class="n">participantes_dia2</span>       <span class="c1"># intersecao</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">ambos</span><span class="p">)</span>  <span class="c1"># {&#39;Lucas&#39;, &#39;Ana&#39;}</span>
+</code></pre></div>
+
+<p>Eliminar duplicatas de uma lista nunca foi tão simples:</p>
+<div class="highlight"><pre><span></span><code><span class="n">lista_com_repeticoes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">sem_duplicatas</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">lista_com_repeticoes</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sem_duplicatas</span><span class="p">)</span>  <span class="c1"># [1, 2, 3]</span>
+</code></pre></div>
+
+<h2>Quando usar cada uma?</h2>
+<table>
+<thead>
+<tr>
+<th>Estrutura</th>
+<th>Ordenada</th>
+<th>Mutável</th>
+<th>Aceita duplicados</th>
+<th>Bom para</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lista</td>
+<td>Sim</td>
+<td>Sim</td>
+<td>Sim</td>
+<td>sequências que mudam</td>
+</tr>
+<tr>
+<td>Tupla</td>
+<td>Sim</td>
+<td>Não</td>
+<td>Sim</td>
+<td>dados fixos e agrupados</td>
+</tr>
+<tr>
+<td>Dicionário</td>
+<td>Sim*</td>
+<td>Sim</td>
+<td>chaves não</td>
+<td>buscar por nome/chave</td>
+</tr>
+<tr>
+<td>Conjunto</td>
+<td>Não</td>
+<td>Sim</td>
+<td>Não</td>
+<td>elementos únicos e comparações</td>
+</tr>
+</tbody>
+</table>
+<p><em>*Desde o Python 3.7 os dicionários mantêm a ordem de inserção.</em></p>
+<p>Dominar essas estruturas resolve a maioria dos problemas do dia a dia. O truque é pensar no dado que você precisa guardar e escolher a ferramenta certa. Nos próximos artigos vamos usar bastante essas estruturas em exemplos reais.</p>
+<p>Tem alguma dúvida ou sugestão de tema? Deixe nos comentários ou contribua com um artigo no nosso <a href="https://github.com/grupy-sao-marcos/grupy-sao-marcos.github.io">repositorio</a>.</p>
+        </p>
+      </div><!-- /.entry-content -->
+    </div>
+  </article>
+</section>
+<footer class="site-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="/theme/images/logogrupy.svg" alt="Logo" height="56px">
+            </div>
+            <div class="col-md-4">
+                <p class="site-info">Theme Designed and Developed <br> by <a href="http://technextit.com">Technext Limited</a></p>
+                <p class="site-info">Todas informações reservadas ao <br>Grupy de São Marcos</p>
+            </div>
+            <div class="col-md-4">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <a href="/authors.html">
+                            Colaboradores
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>    <!-- script -->
+    <script src="/theme/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/theme/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script
+        src="/theme/bower_components/smooth-scroll/dist/js/smooth-scroll.min.js"></script>
+    <script src="/theme/js/main.js"></script>
+</body>
+
+</html>

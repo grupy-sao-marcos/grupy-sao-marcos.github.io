@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Grupy São Marcos</title>
+
+    <!-- css -->
+    <link rel="stylesheet"
+        href="/theme/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/theme/bower_components/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="/theme/css/main.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+    <link
+        href="/feeds/all.atom.xml"
+        type="application/atom+xml" rel="alternate" title="Grupy São Marcos Atom Feed" />
+</head>
+
+<body data-spy="scroll" data-target="#site-nav">
+<nav id="site-nav" class="navbar navbar-fixed-top navbar-custom">
+    <div class="container">
+        <div class="navbar-header">
+
+            <!-- logo -->
+            <div class="site-branding">
+                <a class="logo" href="/">
+
+                    <!-- logo image  -->
+                    <img src="/theme/images/logogrupy.svg" alt="Logo" height="56px">
+
+                </a>
+            </div>
+
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-items"
+                aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+        </div><!-- /.navbar-header -->
+
+        <div class="collapse navbar-collapse" id="navbar-items">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- navigation menu -->
+                <li class="active"><a href="#about">Sobre</a></li>
+                <li><a href="/#contribution">Chamada de Trabalhos</a></li>
+                <li><a href="/#facts">Proximo Evento</a></li>
+                <li><a href="/#schedule">Eventos Anteriores</a></li>
+                <li><a href="/#partner">Patrocinadores</a></li>
+                <li><a href="/#faq">FAQ</a></li>
+                <li><a href="/pages/blog.html">Blog</a></li>
+            </ul>
+        </div>
+    </div><!-- /.container -->
+</nav><header id="site-header" class="site-article valign-center">
+    <div class="intro blog">
+        <h1>
+          Testando seu código com pytest: do jeito certo</br>
+          <small>Perceu Bertoletti - 18/08/2026</small>
+        </h1>
+    </div>
+</header>
+<section id="article-content" class="valign-center">
+  <article class="container">
+    <div class="container-line">
+
+      <div class="entry-content">
+        <p>
+          <p>Quando seu projeto começa a crescer, chega um momento em que mexer em uma parte do código pode quebrar outra, bem longe dali. É aí que entram os <strong>testes automatizados</strong>: pequenos programas que verificam se seu código continua funcionando como esperado, sem depender de você testar tudo na mão.</p>
+<p>O <strong>pytest</strong> é o framework mais popular para testes em Python. Simples, direto e com uma sintaxe que parece português. Vamos aprender na prática.</p>
+<h2>Instalando o pytest</h2>
+<p>Crie um ambiente virtual (veja nosso <a href="/primeiro-ambiente-vitual.html">artigo sobre ambientes virtuais</a>) e instale:</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>pytest
+</code></pre></div>
+
+<h2>Nosso primeiro teste</h2>
+<p>Vamos testar uma função simples. Crie o arquivo <code>calculadora.py</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">somar</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</code></pre></div>
+
+<p>Agora crie o arquivo de teste <code>test_calculadora.py</code>. A convenção é que testes comecem com <code>test_</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">calculadora</span> <span class="kn">import</span> <span class="n">somar</span>
+
+
+<span class="k">def</span> <span class="nf">test_somar_numeros_positivos</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">somar</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="mi">5</span>
+
+
+<span class="k">def</span> <span class="nf">test_somar_numeros_negativos</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">somar</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">2</span>
+
+
+<span class="k">def</span> <span class="nf">test_somar_zero</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">somar</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+</code></pre></div>
+
+<p>Para rodar, execute no terminal:</p>
+<div class="highlight"><pre><span></span><code>pytest
+</code></pre></div>
+
+<p>O pytest encontra sozinho os arquivos <code>test_*.py</code> e executa as funções <code>test_*</code>. O resultado será algo assim:</p>
+<div class="highlight"><pre><span></span><code><span class="m">3</span><span class="w"> </span>passed<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">0</span>.02s
+</code></pre></div>
+
+<p>O comando <code>assert</code> é a ferramenta central: se a expressão for falsa, o teste falha e o pytest mostra exatamente o que era esperado e o que veio.</p>
+<h2>Vendo uma falha acontecer</h2>
+<p>E se alguém quebrar a função <code>somar</code> por engano? Vamos simular:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">somar</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># erro introduzido!</span>
+</code></pre></div>
+
+<p>Rodando o <code>pytest</code> novamente:</p>
+<div class="highlight"><pre><span></span><code>FAILED<span class="w"> </span>test_calculadora.py::test_somar_numeros_positivos<span class="w"> </span>-<span class="w"> </span>assert<span class="w"> </span><span class="nv">6</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">5</span>
+</code></pre></div>
+
+<p>Com o teste em mãos, o erro é encontrado em segundos. Sem ele, o bug poderia passar despercebido por semanas.</p>
+<h2>Parametrizando testes</h2>
+<p>Quando a lógica tem vários casos, o <code>@pytest.mark.parametrize</code> evita repetição:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pytest</span>
+<span class="kn">from</span> <span class="nn">calculadora</span> <span class="kn">import</span> <span class="n">somar</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s2">&quot;a, b, esperado&quot;</span><span class="p">,</span> <span class="p">[</span>
+    <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+    <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>
+<span class="p">])</span>
+<span class="k">def</span> <span class="nf">test_somar</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">esperado</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">somar</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="o">==</span> <span class="n">esperado</span>
+</code></pre></div>
+
+<p>Agora temos quatro cenários em um único teste, e se um deles falhar, o pytest mostra exatamente qual combinação de valores deu problema.</p>
+<h2>Testando com fixtures</h2>
+<p>As <strong>fixtures</strong> preparam dados ou recursos antes do teste. É muito útil quando vários testes precisam da mesma configuração:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pytest</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span> <span class="nf">usuarios</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;nome&quot;</span><span class="p">:</span> <span class="s2">&quot;Maria&quot;</span><span class="p">,</span> <span class="s2">&quot;idade&quot;</span><span class="p">:</span> <span class="mi">28</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;nome&quot;</span><span class="p">:</span> <span class="s2">&quot;João&quot;</span><span class="p">,</span> <span class="s2">&quot;idade&quot;</span><span class="p">:</span> <span class="mi">15</span><span class="p">},</span>
+    <span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">test_maioridade</span><span class="p">(</span><span class="n">usuarios</span><span class="p">):</span>
+    <span class="n">maiores</span> <span class="o">=</span> <span class="p">[</span><span class="n">u</span> <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">usuarios</span> <span class="k">if</span> <span class="n">u</span><span class="p">[</span><span class="s2">&quot;idade&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">]</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">maiores</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="k">assert</span> <span class="n">maiores</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;nome&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Maria&quot;</span>
+</code></pre></div>
+
+<p>A fixture é criada antes do teste e o resultado é passado como argumento. Simples e elegante.</p>
+<h2>Testando o que deve levantar erro</h2>
+<p>Para verificar que uma função falha quando deveria, usamos <code>pytest.raises</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pytest</span>
+
+
+<span class="k">def</span> <span class="nf">dividir</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">b</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Divisao por zero nao permitida&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">/</span> <span class="n">b</span>
+
+
+<span class="k">def</span> <span class="nf">test_dividir_por_zero</span><span class="p">():</span>
+    <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+        <span class="n">dividir</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Aqui o teste passa <strong>porque</strong> a função levantou <code>ValueError</code>, exatamente como esperado.</p>
+<h2>Organização do projeto</h2>
+<p>Conforme o projeto cresce, organize os testes em uma pasta separada:</p>
+<div class="highlight"><pre><span></span><code>meu_projeto/
+├── app.py
+├── calculadora.py
+└── tests/
+    ├── test_calculadora.py
+    └── test_app.py
+</code></pre></div>
+
+<p>Rodando apenas os testes da pasta <code>tests</code>:</p>
+<div class="highlight"><pre><span></span><code>pytest<span class="w"> </span>tests
+</code></pre></div>
+
+<h2>Testes não são "perda de tempo"</h2>
+<p>É comum achar que testar atrasa o desenvolvimento, mas a realidade é o contrário:</p>
+<ul>
+<li>Você muda o código <strong>com confiança</strong>;</li>
+<li>Bugs aparecem <strong>antes</strong> de chegar ao usuário;</li>
+<li>O teste serve como <strong>documentação</strong> viva de como a função deve se comportar;</li>
+<li>No futuro, a manutenção fica muito mais barata.</li>
+</ul>
+<p>Comece testando as funções mais importantes do seu projeto. Aos poucos, cobrir tudo vira um hábito natural.</p>
+<p>Testou seu código e encontrou um erro? Conta pra gente nos comentários ou contribua com um artigo no nosso <a href="https://github.com/grupy-sao-marcos/grupy-sao-marcos.github.io">repositorio</a>.</p>
+        </p>
+      </div><!-- /.entry-content -->
+    </div>
+  </article>
+</section>
+<footer class="site-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="/theme/images/logogrupy.svg" alt="Logo" height="56px">
+            </div>
+            <div class="col-md-4">
+                <p class="site-info">Theme Designed and Developed <br> by <a href="http://technextit.com">Technext Limited</a></p>
+                <p class="site-info">Todas informações reservadas ao <br>Grupy de São Marcos</p>
+            </div>
+            <div class="col-md-4">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <a href="/authors.html">
+                            Colaboradores
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>    <!-- script -->
+    <script src="/theme/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/theme/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script
+        src="/theme/bower_components/smooth-scroll/dist/js/smooth-scroll.min.js"></script>
+    <script src="/theme/js/main.js"></script>
+</body>
+
+</html>

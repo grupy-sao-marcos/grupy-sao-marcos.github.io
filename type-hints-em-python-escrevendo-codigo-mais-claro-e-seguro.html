@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Grupy São Marcos</title>
+
+    <!-- css -->
+    <link rel="stylesheet"
+        href="/theme/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/theme/bower_components/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="/theme/css/main.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+    <link
+        href="/feeds/all.atom.xml"
+        type="application/atom+xml" rel="alternate" title="Grupy São Marcos Atom Feed" />
+</head>
+
+<body data-spy="scroll" data-target="#site-nav">
+<nav id="site-nav" class="navbar navbar-fixed-top navbar-custom">
+    <div class="container">
+        <div class="navbar-header">
+
+            <!-- logo -->
+            <div class="site-branding">
+                <a class="logo" href="/">
+
+                    <!-- logo image  -->
+                    <img src="/theme/images/logogrupy.svg" alt="Logo" height="56px">
+
+                </a>
+            </div>
+
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-items"
+                aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+        </div><!-- /.navbar-header -->
+
+        <div class="collapse navbar-collapse" id="navbar-items">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- navigation menu -->
+                <li class="active"><a href="#about">Sobre</a></li>
+                <li><a href="/#contribution">Chamada de Trabalhos</a></li>
+                <li><a href="/#facts">Proximo Evento</a></li>
+                <li><a href="/#schedule">Eventos Anteriores</a></li>
+                <li><a href="/#partner">Patrocinadores</a></li>
+                <li><a href="/#faq">FAQ</a></li>
+                <li><a href="/pages/blog.html">Blog</a></li>
+            </ul>
+        </div>
+    </div><!-- /.container -->
+</nav><header id="site-header" class="site-article valign-center">
+    <div class="intro blog">
+        <h1>
+          Type hints em Python: escrevendo código mais claro e seguro</br>
+          <small>Perceu Bertoletti - 17/08/2026</small>
+        </h1>
+    </div>
+</header>
+<section id="article-content" class="valign-center">
+  <article class="container">
+    <div class="container-line">
+
+      <div class="entry-content">
+        <p>
+          <p>Python é uma linguagem de tipagem dinâmica: você não precisa declarar o tipo de uma variável, e o mesmo valor pode mudar de tipo no meio do caminho. Isso deixa o código rápido de escrever, mas pode virar fonte de bugs quando o projeto cresce.</p>
+<p>Os <strong>type hints</strong> (anotações de tipo) surgiram justamente para resolver isso. Eles não mudam a forma como o Python roda, mas deixam o código muito mais claro e permitem que ferramentas encontrem erros <strong>antes</strong> de você executar o programa.</p>
+<h2>Anotando funções</h2>
+<p>O uso mais comum é anotar os parâmetros e o retorno de uma função:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">calcular_imc</span><span class="p">(</span><span class="n">peso</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">altura</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">peso</span> <span class="o">/</span> <span class="p">(</span><span class="n">altura</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">saudacao</span><span class="p">(</span><span class="n">nome</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Olá, </span><span class="si">{</span><span class="n">nome</span><span class="si">}</span><span class="s2">!&quot;</span>
+</code></pre></div>
+
+<p>Perceba que agora qualquer pessoa que ler a função sabe que <code>peso</code> e <code>altura</code> devem ser números e que o resultado também será um número.</p>
+<h2>Tipos de coleções</h2>
+<p>Para listas, dicionários e afins, usamos o módulo <code>typing</code> (no Python 3.9+ você também pode usar <code>list[...]</code> e <code>dict[...]</code> diretamente):</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span>
+
+
+<span class="k">def</span> <span class="nf">somar_lista</span><span class="p">(</span><span class="n">numeros</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">numeros</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">buscar_usuario</span><span class="p">(</span><span class="n">codigo</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
+    <span class="c1"># retorna None quando o usuario nao existe</span>
+    <span class="o">...</span>
+
+
+<span class="k">def</span> <span class="nf">formatar_valor</span><span class="p">(</span><span class="n">valor</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;R$ </span><span class="si">{</span><span class="n">valor</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+<p>Vamos entender cada um:</p>
+<ul>
+<li><code>list[float]</code> indica uma lista onde todos os elementos são <code>float</code>;</li>
+<li><code>Optional[dict]</code> significa que a função pode retornar um <code>dict</code> <strong>ou</strong> <code>None</code>;</li>
+<li><code>Union[int, float]</code> aceita inteiro <strong>ou</strong> float.</li>
+</ul>
+<h2>Novidades do Python 3.10</h2>
+<p>A partir do Python 3.10 existem atalhos mais legíveis: <code>|</code> no lugar de <code>Union</code> e <code>Optional</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">formatar_valor</span><span class="p">(</span><span class="n">valor</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;R$ </span><span class="si">{</span><span class="n">valor</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span>
+
+
+<span class="k">def</span> <span class="nf">buscar_usuario</span><span class="p">(</span><span class="n">codigo</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="o">...</span>
+</code></pre></div>
+
+<h2>Type hints em variáveis</h2>
+<p>Também é possível anotar variáveis, o que ajuda em códigos maiores:</p>
+<div class="highlight"><pre><span></span><code><span class="n">nome</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Maria&quot;</span>
+<span class="n">precos</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mf">19.90</span><span class="p">,</span> <span class="mf">7.50</span><span class="p">]</span>
+</code></pre></div>
+
+<h2>Dataclasses: dados estruturados com tipos</h2>
+<p>Para representar um "modelo" de dados, as <strong>dataclasses</strong> combinam muito bem com type hints:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">Usuario</span><span class="p">:</span>
+    <span class="n">nome</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">idade</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">email</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+
+
+<span class="n">maria</span> <span class="o">=</span> <span class="n">Usuario</span><span class="p">(</span><span class="n">nome</span><span class="o">=</span><span class="s2">&quot;Maria&quot;</span><span class="p">,</span> <span class="n">idade</span><span class="o">=</span><span class="mi">28</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">maria</span><span class="o">.</span><span class="n">nome</span><span class="p">)</span>   <span class="c1"># Maria</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">maria</span><span class="o">.</span><span class="n">idade</span><span class="p">)</span>  <span class="c1"># 28</span>
+</code></pre></div>
+
+<p>Além de deixar os dados organizados, a dataclass gera automaticamente o <code>__init__</code> e uma representação legível da classe.</p>
+<h2>Os type hints são opcionais?</h2>
+<p>Sim, o interpretador Python <strong>ignora</strong> as anotações na hora de rodar o código. Elas não criam verificação em tempo de execução:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">dobrar</span><span class="p">(</span><span class="n">valor</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">valor</span> <span class="o">*</span> <span class="mi">2</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dobrar</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="p">))</span>  <span class="c1"># vai rodar, mas &quot;abc&quot; * 2 = &quot;abcabc&quot; (errado!)</span>
+</code></pre></div>
+
+<p>Para que os type hints realmente façam a verificação, usamos ferramentas de análise estática como o <strong>mypy</strong>:</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>mypy
+mypy<span class="w"> </span>meu_arquivo.py
+</code></pre></div>
+
+<p>O mypy lê seu código e aponta exatamente onde os tipos não batem:</p>
+<div class="highlight"><pre><span></span><code>meu_arquivo.py:1:<span class="w"> </span>error:<span class="w"> </span>Argument<span class="w"> </span><span class="m">1</span><span class="w"> </span>to<span class="w"> </span><span class="s2">&quot;dobrar&quot;</span><span class="w"> </span>has<span class="w"> </span>incompatible<span class="w"> </span><span class="nb">type</span><span class="w"> </span><span class="s2">&quot;str&quot;</span><span class="p">;</span><span class="w"> </span>expected<span class="w"> </span><span class="s2">&quot;int&quot;</span>
+</code></pre></div>
+
+<p>É como ter um "linter de tipos": ele encontra uma classe inteira de bugs sem precisar rodar o programa.</p>
+<h2>Vale a pena usar?</h2>
+<p>Depende do tamanho do projeto. Em scripts pequenos, anotações podem ser exagero. Mas em projetos que crescem, que são mantidos por várias pessoas ou que viram bibliotecas, os benefícios são enormes:</p>
+<ul>
+<li>O código fica <strong>auto documentado</strong>;</li>
+<li>Editores como VS Code e PyCharm usam os tipos para dar <strong>autocompletar</strong> e alertas;</li>
+<li>O <strong>mypy</strong> (e ferramentas similares) pega bugs antes de rodar;</li>
+<li>O time inteiro ganha clareza sobre o que cada função espera e retorna.</li>
+</ul>
+<h2>Dica final</h2>
+<p>Comece anotando as <strong>funções públicas</strong> e as <strong>dataclasses</strong> dos seus projetos. Não precisa anotar tudo de uma vez — aos poucos a prática vira hábito e a qualidade do código melhora naturalmente.</p>
+<p>Gostou do tema? Em breve escreveremos sobre testes automatizados, outro pilar das boas práticas. Sugira temas ou contribua no nosso <a href="https://github.com/grupy-sao-marcos/grupy-sao-marcos.github.io">repositorio</a>.</p>
+        </p>
+      </div><!-- /.entry-content -->
+    </div>
+  </article>
+</section>
+<footer class="site-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="/theme/images/logogrupy.svg" alt="Logo" height="56px">
+            </div>
+            <div class="col-md-4">
+                <p class="site-info">Theme Designed and Developed <br> by <a href="http://technextit.com">Technext Limited</a></p>
+                <p class="site-info">Todas informações reservadas ao <br>Grupy de São Marcos</p>
+            </div>
+            <div class="col-md-4">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <a href="/authors.html">
+                            Colaboradores
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>    <!-- script -->
+    <script src="/theme/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/theme/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script
+        src="/theme/bower_components/smooth-scroll/dist/js/smooth-scroll.min.js"></script>
+    <script src="/theme/js/main.js"></script>
+</body>
+
+</html>

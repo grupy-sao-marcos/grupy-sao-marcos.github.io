@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Grupy São Marcos</title>
+
+    <!-- css -->
+    <link rel="stylesheet"
+        href="/theme/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/theme/bower_components/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="/theme/css/main.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+    <link
+        href="/feeds/all.atom.xml"
+        type="application/atom+xml" rel="alternate" title="Grupy São Marcos Atom Feed" />
+</head>
+
+<body data-spy="scroll" data-target="#site-nav">
+<nav id="site-nav" class="navbar navbar-fixed-top navbar-custom">
+    <div class="container">
+        <div class="navbar-header">
+
+            <!-- logo -->
+            <div class="site-branding">
+                <a class="logo" href="/">
+
+                    <!-- logo image  -->
+                    <img src="/theme/images/logogrupy.svg" alt="Logo" height="56px">
+
+                </a>
+            </div>
+
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-items"
+                aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+        </div><!-- /.navbar-header -->
+
+        <div class="collapse navbar-collapse" id="navbar-items">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- navigation menu -->
+                <li class="active"><a href="#about">Sobre</a></li>
+                <li><a href="/#contribution">Chamada de Trabalhos</a></li>
+                <li><a href="/#facts">Proximo Evento</a></li>
+                <li><a href="/#schedule">Eventos Anteriores</a></li>
+                <li><a href="/#partner">Patrocinadores</a></li>
+                <li><a href="/#faq">FAQ</a></li>
+                <li><a href="/pages/blog.html">Blog</a></li>
+            </ul>
+        </div>
+    </div><!-- /.container -->
+</nav><header id="site-header" class="site-article valign-center">
+    <div class="intro blog">
+        <h1>
+          Web scraping com Python e BeautifulSoup: extraindo dados da web</br>
+          <small>Perceu Bertoletti - 21/08/2026</small>
+        </h1>
+    </div>
+</header>
+<section id="article-content" class="valign-center">
+  <article class="container">
+    <div class="container-line">
+
+      <div class="entry-content">
+        <p>
+          <p>Imagina que você precisa coletar os preços de produtos de um site para comparar, ou montar uma lista com os títulos de notícias de um portal. Fazer isso manualmente é inviável, mas o Python pode fazer por você em segundos.</p>
+<p><strong>Web scraping</strong> é a técnica de extrair dados de páginas web de forma automatizada. Neste artigo vamos usar duas bibliotecas muito populares: o <code>requests</code> para baixar a página e o <code>BeautifulSoup</code> para analisar o HTML.</p>
+<h2>Instalando as dependências</h2>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>requests<span class="w"> </span>beautifulsoup4
+</code></pre></div>
+
+<h2>Entendendo o HTML</h2>
+<p>Todo site é feito de HTML, e cada elemento é marcado com <em>tags</em>. Por exemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;produto&quot;</span><span class="p">&gt;</span>Notebook por R$ 2.999,00<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;produto&quot;</span><span class="p">&gt;</span>Monitor por R$ 899,00<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p>O BeautifulSoup transforma esse texto em uma estrutura navegável, e nós "procuramos" pelos elementos que nos interessam usando seletores parecidos com os do CSS.</p>
+<h2>Primeiro scraping</h2>
+<p>Vamos extrair os títulos dos artigos do blog do próprio site da comunidade:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+
+<span class="n">resposta</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://grupy-sao-marcos.github.io/blog/&quot;</span><span class="p">)</span>
+<span class="n">pagina</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">resposta</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s2">&quot;html.parser&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">artigo</span> <span class="ow">in</span> <span class="n">pagina</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;h1, h2&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">artigo</span><span class="o">.</span><span class="n">get_text</span><span class="p">(</span><span class="n">strip</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</code></pre></div>
+
+<p>O que aconteceu aqui:</p>
+<ul>
+<li><code>requests.get(...)</code> baixa o conteúdo da página;</li>
+<li><code>BeautifulSoup(resposta.text, "html.parser")</code> transforma o HTML em um objeto navegável;</li>
+<li><code>.select("h1, h2")</code> encontra todos os elementos de título;</li>
+<li><code>.get_text(strip=True)</code> extrai somente o texto, removendo espaços extras.</li>
+</ul>
+<h2>Encontrando elementos específicos</h2>
+<p>A tag sozinha muitas vezes não basta, pois as páginas têm dezenas de elementos. Por isso usamos <strong>classes</strong>, <strong>ids</strong> e atributos para refinar a busca:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># busca por classe CSS</span>
+<span class="n">produtos</span> <span class="o">=</span> <span class="n">pagina</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;.produto&quot;</span><span class="p">)</span>
+
+<span class="c1"># busca por id</span>
+<span class="n">menu</span> <span class="o">=</span> <span class="n">pagina</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s2">&quot;#menu&quot;</span><span class="p">)</span>
+
+<span class="c1"># busca por atributo</span>
+<span class="n">links</span> <span class="o">=</span> <span class="n">pagina</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;a[href*=&quot;python&quot;]&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>O <code>select_one</code> retorna apenas o primeiro elemento, enquanto o <code>select</code> retorna uma lista.</p>
+<h2>Exemplo completo: extraindo notícias</h2>
+<p>Vamos imaginar uma página com notícias. A estrutura HTML poderia ser:</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">article</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;noticia&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h2</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;titulo&quot;</span><span class="p">&gt;</span>Python 3.13 é lançado<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;data&quot;</span><span class="p">&gt;</span>Publicado em 10/08/2026<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/noticias/python-3-13&quot;</span><span class="p">&gt;</span>Leia mais<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">article</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p>Nosso script:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+
+<span class="n">resposta</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://exemplo.com/noticias&quot;</span><span class="p">)</span>
+<span class="n">pagina</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">resposta</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s2">&quot;html.parser&quot;</span><span class="p">)</span>
+
+<span class="n">noticias</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">pagina</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;article.noticia&quot;</span><span class="p">):</span>
+    <span class="n">titulo</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s2">&quot;.titulo&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get_text</span><span class="p">(</span><span class="n">strip</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s2">&quot;.data&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get_text</span><span class="p">(</span><span class="n">strip</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">link</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)[</span><span class="s2">&quot;href&quot;</span><span class="p">]</span>
+
+    <span class="n">noticias</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;titulo&quot;</span><span class="p">:</span> <span class="n">titulo</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">,</span> <span class="s2">&quot;link&quot;</span><span class="p">:</span> <span class="n">link</span><span class="p">})</span>
+
+<span class="k">for</span> <span class="n">noticia</span> <span class="ow">in</span> <span class="n">noticias</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">noticia</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Repare em <code>item.select_one("a")["href"]</code>: além do texto, também conseguimos acessar os <strong>atributos</strong> de um elemento usando <code>["nome_do_atributo"]</code>.</p>
+<h2>Lidando com páginas dinâmicas</h2>
+<p>Muitos sites modernos carregam o conteúdo via JavaScript depois que a página abre. Nesse caso, o <code>requests</code> só enxerga o HTML "vazio" e o scraping não encontra os dados.</p>
+<p>Para esses casos existem ferramentas mais poderosas, como o <strong>Selenium</strong> ou o <strong>Playwright</strong>, que controlam um navegador de verdade:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">playwright.sync_api</span> <span class="kn">import</span> <span class="n">sync_playwright</span>
+
+<span class="k">with</span> <span class="n">sync_playwright</span><span class="p">()</span> <span class="k">as</span> <span class="n">p</span><span class="p">:</span>
+    <span class="n">navegador</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">chromium</span><span class="o">.</span><span class="n">launch</span><span class="p">()</span>
+    <span class="n">pagina</span> <span class="o">=</span> <span class="n">navegador</span><span class="o">.</span><span class="n">new_page</span><span class="p">()</span>
+    <span class="n">pagina</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="s2">&quot;https://exemplo.com/noticias&quot;</span><span class="p">)</span>
+    <span class="n">conteudo</span> <span class="o">=</span> <span class="n">pagina</span><span class="o">.</span><span class="n">content</span><span class="p">()</span>
+    <span class="n">navegador</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div>
+
+<h2>Boas práticas e ética</h2>
+<p>Web scraping exige responsabilidade. Siga sempre estas regras:</p>
+<ol>
+<li><strong>Consulte o <code>robots.txt</code></strong> do site (<code>https://exemplo.com/robots.txt</code>) para saber se o scraping é permitido naquele caminho;</li>
+<li><strong>Seja gentil</strong>: adicione um pequeno intervalo entre uma requisição e outra com <code>time.sleep()</code>;</li>
+<li><strong>Respeite os termos de uso</strong> do site e a legislação (a LGPD protege dados pessoais);</li>
+<li><strong>Use APIs oficiais</strong> sempre que existirem — são o caminho correto e estável;</li>
+<li><strong>Identifique-se</strong> com um <code>User-Agent</code> que mostre quem você é e seu propósito.</li>
+</ol>
+<p>Exemplo de um script gentil e identificado:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">time</span>
+
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+
+<span class="n">cabecalhos</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;User-Agent&quot;</span><span class="p">:</span> <span class="s2">&quot;Bot de estudo - contato@exemplo.com&quot;</span>
+<span class="p">}</span>
+
+<span class="n">urls</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;https://exemplo.com/pagina1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;https://exemplo.com/pagina2&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">urls</span><span class="p">:</span>
+    <span class="n">resposta</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">cabecalhos</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">resposta</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="n">pagina</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">resposta</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s2">&quot;html.parser&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">pagina</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">get_text</span><span class="p">())</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+
+<p>O <code>status_code == 200</code> verifica que a página foi retornada com sucesso antes de tentar analisá-la.</p>
+<h2>Onde usar na vida real</h2>
+<ul>
+<li>Montar listas de <strong>preços</strong> para comparação (sempre dentro das regras);</li>
+<li>Coletar <strong>notícias</strong> e gerar resumos;</li>
+<li>Automatizar a <strong>coleta de dados públicos</strong> de órgãos governamentais;</li>
+<li>Criar <strong>backups de conteúdo</strong>;</li>
+<li>Alimentar <strong>análises de dados</strong>.</li>
+</ul>
+<h2>Lembre-se</h2>
+<p>Scraping é uma ferramenta incrível, mas use-a com <strong>responsabilidade</strong>: para aprender, para dados públicos e sempre respeitando o dono do site. Quando houver uma API oficial, ela é sempre a melhor opção.</p>
+<p>Quer ver mais exemplos de automação? Sugira nos comentários ou contribua com um artigo no nosso <a href="https://github.com/grupy-sao-marcos/grupy-sao-marcos.github.io">repositorio</a>.</p>
+        </p>
+      </div><!-- /.entry-content -->
+    </div>
+  </article>
+</section>
+<footer class="site-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="/theme/images/logogrupy.svg" alt="Logo" height="56px">
+            </div>
+            <div class="col-md-4">
+                <p class="site-info">Theme Designed and Developed <br> by <a href="http://technextit.com">Technext Limited</a></p>
+                <p class="site-info">Todas informações reservadas ao <br>Grupy de São Marcos</p>
+            </div>
+            <div class="col-md-4">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <a href="/authors.html">
+                            Colaboradores
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>    <!-- script -->
+    <script src="/theme/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/theme/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script
+        src="/theme/bower_components/smooth-scroll/dist/js/smooth-scroll.min.js"></script>
+    <script src="/theme/js/main.js"></script>
+</body>
+
+</html>

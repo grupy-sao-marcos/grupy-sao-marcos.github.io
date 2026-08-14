@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Grupy São Marcos</title>
+
+    <!-- css -->
+    <link rel="stylesheet"
+        href="/theme/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/theme/bower_components/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="/theme/css/main.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+    <link
+        href="/feeds/all.atom.xml"
+        type="application/atom+xml" rel="alternate" title="Grupy São Marcos Atom Feed" />
+</head>
+
+<body data-spy="scroll" data-target="#site-nav">
+<nav id="site-nav" class="navbar navbar-fixed-top navbar-custom">
+    <div class="container">
+        <div class="navbar-header">
+
+            <!-- logo -->
+            <div class="site-branding">
+                <a class="logo" href="/">
+
+                    <!-- logo image  -->
+                    <img src="/theme/images/logogrupy.svg" alt="Logo" height="56px">
+
+                </a>
+            </div>
+
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-items"
+                aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+        </div><!-- /.navbar-header -->
+
+        <div class="collapse navbar-collapse" id="navbar-items">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- navigation menu -->
+                <li class="active"><a href="#about">Sobre</a></li>
+                <li><a href="/#contribution">Chamada de Trabalhos</a></li>
+                <li><a href="/#facts">Proximo Evento</a></li>
+                <li><a href="/#schedule">Eventos Anteriores</a></li>
+                <li><a href="/#partner">Patrocinadores</a></li>
+                <li><a href="/#faq">FAQ</a></li>
+                <li><a href="/pages/blog.html">Blog</a></li>
+            </ul>
+        </div>
+    </div><!-- /.container -->
+</nav><header id="site-header" class="site-article valign-center">
+    <div class="intro blog">
+        <h1>
+          Flask com banco de dados: sua API com SQLite na prática</br>
+          <small>Perceu Bertoletti - 19/08/2026</small>
+        </h1>
+    </div>
+</header>
+<section id="article-content" class="valign-center">
+  <article class="container">
+    <div class="container-line">
+
+      <div class="entry-content">
+        <p>
+          <p>No <a href="/sua-primeira-api-com-flask-do-zero-ao-primeiro-endpoint.html">artigo anterior</a> criamos uma API de tarefas onde os dados eram guardados em uma lista em memória. Isso funciona enquanto o servidor está no ar, mas basta reiniciar o programa e <strong>tudo se perde</strong>.</p>
+<p>A solução é usar um banco de dados. Neste artigo vamos usar o <strong>SQLite</strong>, que já vem embutido no Python — sem precisar instalar nada além do Flask.</p>
+<h2>Por que SQLite?</h2>
+<p>O SQLite é um banco de dados em arquivo único, leve e que não precisa de servidor rodando. É perfeito para aprender, para aplicações pequenas e até para protótipos. Depois, quando a aplicação crescer, a troca para um banco como o PostgreSQL é tranquila.</p>
+<h2>Criando a estrutura</h2>
+<p>Vamos manter a mesma API de tarefas do artigo anterior, mas agora com uma tabela no banco. Crie o arquivo <code>app.py</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">sqlite3</span>
+
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">jsonify</span><span class="p">,</span> <span class="n">request</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="n">DB_PATH</span> <span class="o">=</span> <span class="s2">&quot;tarefas.db&quot;</span>
+
+
+<span class="k">def</span> <span class="nf">conectar_banco</span><span class="p">():</span>
+    <span class="k">if</span> <span class="s2">&quot;db&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">g</span><span class="p">:</span>
+        <span class="n">g</span><span class="o">.</span><span class="n">db</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">DB_PATH</span><span class="p">)</span>
+        <span class="n">g</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">row_factory</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">Row</span>
+    <span class="k">return</span> <span class="n">g</span><span class="o">.</span><span class="n">db</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">teardown_appcontext</span>
+<span class="k">def</span> <span class="nf">fechar_conexao</span><span class="p">(</span><span class="n">erro</span><span class="p">):</span>
+    <span class="n">db</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;db&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">db</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">criar_tabela</span><span class="p">():</span>
+    <span class="k">with</span> <span class="n">app</span><span class="o">.</span><span class="n">app_context</span><span class="p">():</span>
+        <span class="n">db</span> <span class="o">=</span> <span class="n">conectar_banco</span><span class="p">()</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            CREATE TABLE IF NOT EXISTS tarefas (</span>
+<span class="s2">                id INTEGER PRIMARY KEY AUTOINCREMENT,</span>
+<span class="s2">                titulo TEXT NOT NULL,</span>
+<span class="s2">                concluida INTEGER NOT NULL DEFAULT 0</span>
+<span class="s2">            )</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">)</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/tarefas&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;GET&quot;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">listar_tarefas</span><span class="p">():</span>
+    <span class="n">db</span> <span class="o">=</span> <span class="n">conectar_banco</span><span class="p">()</span>
+    <span class="n">linhas</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM tarefas&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">([</span><span class="nb">dict</span><span class="p">(</span><span class="n">linha</span><span class="p">)</span> <span class="k">for</span> <span class="n">linha</span> <span class="ow">in</span> <span class="n">linhas</span><span class="p">])</span>
+</code></pre></div>
+
+<p>Antes de explicar o código, vamos olhar para dois detalhes importantes:</p>
+<ul>
+<li><code>g</code> é um objeto do Flask que guarda dados durante a requisição. Usamos ele para abrir <strong>uma</strong> conexão por requisição;</li>
+<li><code>@app.teardown_appcontext</code> garante que a conexão seja fechada ao final de cada requisição, evitando vazamento de recursos.</li>
+</ul>
+<p>Agora vamos criar as demais rotas. Primeiro o <code>POST</code>, para criar tarefas:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/tarefas&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;POST&quot;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">criar_tarefa</span><span class="p">():</span>
+    <span class="n">dados</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_json</span><span class="p">()</span>
+    <span class="n">db</span> <span class="o">=</span> <span class="n">conectar_banco</span><span class="p">()</span>
+
+    <span class="n">cursor</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+        <span class="s2">&quot;INSERT INTO tarefas (titulo) VALUES (?)&quot;</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">dados</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;titulo&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">),),</span>
+    <span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+    <span class="n">tarefa</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+        <span class="s2">&quot;SELECT * FROM tarefas WHERE id = ?&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">cursor</span><span class="o">.</span><span class="n">lastrowid</span><span class="p">,)</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">tarefa</span><span class="p">)),</span> <span class="mi">201</span>
+</code></pre></div>
+
+<p>Perceba o <code>?</code> no comando SQL: é um <strong>placeholder</strong> de parâmetro. Nunca monte consultas com concatenação de strings, pois isso abre brecha para <strong>SQL injection</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ERRADO e perigoso:</span>
+<span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SELECT * FROM tarefas WHERE titulo = &#39;</span><span class="si">{</span><span class="n">dados</span><span class="p">[</span><span class="s1">&#39;titulo&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Sempre use os placeholders. Essa simples prática evita uma das vulnerabilidades mais comuns em aplicações web.</p>
+<h2>Atualizando e deletando</h2>
+<p>Para atualizar e remover tarefas, a lógica é parecida:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/tarefas/&lt;int:tarefa_id&gt;&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;PUT&quot;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">atualizar_tarefa</span><span class="p">(</span><span class="n">tarefa_id</span><span class="p">):</span>
+    <span class="n">dados</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_json</span><span class="p">()</span>
+    <span class="n">db</span> <span class="o">=</span> <span class="n">conectar_banco</span><span class="p">()</span>
+
+    <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+        <span class="s2">&quot;UPDATE tarefas SET titulo = ?, concluida = ? WHERE id = ?&quot;</span><span class="p">,</span>
+        <span class="p">(</span>
+            <span class="n">dados</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;titulo&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">),</span>
+            <span class="nb">int</span><span class="p">(</span><span class="n">dados</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;concluida&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)),</span>
+            <span class="n">tarefa_id</span><span class="p">,</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+    <span class="n">tarefa</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+        <span class="s2">&quot;SELECT * FROM tarefas WHERE id = ?&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">tarefa_id</span><span class="p">,)</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">tarefa</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;erro&quot;</span><span class="p">:</span> <span class="s2">&quot;Tarefa nao encontrada&quot;</span><span class="p">}),</span> <span class="mi">404</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">tarefa</span><span class="p">))</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/tarefas/&lt;int:tarefa_id&gt;&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;DELETE&quot;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">deletar_tarefa</span><span class="p">(</span><span class="n">tarefa_id</span><span class="p">):</span>
+    <span class="n">db</span> <span class="o">=</span> <span class="n">conectar_banco</span><span class="p">()</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;DELETE FROM tarefas WHERE id = ?&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">tarefa_id</span><span class="p">,))</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="k">return</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="mi">204</span>
+</code></pre></div>
+
+<h2>Rodando a aplicação</h2>
+<p>No final do arquivo, adicione a criação da tabela e o start do servidor:</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">criar_tabela</span><span class="p">()</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Rode com:</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>app.py
+</code></pre></div>
+
+<h2>Testando a persistência</h2>
+<p>Vamos criar uma tarefa e reiniciar o servidor para provar que os dados sobrevivem:</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:5000/tarefas<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;titulo&quot;: &quot;Estudar banco de dados&quot;}&#39;</span>
+</code></pre></div>
+
+<p>Agora <strong>pare o servidor</strong> (Ctrl+C) e rode <code>python app.py</code> novamente:</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>http://localhost:5000/tarefas
+</code></pre></div>
+
+<p>A tarefa ainda está lá. O arquivo <code>tarefas.db</code> foi criado na pasta do projeto e é ele quem guarda os dados.</p>
+<h2>Dica: visualize o banco</h2>
+<p>Você pode inspecionar o conteúdo do banco direto no terminal:</p>
+<div class="highlight"><pre><span></span><code>sqlite3<span class="w"> </span>tarefas.db<span class="w"> </span><span class="s2">&quot;SELECT * FROM tarefas;&quot;</span>
+</code></pre></div>
+
+<h2>Próximos passos</h2>
+<p>Você já tem uma API funcional com dados persistidos usando apenas a biblioteca padrão! A partir daqui pode evoluir para:</p>
+<ul>
+<li><strong>Validação</strong> dos dados recebidos nas requisições;</li>
+<li>Um <strong>ORM</strong> como o SQLAlchemy, que escreve o SQL por você;</li>
+<li><strong>Migrações</strong> de banco de dados;</li>
+<li>Migrar para <strong>PostgreSQL</strong> em produção.</li>
+</ul>
+<p>No próximo artigo vamos dar um passo atrás e aprender a gerar <strong>páginas HTML</strong> com Flask e o motor de templates <strong>Jinja2</strong>, transformando sua API em um site de verdade.</p>
+<p>Gostou do conteúdo? Deixe seu comentário ou contribua com um artigo no nosso <a href="https://github.com/grupy-sao-marcos/grupy-sao-marcos.github.io">repositorio</a>.</p>
+        </p>
+      </div><!-- /.entry-content -->
+    </div>
+  </article>
+</section>
+<footer class="site-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="/theme/images/logogrupy.svg" alt="Logo" height="56px">
+            </div>
+            <div class="col-md-4">
+                <p class="site-info">Theme Designed and Developed <br> by <a href="http://technextit.com">Technext Limited</a></p>
+                <p class="site-info">Todas informações reservadas ao <br>Grupy de São Marcos</p>
+            </div>
+            <div class="col-md-4">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <a href="/authors.html">
+                            Colaboradores
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>    <!-- script -->
+    <script src="/theme/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/theme/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script
+        src="/theme/bower_components/smooth-scroll/dist/js/smooth-scroll.min.js"></script>
+    <script src="/theme/js/main.js"></script>
+</body>
+
+</html>

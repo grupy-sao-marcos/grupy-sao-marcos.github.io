@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Grupy São Marcos</title>
+
+    <!-- css -->
+    <link rel="stylesheet"
+        href="/theme/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/theme/bower_components/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="/theme/css/main.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+    <link
+        href="/feeds/all.atom.xml"
+        type="application/atom+xml" rel="alternate" title="Grupy São Marcos Atom Feed" />
+</head>
+
+<body data-spy="scroll" data-target="#site-nav">
+<nav id="site-nav" class="navbar navbar-fixed-top navbar-custom">
+    <div class="container">
+        <div class="navbar-header">
+
+            <!-- logo -->
+            <div class="site-branding">
+                <a class="logo" href="/">
+
+                    <!-- logo image  -->
+                    <img src="/theme/images/logogrupy.svg" alt="Logo" height="56px">
+
+                </a>
+            </div>
+
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-items"
+                aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+        </div><!-- /.navbar-header -->
+
+        <div class="collapse navbar-collapse" id="navbar-items">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- navigation menu -->
+                <li class="active"><a href="#about">Sobre</a></li>
+                <li><a href="/#contribution">Chamada de Trabalhos</a></li>
+                <li><a href="/#facts">Proximo Evento</a></li>
+                <li><a href="/#schedule">Eventos Anteriores</a></li>
+                <li><a href="/#partner">Patrocinadores</a></li>
+                <li><a href="/#faq">FAQ</a></li>
+                <li><a href="/pages/blog.html">Blog</a></li>
+            </ul>
+        </div>
+    </div><!-- /.container -->
+</nav><header id="site-header" class="site-article valign-center">
+    <div class="intro blog">
+        <h1>
+          Trabalhando com CSV em Python: dados de tabelas sem complicação</br>
+          <small>Perceu Bertoletti - 22/08/2026</small>
+        </h1>
+    </div>
+</header>
+<section id="article-content" class="valign-center">
+  <article class="container">
+    <div class="container-line">
+
+      <div class="entry-content">
+        <p>
+          <p>Planilhas e bancos de dados costumam ser exportados para um formato chamado <strong>CSV</strong> (<em>Comma-Separated Values</em>). É um arquivo de texto simples onde cada linha é uma tabela e cada coluna é separada por vírgula:</p>
+<div class="highlight"><pre><span></span><code>nome,idade,cidade
+Maria,28,Sao Marcos
+Joao,35,Espirito Santo do Pinhal
+Ana,22,Casa Branca
+</code></pre></div>
+
+<p>Apesar de simples, o CSV está em todo lugar: relatórios financeiros, listas de clientes, dados de sensores, exportações de sistemas. E o Python tem um módulo nativo chamado <code>csv</code> que facilita (e muito) o trabalho com esses arquivos.</p>
+<h2>Lendo um arquivo CSV</h2>
+<p>Para ler, usamos a função <code>csv.reader</code>. Cada linha vira uma <strong>lista</strong> de valores:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;dados.csv&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">arquivo</span><span class="p">:</span>
+    <span class="n">leitor</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">arquivo</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">linha</span> <span class="ow">in</span> <span class="n">leitor</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">linha</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Resultado:</p>
+<div class="highlight"><pre><span></span><code>[&#39;nome&#39;, &#39;idade&#39;, &#39;cidade&#39;]
+[&#39;Maria&#39;, &#39;28&#39;, &#39;Sao Marcos&#39;]
+[&#39;Joao&#39;, &#39;35&#39;, &#39;Espirito Santo do Pinhal&#39;]
+</code></pre></div>
+
+<p>O <code>newline=""</code> é importante para evitar linhas em branco indesejadas entre os registros, um problema clássico de quem usa CSV no Python.</p>
+<h2>Usando dicionários: csv.DictReader</h2>
+<p>Trabalhar com listas é confuso quando a planilha tem muitas colunas. O <code>csv.DictReader</code> resolve isso transformando cada linha em um <strong>dicionário</strong>, usando a primeira linha como nome das colunas:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;dados.csv&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">arquivo</span><span class="p">:</span>
+    <span class="n">leitor</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">arquivo</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">linha</span> <span class="ow">in</span> <span class="n">leitor</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">linha</span><span class="p">[</span><span class="s2">&quot;nome&quot;</span><span class="p">],</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">linha</span><span class="p">[</span><span class="s2">&quot;cidade&quot;</span><span class="p">])</span>
+</code></pre></div>
+
+<p>Agora acessamos cada valor pelo nome da coluna, o que torna o código muito mais legível e seguro.</p>
+<h2>Filtrando dados</h2>
+<p>Com dicionários, filtrar fica natural. Vamos listar apenas os registros de pessoas com mais de 25 anos:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;dados.csv&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">arquivo</span><span class="p">:</span>
+    <span class="n">leitor</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">arquivo</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">linha</span> <span class="ow">in</span> <span class="n">leitor</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">linha</span><span class="p">[</span><span class="s2">&quot;idade&quot;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">25</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">linha</span><span class="p">[</span><span class="s2">&quot;nome&quot;</span><span class="p">])</span>
+</code></pre></div>
+
+<p>Repare no <code>int(linha["idade"])</code>: tudo que vem de um CSV é <strong>texto</strong>, então precisamos converter para número antes de comparar.</p>
+<h2>Escrevendo um CSV</h2>
+<p>Para gerar um arquivo, usamos <code>csv.writer</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="n">cabecalho</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;nome&quot;</span><span class="p">,</span> <span class="s2">&quot;idade&quot;</span><span class="p">,</span> <span class="s2">&quot;cidade&quot;</span><span class="p">]</span>
+<span class="n">registros</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s2">&quot;Maria&quot;</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="s2">&quot;Sao Marcos&quot;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;Joao&quot;</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="s2">&quot;Espirito Santo do Pinhal&quot;</span><span class="p">],</span>
+<span class="p">]</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;saida.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">arquivo</span><span class="p">:</span>
+    <span class="n">escritor</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">arquivo</span><span class="p">)</span>
+    <span class="n">escritor</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">cabecalho</span><span class="p">)</span>      <span class="c1"># uma linha</span>
+    <span class="n">escritor</span><span class="o">.</span><span class="n">writerows</span><span class="p">(</span><span class="n">registros</span><span class="p">)</span>     <span class="c1"># varias linhas de uma vez</span>
+</code></pre></div>
+
+<p>O <code>csv.writer</code> cuida de tudo para você: coloca as vírgulas, escapa valores que contenham vírgula ou aspas e usa quebra de linha corretamente.</p>
+<h2>Escrevendo com dicionários: csv.DictWriter</h2>
+<p>De forma análoga, o <code>csv.DictWriter</code> grava listas de dicionários. A vantagem é que ele só escreve as colunas que você definir em <code>fieldnames</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="n">cabecalho</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;nome&quot;</span><span class="p">,</span> <span class="s2">&quot;idade&quot;</span><span class="p">,</span> <span class="s2">&quot;cidade&quot;</span><span class="p">]</span>
+<span class="n">registros</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;nome&quot;</span><span class="p">:</span> <span class="s2">&quot;Maria&quot;</span><span class="p">,</span> <span class="s2">&quot;idade&quot;</span><span class="p">:</span> <span class="mi">28</span><span class="p">,</span> <span class="s2">&quot;cidade&quot;</span><span class="p">:</span> <span class="s2">&quot;Sao Marcos&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;nome&quot;</span><span class="p">:</span> <span class="s2">&quot;Joao&quot;</span><span class="p">,</span> <span class="s2">&quot;idade&quot;</span><span class="p">:</span> <span class="mi">35</span><span class="p">,</span> <span class="s2">&quot;cidade&quot;</span><span class="p">:</span> <span class="s2">&quot;Espirito Santo do Pinhal&quot;</span><span class="p">},</span>
+<span class="p">]</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;saida.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">arquivo</span><span class="p">:</span>
+    <span class="n">escritor</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictWriter</span><span class="p">(</span><span class="n">arquivo</span><span class="p">,</span> <span class="n">fieldnames</span><span class="o">=</span><span class="n">cabecalho</span><span class="p">)</span>
+    <span class="n">escritor</span><span class="o">.</span><span class="n">writeheader</span><span class="p">()</span>
+    <span class="n">escritor</span><span class="o">.</span><span class="n">writerows</span><span class="p">(</span><span class="n">registros</span><span class="p">)</span>
+</code></pre></div>
+
+<p>O <code>writeheader()</code> grava a primeira linha com os nomes das colunas automaticamente.</p>
+<h2>Delimitadores diferentes</h2>
+<p>Nem todo CSV usa vírgula. No Brasil é comum encontrar arquivos separados por ponto e vírgula (<code>;</code>), porque a vírgula é usada como separador decimal. Basta informar o delimitador:</p>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;dados_br.csv&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">arquivo</span><span class="p">:</span>
+    <span class="n">leitor</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">arquivo</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">linha</span> <span class="ow">in</span> <span class="n">leitor</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">linha</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Se o arquivo estiver com texto corrompido, lembre-se do <code>encoding="utf-8"</code> e, se necessário, <code>encoding="latin-1"</code>.</p>
+<h2>Exemplo completo: relatório de vendas</h2>
+<p>Vamos juntar tudo: ler uma planilha de vendas, calcular o total por vendedor e salvar um resumo:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="n">total_por_vendedor</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;vendas.csv&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">arquivo</span><span class="p">:</span>
+    <span class="n">leitor</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">arquivo</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">linha</span> <span class="ow">in</span> <span class="n">leitor</span><span class="p">:</span>
+        <span class="n">vendedor</span> <span class="o">=</span> <span class="n">linha</span><span class="p">[</span><span class="s2">&quot;vendedor&quot;</span><span class="p">]</span>
+        <span class="n">valor</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">linha</span><span class="p">[</span><span class="s2">&quot;valor&quot;</span><span class="p">])</span>
+        <span class="n">total_por_vendedor</span><span class="p">[</span><span class="n">vendedor</span><span class="p">]</span> <span class="o">=</span> <span class="n">total_por_vendedor</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">vendedor</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">+</span> <span class="n">valor</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;resumo_vendas.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">arquivo</span><span class="p">:</span>
+    <span class="n">escritor</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">arquivo</span><span class="p">)</span>
+    <span class="n">escritor</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s2">&quot;vendedor&quot;</span><span class="p">,</span> <span class="s2">&quot;total&quot;</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">vendedor</span><span class="p">,</span> <span class="n">total</span> <span class="ow">in</span> <span class="n">total_por_vendedor</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">escritor</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="n">vendedor</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">total</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Resumo gerado!&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Em poucas linhas: lemos os dados, agrupamos por vendedor e geramos um novo arquivo pronto para ser aberto em qualquer planilha.</p>
+<h2>E se eu precisar de arquivos .xlsx?</h2>
+<p>O módulo <code>csv</code> trabalha com texto puro. Para planilhas Excel nativas (<code>.xlsx</code>), o formato é outro e usamos bibliotecas como <code>openpyxl</code> ou <code>pandas</code>. É um bom assunto para um próximo artigo de dados.</p>
+<h2>Resumo</h2>
+<p>O módulo <code>csv</code> resolve a grande maioria dos casos de leitura e escrita de tabelas:</p>
+<ul>
+<li><code>csv.reader</code> e <code>csv.writer</code> para trabalhar com listas;</li>
+<li><code>csv.DictReader</code> e <code>csv.DictWriter</code> para trabalhar com dicionários;</li>
+<li>Sempre use <code>newline=""</code> e <code>encoding="utf-8"</code>;</li>
+<li>Atenção ao delimitador (<code>delimiter=";"</code>).</li>
+</ul>
+<p>Com isso você pode automatizar a troca de dados entre sistemas, gerar relatórios e alimentar análises — tudo com a biblioteca padrão do Python.</p>
+<p>Usou o CSV em alguma automação interessante? Conta pra gente nos comentários ou contribua com um artigo no nosso <a href="https://github.com/grupy-sao-marcos/grupy-sao-marcos.github.io">repositorio</a>.</p>
+        </p>
+      </div><!-- /.entry-content -->
+    </div>
+  </article>
+</section>
+<footer class="site-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="/theme/images/logogrupy.svg" alt="Logo" height="56px">
+            </div>
+            <div class="col-md-4">
+                <p class="site-info">Theme Designed and Developed <br> by <a href="http://technextit.com">Technext Limited</a></p>
+                <p class="site-info">Todas informações reservadas ao <br>Grupy de São Marcos</p>
+            </div>
+            <div class="col-md-4">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <a href="/authors.html">
+                            Colaboradores
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>    <!-- script -->
+    <script src="/theme/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/theme/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script
+        src="/theme/bower_components/smooth-scroll/dist/js/smooth-scroll.min.js"></script>
+    <script src="/theme/js/main.js"></script>
+</body>
+
+</html>
