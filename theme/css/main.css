@@ -361,6 +361,26 @@ ul li {
     vertical-align: middle;
     height: 80vh;
 }
+ .site-article .intro small,
+ .site-blog .intro small {
+    display: block;
+    margin-top: 12px;
+    font-size: 14px;
+    font-weight: 300;
+    text-transform: none;
+    color: #fff;
+}
+ .site-article .intro small a,
+ .site-blog .intro small a {
+    color: #fff;
+    text-decoration: underline;
+}
+ .site-article .intro small a:hover,
+ .site-blog .intro small a:focus,
+ .site-blog .intro small a:hover,
+ .site-blog .intro small a:focus {
+    color: #ddd;
+}
 
 .site-blog {
      width: 100%;

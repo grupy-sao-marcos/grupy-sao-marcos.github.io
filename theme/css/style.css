@@ -72,3 +72,48 @@ html, body {
 .mt-2 {
     margin-top: 16px;
 }
+
+.btn-inscricao {
+    color: #fff;
+    background-color: #28a745;
+    border: none;
+    border-radius: 50px;
+    padding: 14px 34px;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+    display: inline-block;
+    transition: all 0.2s ease;
+}
+.btn-inscricao:hover,
+.btn-inscricao:focus {
+    color: #fff;
+    background-color: #1e7e34;
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+#facts .btn-inscricao {
+    display: block;
+    width: fit-content;
+    margin: 12px auto 0;
+    padding: 10px 28px;
+    font-size: 15px;
+    letter-spacing: 0;
+    background-color: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    box-shadow: none;
+    transform: none;
+}
+#facts .btn-inscricao:hover,
+#facts .btn-inscricao:focus {
+    background-color: #fff;
+    color: #000;
+    border-color: #fff;
+    transform: none;
+    box-shadow: none;
+}
