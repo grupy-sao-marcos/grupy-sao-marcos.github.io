@@ -124,7 +124,7 @@ Ana,22,Casa Branca
 &lt;li&gt;Atenção ao delimitador (&lt;code&gt;delimiter=";"&lt;/code&gt;).&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Com isso você pode automatizar a troca de dados entre sistemas, gerar relatórios e alimentar análises — tudo com a biblioteca padrão do Python.&lt;/p&gt;
-&lt;p&gt;Usou o CSV em alguma automação interessante? Conta pra gente nos comentários ou contribua com um artigo no nosso &lt;a href="https://github.com/grupy-sao-marcos/grupy-sao-marcos.github.io"&gt;repositorio&lt;/a&gt;.&lt;/p&gt;</content><category term="Blog"></category></entry><entry><title>11° encontro do Grupy São Marcos</title><link href="/decimo-primeiro-encontro.html" rel="alternate"></link><published>2026-08-22T08:30:00-03:00</published><updated>2025-08-22T11:30:00-03:00</updated><author><name>Perceu Bertoletti</name></author><id>tag:None,2026-08-22:/decimo-primeiro-encontro.html</id><summary type="html">&lt;p&gt;Terceiro evento de 2026&lt;/p&gt;</summary><content type="html">&lt;p&gt;Estamos organizando os seguintes conteudos:&lt;/p&gt;
+&lt;p&gt;Usou o CSV em alguma automação interessante? Conta pra gente nos comentários ou contribua com um artigo no nosso &lt;a href="https://github.com/grupy-sao-marcos/grupy-sao-marcos.github.io"&gt;repositorio&lt;/a&gt;.&lt;/p&gt;</content><category term="Blog"></category></entry><entry><title>11° encontro do Grupy São Marcos</title><link href="/decimo-primeiro-encontro.html" rel="alternate"></link><published>2026-08-22T08:30:00-03:00</published><updated>2025-08-22T11:30:00-03:00</updated><author><name>Sergio Fochesatto</name></author><id>tag:None,2026-08-22:/decimo-primeiro-encontro.html</id><summary type="html">&lt;p&gt;Terceiro evento de 2026&lt;/p&gt;</summary><content type="html">&lt;p&gt;Estamos organizando os seguintes conteudos:&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -141,8 +141,8 @@ Ana,22,Casa Branca
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style="text-align: center;"&gt;08:45&lt;/td&gt;
-&lt;td style="text-align: left;"&gt;&lt;/td&gt;
-&lt;td style="text-align: left;"&gt;&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Desenvolvimento 100% IA, riscos e facilidades&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Sergio Fochesatto&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style="text-align: center;"&gt;09:30&lt;/td&gt;
@@ -151,8 +151,8 @@ Ana,22,Casa Branca
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style="text-align: center;"&gt;10:15&lt;/td&gt;
-&lt;td style="text-align: left;"&gt;&lt;/td&gt;
-&lt;td style="text-align: left;"&gt;&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Um pouco sobre Cloud (Nome Temporário)&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Rodrigo Soldatelli da Rosa&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style="text-align: center;"&gt;11:00&lt;/td&gt;
@@ -1452,12 +1452,12 @@ feedgenerator==2.1.0
 &lt;li&gt;11:00 Keynote: Rogerio Rizzon&lt;/li&gt;
 &lt;li&gt;12:05 Encerramento&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img alt="Foto primeiro evento" class="img-fluid event-img" src="/images/evento-5.jpeg"&gt;&lt;/p&gt;</content><category term="Evento"></category><category term="evento"></category><category term="encontro"></category></entry><entry><title>4° encontro do Grupy São Marcos</title><link href="/quarto-encontro.html" rel="alternate"></link><published>2024-11-23T09:00:00-03:00</published><updated>2024-11-23T12:05:00-03:00</updated><author><name>Sergio Fochesato</name></author><id>tag:None,2024-11-23:/quarto-encontro.html</id><summary type="html">&lt;p&gt;Quarto e ultimo evento de 2024 que contara com palestras e coffebreak ja com o nosso segundo keynote.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Nesse quarto evento iremos tomar um corpo maior organizando os seguintes conteudos:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Foto primeiro evento" class="img-fluid event-img" src="/images/evento-5.jpeg"&gt;&lt;/p&gt;</content><category term="Evento"></category><category term="evento"></category><category term="encontro"></category></entry><entry><title>4° encontro do Grupy São Marcos</title><link href="/quarto-encontro.html" rel="alternate"></link><published>2024-11-23T09:00:00-03:00</published><updated>2024-11-23T12:05:00-03:00</updated><author><name>Sergio Fochesatto</name></author><id>tag:None,2024-11-23:/quarto-encontro.html</id><summary type="html">&lt;p&gt;Quarto e ultimo evento de 2024 que contara com palestras e coffebreak ja com o nosso segundo keynote.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Nesse quarto evento iremos tomar um corpo maior organizando os seguintes conteudos:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;09:00 Abertura&lt;/li&gt;
 &lt;li&gt;09:05 Introdução a microserviços&lt;/li&gt;
 &lt;li&gt;10:15 Coffe Break&lt;/li&gt;
-&lt;li&gt;11:00 Keynote: Sergio Fochesato &lt;/li&gt;
+&lt;li&gt;11:00 Keynote: Sergio Fochesatto &lt;/li&gt;
 &lt;li&gt;12:05 Encerramento&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;img alt="Foto do evento" class="img-fluid event-img" src="/images/evento-4.jpeg"&gt;&lt;/p&gt;</content><category term="Evento"></category><category term="evento"></category><category term="encontro"></category></entry><entry><title>3° encontro do Grupy São Marcos</title><link href="/terceiro-encontro.html" rel="alternate"></link><published>2024-05-25T08:30:00-03:00</published><updated>2024-03-16T11:30:00-03:00</updated><author><name>Gabriel Taufer</name></author><id>tag:None,2024-05-25:/terceiro-encontro.html</id><summary type="html">&lt;p&gt;Terceiro evento que contara com palestras e coffebreak ja com o nosso primeiro keynote.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Nesse segundo evento estamos organizando os seguintes conteudos:&lt;/p&gt;
