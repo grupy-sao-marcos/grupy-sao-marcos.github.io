@@ -22,14 +22,15 @@
 
         <div class="collapse navbar-collapse" id="navbar-items">
             <ul class="nav navbar-nav navbar-right">
-                <!-- navigation menu -->
                 <li class="active"><a data-scroll href="#about">Sobre</a></li>
-                <li><a data-scroll href="#contribution">Chamada de Trabalhos</a></li>
-                <li><a data-scroll href="#facts">Proximo Evento</a></li>
-                <li><a data-scroll href="#schedule">Eventos Anteriores</a></li>
-                <li><a data-scroll href="#partner">Patrocinadores</a></li>
-                <li><a data-scroll href="#faq">FAQ</a></li>
+                <li><a data-scroll href="#objetivos">Objetivos</a></li>
+                <li><a data-scroll href="#facts">Próximo Evento</a></li>
+                <li><a data-scroll href="#schedule">Eventos</a></li>
+                <li><a data-scroll href="#partner">Apoiadores</a></li>
                 <li><a href="/pages/blog.html">Blog</a></li>
+                {% if ultimo_evento and ultimo_evento.inscricao %}
+                <li class="nav-inscricao"><a class="btn-nav-inscricao" target="_blank" href="{{ultimo_evento.inscricao}}">Inscreva-se</a></li>
+                {% endif %}
             </ul>
         </div>
     </div><!-- /.container -->

@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% block title %}{{ article.title|striptags }} - {{ SITENAME|striptags }}{% endblock %}
 {% block content %}
 {% include "navigation-blog.html" %}
 <header id="site-header" class="site-article valign-center">

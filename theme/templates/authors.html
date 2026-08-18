@@ -1,44 +1,51 @@
 {% extends "base.html" %}
 
-{% block title %}{{ SITENAME|striptags }} - Authors{% endblock %}
+{% block title %}Colaboradores - {{ SITENAME|striptags }}{% endblock %}
 
 {% block content %}
 {% include "navigation-blog.html" %}
 
-<header id="site-header" class="site-header valign-center">
-    <div class="intro container">
+<header id="site-blog" class="site-blog valign-center">
+    <div class="intro blog">
         <h1>Colaboradores</h1>
         <br>
-        <div class="container">
-            <blockquote>Gostaríamos de agradecer a todos os participantes e colaboradores que dedicaram um tempo para auxiliar nessa iniciativa</blockquote>
-        </div>
+        <blockquote>O Grupy São Marcos é construído por pessoas que dedicam seu tempo para fortalecer a comunidade de tecnologia da região.</blockquote>
     </div>
 </header>
 
-<section id="content" class="body">
-    <div class="container content-container">
+<section id="authors-list">
+    <div class="container">
         <p>Agradecemos especialmente aos colaboradores que contribuíram com a comunidade, compartilhando seu conhecimento e experiências.</p>
-        <ul>
+
+        <div class="row authors-grid">
             {% for author, articles in authors|sort %}
             {% if author != 'Patrocinio'%}
-            <li><a href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a> ({{ articles|count }})</li>
+            <div class="col-sm-6 col-md-4">
+                <a href="{{ SITEURL }}/{{ author.url }}" class="author-card">
+                    <div class="author-card-inner">
+                        <h4 class="author-name">{{ author }}</h4>
+                        <p class="author-stats">{{ articles|count }} contribuição(ões)</p>
+                    </div>
+                </a>
+            </div>
             {% endif %}
             {% endfor %}
-        </ul>
-        <p>
-            Há várias maneiras de colaborar: os homenageados acima contribuíram escrevendo no blog ou ministrando palestras 
-        </p>
-        <p> Você tambem pode colaborar:
-        <ul>
-            <li>Indo nos eventos</li>
-            <li>Escrevendo no blog</li>
-            <li>Palestrando</li>
-            <li>Contribuindo com código (site, automação, sistema)</li>
-            <li>Divulgando</li>
-            <li>Expondo para empresas essa iniciativa</li>
-        </ul>
-    </p>
-</div>
+        </div>
+
+        <div class="collaborate-section">
+            <h3>Como colaborar</h3>
+            <p>Há várias maneiras de fazer parte do Grupy:</p>
+            <ul class="collaborate-list">
+                <li>Indo nos eventos</li>
+                <li>Escrevendo no blog</li>
+                <li>Palestrando</li>
+                <li>Contribuindo com código (site, automação, sistema)</li>
+                <li>Divulgando</li>
+                <li>Expondo para empresas essa iniciativa</li>
+            </ul>
+        </div>
+    </div>
 </section>
 
+{% include "footer.html" %}
 {% endblock %}
