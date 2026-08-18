@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Comprehensions em Python: listas, dicionários e conjuntos de forma concisa - Grupy São Marcos</title>
+    <meta name="description" content="Grupy São Marcos é uma comunidade de desenvolvedores e pessoas interessadas em tecnologia da região de São Marcos - RS. Encontros presenciais gratuitos, compartilhamento de conhecimento e fortalecimento do ecossistema tecnológico local.">
+    <meta name="keywords" content="Grupy São Marcos, Python São Marcos, comunidade de tecnologia, desenvolvimento São Marcos, eventos de tecnologia, comunidade dev, São Marcos RS">
+    <meta name="author" content="Grupy São Marcos">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Grupy São Marcos | Comunidade de Tecnologia e Desenvolvimento">
+    <meta property="og:description" content="Comunidade de desenvolvedores de São Marcos - RS. Encontros presenciais gratuitos, conhecimento e conexões na região.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://grupy-sao-marcos.github.io/">
+    <meta property="og:image" content="/theme/images/logogrupy.svg">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="Grupy São Marcos">
+
+    <!-- css -->
+    <link rel="stylesheet"
+        href="/theme/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/theme/bower_components/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="/theme/css/main.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+    <link
+        href="/feeds/all.atom.xml"
+        type="application/atom+xml" rel="alternate" title="Grupy São Marcos Atom Feed" />
+</head>
+
+<body data-spy="scroll" data-target="#site-nav">
+<nav id="site-nav" class="navbar navbar-fixed-top navbar-custom">
+    <div class="container">
+        <div class="navbar-header">
+
+            <!-- logo -->
+            <div class="site-branding">
+                <a class="logo" href="/">
+
+                    <!-- logo image  -->
+                    <img src="/theme/images/logogrupy.svg" alt="Logo" height="56px">
+
+                </a>
+            </div>
+
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-items"
+                aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+        </div><!-- /.navbar-header -->
+
+        <div class="collapse navbar-collapse" id="navbar-items">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#objetivos">Objetivos</a></li>
+                <li><a href="#facts">Próximo Evento</a></li>
+                <li><a href="#schedule">Eventos</a></li>
+                <li><a href="#partner">Apoiadores</a></li>
+                <li class="active"><a href="/pages/blog.html">Blog</a></li>
+                <li class="nav-inscricao"><a class="btn-nav-inscricao" target="_blank" href="https://forms.gle/BU4CBbREi12s1MJ68">Inscreva-se</a></li>
+            </ul>
+        </div>
+    </div><!-- /.container -->
+</nav><header id="site-header" class="site-article valign-center">
+    <div class="intro blog">
+        <h1>
+          Comprehensions em Python: listas, dicionários e conjuntos de forma concisa</br>
+          <small>
+              <a href="/author/perceu-bertoletti.html">Perceu Bertoletti</a>            - 25/08/2026
+          </small>
+        </h1>
+    </div>
+</header>
+<section id="article-content" class="valign-center">
+  <article class="container">
+    <div class="container-line">
+
+      <div class="entry-content">
+        <p>
+          <p>Você já escreveu um <code>for</code> para criar uma lista nova, iterando sobre outra lista e aplicando alguma transformação? Todo mundo já. O Python oferece uma forma mais enxuta de fazer isso: as <strong>comprehensions</strong>.</p>
+<p>Comprehensions são uma sintaxe que permite criar listas, dicionários e conjuntos em uma única linha de código, de forma legível e expressiva. Quando usadas com moderação, deixam o código mais limpo e direto ao ponto.</p>
+<h2>List comprehension</h2>
+<p>A forma básica funciona assim:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Forma tradicional</span>
+<span class="n">numeros</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">dobrados</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">numeros</span><span class="p">:</span>
+    <span class="n">dobrados</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Comprehension</span>
+<span class="n">dobrados</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span> <span class="o">*</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">numeros</span><span class="p">]</span>
+<span class="c1"># resultado: [2, 4, 6, 8, 10]</span>
+</code></pre></div>
+
+<p>A sintaxe é <code>[expressao for item in iteravel]</code>. Pense como uma frase: "para cada item no iterável, aplique a expressão e guarde o resultado".</p>
+<h3>Filtrando com条件</h3>
+<p>Você pode adicionar uma condição no final para filtrar elementos:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Números pares de uma lista</span>
+<span class="n">pares</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+<span class="c1"># resultado: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18]</span>
+
+<span class="c1"># Palavras com mais de 5 letras</span>
+<span class="n">palavras</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;python&quot;</span><span class="p">,</span> <span class="s2">&quot;java&quot;</span><span class="p">,</span> <span class="s2">&quot;javascript&quot;</span><span class="p">,</span> <span class="s2">&quot;go&quot;</span><span class="p">,</span> <span class="s2">&quot;ruby&quot;</span><span class="p">]</span>
+<span class="n">longas</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">palavras</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">]</span>
+<span class="c1"># resultado: [&#39;python&#39;, &#39;javascript&#39;]</span>
+</code></pre></div>
+
+<h3>Transformando e filtrando ao mesmo tempo</h3>
+<p>Você pode combinar transformação e filtro:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Dobrar apenas os números pares</span>
+<span class="n">resultado</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span> <span class="o">*</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+<span class="c1"># resultado: [0, 4, 8, 12, 16, 20, 24, 28, 32, 36]</span>
+</code></pre></div>
+
+<h3>Comprehensions aninhadas</h3>
+<p>Em casos simples, você pode usar um <code>for</code> dentro de outro:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Achatando uma matriz</span>
+<span class="n">matriz</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]]</span>
+<span class="n">flat</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span> <span class="k">for</span> <span class="n">linha</span> <span class="ow">in</span> <span class="n">matriz</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">linha</span><span class="p">]</span>
+<span class="c1"># resultado: [1, 2, 3, 4, 5, 6, 7, 8, 9]</span>
+</code></pre></div>
+
+<p>Cuidado: comprehension aninhada pode ficar difícil de ler. Se ficar confuso,prefira o <code>for</code> tradicional.</p>
+<h2>Dict comprehension</h2>
+<p>Funciona igual, mas cria um <strong>dicionário</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Criar um dicionário de平方</span>
+<span class="n">quadrados</span> <span class="o">=</span> <span class="p">{</span><span class="n">n</span><span class="p">:</span> <span class="n">n</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)}</span>
+<span class="c1"># resultado: {1: 1, 2: 4, 3: 9, 4: 16, 5: 25}</span>
+
+<span class="c1"># Inverter um dicionário</span>
+<span class="n">origem</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<span class="n">invertido</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">:</span> <span class="n">k</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">origem</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+<span class="c1"># resultado: {1: &#39;a&#39;, 2: &#39;b&#39;, 3: &#39;c&#39;}</span>
+</code></pre></div>
+
+<h3>Filtrando dicionários</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Notas acima de 7</span>
+<span class="n">notas</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Ana&quot;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s2">&quot;Bia&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s2">&quot;Carlos&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s2">&quot;Davi&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
+<span class="n">aprovados</span> <span class="o">=</span> <span class="p">{</span><span class="n">nome</span><span class="p">:</span> <span class="n">nota</span> <span class="k">for</span> <span class="n">nome</span><span class="p">,</span> <span class="n">nota</span> <span class="ow">in</span> <span class="n">notas</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">nota</span> <span class="o">&gt;=</span> <span class="mi">7</span><span class="p">}</span>
+<span class="c1"># resultado: {&#39;Ana&#39;: 9, &#39;Carlos&#39;: 8}</span>
+</code></pre></div>
+
+<h2>Set comprehension</h2>
+<p>Cria um <strong>conjunto</strong> (sem duplicatas):</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Pegar letras únicas de uma string</span>
+<span class="n">texto</span> <span class="o">=</span> <span class="s2">&quot;abracadabra&quot;</span>
+<span class="n">letras</span> <span class="o">=</span> <span class="p">{</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">texto</span><span class="p">}</span>
+<span class="c1"># resultado: {&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;r&#39;}</span>
+</code></pre></div>
+
+<h2>Quando usar (e quando não usar)</h2>
+<p><strong>Use quando:</strong>
+- A lógica é simples e cabe em uma linha
+- Você está criando uma lista/dict/set novo a partir de outro
+- A comprehension é mais legível que o <code>for</code> equivalente</p>
+<p><strong>Não use quando:</strong>
+- A lógica é complexa com múltiplas condições e transformações
+- Você precisa de efeitos colaterais (como escrever em arquivo)
+- A comprehension fica mais difícil de ler que o <code>for</code> tradicional</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Exemplo OK: simples e claro</span>
+<span class="n">quadrados</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+
+<span class="c1"># Exemplo ruim: complexo demais para uma linha</span>
+<span class="n">resultado</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">transformar</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">dados</span>
+    <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">valido</span>
+    <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">a</span><span class="o">.</span><span class="n">filhos</span>
+    <span class="k">if</span> <span class="n">b</span><span class="o">.</span><span class="n">ativo</span> <span class="ow">and</span> <span class="n">b</span><span class="o">.</span><span class="n">prioridade</span> <span class="o">&gt;</span> <span class="mi">5</span>
+<span class="p">]</span>
+</code></pre></div>
+
+<h2>Resumo</h2>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Sintaxe</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>List</td>
+<td><code>[x for x in iterable]</code></td>
+<td>Lista</td>
+</tr>
+<tr>
+<td>Dict</td>
+<td><code>{k: v for k, v in iterable}</code></td>
+<td>Dicionário</td>
+</tr>
+<tr>
+<td>Set</td>
+<td><code>{x for x in iterable}</code></td>
+<td>Conjunto</td>
+</tr>
+</tbody>
+</table>
+<p>Comprehensions são uma das ferramentas que fazem Python ser tão expressivo. Depois que você pega o jeito, usa o tempo todo — e seu código fica mais limpo por conta disso.</p>
+        </p>
+      </div><!-- /.entry-content -->
+    </div>
+  </article>
+</section>
+<footer class="site-footer">
+    <div class="container">
+        <div class="row footer-main">
+            <div class="col-md-4 footer-brand">
+                <img src="/theme/images/logogrupy.svg" alt="Logo Grupy São Marcos" height="48px">
+                <p class="footer-desc">Comunidade de tecnologia e desenvolvimento de São Marcos - RS</p>
+            </div>
+            <div class="col-md-4">
+                <h4 class="footer-heading">Comunidade</h4>
+                <ul class="footer-links">
+                    <li><a href="/#about">Sobre</a></li>
+                    <li><a href="/#objetivos">Objetivos</a></li>
+                    <li><a href="/#schedule">Eventos</a></li>
+                    <li><a href="/pages/blog.html">Blog</a></li>
+                    <li><a href="/authors.html">Colaboradores</a></li>
+                    <li><a href="/#partner">Apoiadores</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h4 class="footer-heading">Contato</h4>
+                <ul class="footer-links">
+                    <li><a href="https://github.com/grupy-sao-marcos" target="_blank" rel="noopener">GitHub</a></li>
+                    <li><a href="https://github.com/grupy-sao-marcos/call4papers/issues" target="_blank" rel="noopener">Call4Papers</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Grupy São Marcos. Comunidade aberta e colaborativa.</p>
+        </div>
+    </div>
+</footer>    <!-- script -->
+    <script src="/theme/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/theme/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script
+        src="/theme/bower_components/smooth-scroll/dist/js/smooth-scroll.min.js"></script>
+    <script src="/theme/js/main.js"></script>
+    <!-- Matomo -->
+    <script>
+    if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+        var _paq = window._paq = window._paq || [];
+        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+            var u="https://grupy-sao-marcos.matomo.cloud/";
+            _paq.push(['setTrackerUrl', u+'matomo.php']);
+            _paq.push(['setSiteId', '1']);
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+            g.async=true; g.src='https://cdn.matomo.cloud/grupy-sao-marcos.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
+        })();
+    }
+    </script>
+    <!-- End Matomo Code -->
+</body>
+
+</html>

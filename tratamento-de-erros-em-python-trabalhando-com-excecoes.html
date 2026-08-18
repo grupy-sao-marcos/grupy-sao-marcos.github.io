@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Tratamento de erros em Python: trabalhando com exceções - Grupy São Marcos</title>
+    <meta name="description" content="Grupy São Marcos é uma comunidade de desenvolvedores e pessoas interessadas em tecnologia da região de São Marcos - RS. Encontros presenciais gratuitos, compartilhamento de conhecimento e fortalecimento do ecossistema tecnológico local.">
+    <meta name="keywords" content="Grupy São Marcos, Python São Marcos, comunidade de tecnologia, desenvolvimento São Marcos, eventos de tecnologia, comunidade dev, São Marcos RS">
+    <meta name="author" content="Grupy São Marcos">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Grupy São Marcos | Comunidade de Tecnologia e Desenvolvimento">
+    <meta property="og:description" content="Comunidade de desenvolvedores de São Marcos - RS. Encontros presenciais gratuitos, conhecimento e conexões na região.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://grupy-sao-marcos.github.io/">
+    <meta property="og:image" content="/theme/images/logogrupy.svg">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="Grupy São Marcos">
+
+    <!-- css -->
+    <link rel="stylesheet"
+        href="/theme/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/theme/bower_components/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="/theme/css/main.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+    <link
+        href="/feeds/all.atom.xml"
+        type="application/atom+xml" rel="alternate" title="Grupy São Marcos Atom Feed" />
+</head>
+
+<body data-spy="scroll" data-target="#site-nav">
+<nav id="site-nav" class="navbar navbar-fixed-top navbar-custom">
+    <div class="container">
+        <div class="navbar-header">
+
+            <!-- logo -->
+            <div class="site-branding">
+                <a class="logo" href="/">
+
+                    <!-- logo image  -->
+                    <img src="/theme/images/logogrupy.svg" alt="Logo" height="56px">
+
+                </a>
+            </div>
+
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-items"
+                aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+        </div><!-- /.navbar-header -->
+
+        <div class="collapse navbar-collapse" id="navbar-items">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#objetivos">Objetivos</a></li>
+                <li><a href="#facts">Próximo Evento</a></li>
+                <li><a href="#schedule">Eventos</a></li>
+                <li><a href="#partner">Apoiadores</a></li>
+                <li class="active"><a href="/pages/blog.html">Blog</a></li>
+                <li class="nav-inscricao"><a class="btn-nav-inscricao" target="_blank" href="https://forms.gle/BU4CBbREi12s1MJ68">Inscreva-se</a></li>
+            </ul>
+        </div>
+    </div><!-- /.container -->
+</nav><header id="site-header" class="site-article valign-center">
+    <div class="intro blog">
+        <h1>
+          Tratamento de erros em Python: trabalhando com exceções</br>
+          <small>
+              <a href="/author/perceu-bertoletti.html">Perceu Bertoletti</a>            - 27/08/2026
+          </small>
+        </h1>
+    </div>
+</header>
+<section id="article-content" class="valign-center">
+  <article class="container">
+    <div class="container-line">
+
+      <div class="entry-content">
+        <p>
+          <p>Todo programa encontra situações inesperadas: arquivo que não existe, conexão que cai, dado com formato errado. Quando isso acontece e o Python não sabe o que fazer, ele lança uma <strong>exceção</strong> e o programa para abruptamente.</p>
+<p>O tratamento de erros é o que separa um programa que funciona "quase sempre" de um que funciona <strong>de verdade</strong>. Vamos aprender a lidar com exceções de forma correta.</p>
+<h2>O bloco try/except</h2>
+<p>A estrutura básica é simples:</p>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+    <span class="c1"># código que pode dar erro</span>
+    <span class="n">resultado</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">/</span> <span class="mi">0</span>
+<span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
+    <span class="c1"># o que fazer quando o erro acontece</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Não é possível dividir por zero&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Sem o <code>try/except</code>, o Python mostraria um traceback e encerraria o programa. Com ele, o erro é tratado e o programa continua rodando.</p>
+<h2>Capturando diferentes erros</h2>
+<p>Você pode tratar tipos diferentes de erro em blocos separados:</p>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+    <span class="n">numero</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Digite um número: &quot;</span><span class="p">))</span>
+    <span class="n">resultado</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">/</span> <span class="n">numero</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Resultado: </span><span class="si">{</span><span class="n">resultado</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Isso não é um número válido&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Não pode dividir por zero&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Cada <code>except</code> lida com um tipo específico de erro. Isso permite dar mensagens mais úteis ao usuário.</p>
+<h2>Capturando o erro</h2>
+<p>Você pode acessar o objeto da exceção para mais detalhes:</p>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+    <span class="n">arquivo</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;dados.txt&quot;</span><span class="p">)</span>
+    <span class="n">conteudo</span> <span class="o">=</span> <span class="n">arquivo</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">FileNotFoundError</span> <span class="k">as</span> <span class="n">erro</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Arquivo não encontrado: </span><span class="si">{</span><span class="n">erro</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>O <code>as erro</code> guarda a exceção em uma variável que você pode usar para debug ou logging.</p>
+<h2>Finally: executar sempre</h2>
+<p>O bloco <code>finally</code> é executado <strong>sempre</strong>, ocorreu erro ou não. É útil para liberar recursos:</p>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+    <span class="n">arquivo</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;dados.txt&quot;</span><span class="p">)</span>
+    <span class="n">conteudo</span> <span class="o">=</span> <span class="n">arquivo</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Arquivo não encontrado&quot;</span><span class="p">)</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fim do processamento&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Outro uso comum é fechar conexões ou arquivos:</p>
+<div class="highlight"><pre><span></span><code><span class="n">conexao</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">conexao</span> <span class="o">=</span> <span class="n">abrir_conexao</span><span class="p">()</span>
+    <span class="n">conexao</span><span class="o">.</span><span class="n">executar</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM usuarios&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">ErroConexao</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Falha ao conectar ao banco&quot;</span><span class="p">)</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">conexao</span><span class="p">:</span>
+        <span class="n">conexao</span><span class="o">.</span><span class="n">fechar</span><span class="p">()</span>
+</code></pre></div>
+
+<h2>Exceções comuns do Python</h2>
+<p>O Python já vem com muitas exceções prontas. As mais comuns:</p>
+<table>
+<thead>
+<tr>
+<th>Exceção</th>
+<th>Quando acontece</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ValueError</code></td>
+<td>Valor no formato errado (<code>int("abc")</code>)</td>
+</tr>
+<tr>
+<td><code>TypeError</code></td>
+<td>Operação com tipo incompatível (<code>"2" + 2</code>)</td>
+</tr>
+<tr>
+<td><code>FileNotFoundError</code></td>
+<td>Arquivo não existe</td>
+</tr>
+<tr>
+<td><code>KeyError</code></td>
+<td>Chave não encontrada em dict (<code>d["x"]</code> em dict vazio)</td>
+</tr>
+<tr>
+<td><code>IndexError</code></td>
+<td>Índice fora do range de uma lista</td>
+</tr>
+<tr>
+<td><code>AttributeError</code></td>
+<td>Atributo ou método não existe</td>
+</tr>
+<tr>
+<td><code>ImportError</code></td>
+<td>Módulo não encontrado ao importar</td>
+</tr>
+</tbody>
+</table>
+<h2>Criando exceções personalizadas</h2>
+<p>Em projetos maiores, você pode querer criar suas próprias exceções para representar erros específicos do seu domínio:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">SaldoInsuficienteError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">saldo</span><span class="p">,</span> <span class="n">valor</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">saldo</span> <span class="o">=</span> <span class="n">saldo</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">valor</span> <span class="o">=</span> <span class="n">valor</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Saldo insuficiente: tem R$</span><span class="si">{</span><span class="n">saldo</span><span class="si">}</span><span class="s2">, &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;tentou tirar R$</span><span class="si">{</span><span class="n">valor</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">sacar</span><span class="p">(</span><span class="n">saldo</span><span class="p">,</span> <span class="n">valor</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">valor</span> <span class="o">&gt;</span> <span class="n">saldo</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">SaldoInsuficienteError</span><span class="p">(</span><span class="n">saldo</span><span class="p">,</span> <span class="n">valor</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">saldo</span> <span class="o">-</span> <span class="n">valor</span>
+
+<span class="c1"># Usando</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">novo_saldo</span> <span class="o">=</span> <span class="n">sacar</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">SaldoInsuficienteError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+    <span class="c1"># Saída: Saldo insuficiente: tem R$100, tentou tirar R$150</span>
+</code></pre></div>
+
+<h2>Práticas recomendadas</h2>
+<h3>Não engula erros silenciosamente</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Ruim: engole o erro sem fazer nada</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">processar_dados</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="c1"># Bom: pelo menos registre o erro</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">processar_dados</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Erro ao processar dados: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>Seja específico</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Ruim: captura qualquer coisa</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">abrir_arquivo</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Erro&quot;</span><span class="p">)</span>
+
+<span class="c1"># Bom: captura apenas o que espera</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">abrir_arquivo</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Arquivo não encontrado&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">PermissionError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sem permissão para ler o arquivo&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>Não use exceções para fluxo normal</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Ruim: usar exceção como lógica de negócio</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">valor</span> <span class="o">=</span> <span class="n">dicionario</span><span class="p">[</span><span class="n">chave</span><span class="p">]</span>
+<span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+    <span class="n">valor</span> <span class="o">=</span> <span class="n">valor_padrao</span>
+
+<span class="c1"># Bom: usar o método seguro do dict</span>
+<span class="n">valor</span> <span class="o">=</span> <span class="n">dicionario</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">chave</span><span class="p">,</span> <span class="n">valor_padrao</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>Resumo</h2>
+<ul>
+<li>Use <code>try/except</code> para capturar erros esperados</li>
+<li>Seja específico nos tipos de exceção que captura</li>
+<li>Use <code>finally</code> para liberar recursos</li>
+<li>Crie exceções personalizadas em projetos maiores</li>
+<li>Nunca use <code>except Exception: pass</code> — pelo menos registre o erro</li>
+</ul>
+<p>Tratar erros corretamente faz seu programa ser mais robusto e mais fácil de depurar quando algo dá errado. É uma das habilidades que mais faz diferença no dia a dia de um desenvolvedor.</p>
+        </p>
+      </div><!-- /.entry-content -->
+    </div>
+  </article>
+</section>
+<footer class="site-footer">
+    <div class="container">
+        <div class="row footer-main">
+            <div class="col-md-4 footer-brand">
+                <img src="/theme/images/logogrupy.svg" alt="Logo Grupy São Marcos" height="48px">
+                <p class="footer-desc">Comunidade de tecnologia e desenvolvimento de São Marcos - RS</p>
+            </div>
+            <div class="col-md-4">
+                <h4 class="footer-heading">Comunidade</h4>
+                <ul class="footer-links">
+                    <li><a href="/#about">Sobre</a></li>
+                    <li><a href="/#objetivos">Objetivos</a></li>
+                    <li><a href="/#schedule">Eventos</a></li>
+                    <li><a href="/pages/blog.html">Blog</a></li>
+                    <li><a href="/authors.html">Colaboradores</a></li>
+                    <li><a href="/#partner">Apoiadores</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h4 class="footer-heading">Contato</h4>
+                <ul class="footer-links">
+                    <li><a href="https://github.com/grupy-sao-marcos" target="_blank" rel="noopener">GitHub</a></li>
+                    <li><a href="https://github.com/grupy-sao-marcos/call4papers/issues" target="_blank" rel="noopener">Call4Papers</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Grupy São Marcos. Comunidade aberta e colaborativa.</p>
+        </div>
+    </div>
+</footer>    <!-- script -->
+    <script src="/theme/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/theme/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script
+        src="/theme/bower_components/smooth-scroll/dist/js/smooth-scroll.min.js"></script>
+    <script src="/theme/js/main.js"></script>
+    <!-- Matomo -->
+    <script>
+    if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+        var _paq = window._paq = window._paq || [];
+        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+            var u="https://grupy-sao-marcos.matomo.cloud/";
+            _paq.push(['setTrackerUrl', u+'matomo.php']);
+            _paq.push(['setSiteId', '1']);
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+            g.async=true; g.src='https://cdn.matomo.cloud/grupy-sao-marcos.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
+        })();
+    }
+    </script>
+    <!-- End Matomo Code -->
+</body>
+
+</html>

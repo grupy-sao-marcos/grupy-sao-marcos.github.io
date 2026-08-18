@@ -45,7 +45,12 @@ html, body {
 
 #blog-list {
     background-color: aliceblue;
-    padding: 20px;
+    padding: 40px 0;
+}
+
+#authors-list {
+    background-color: aliceblue;
+    padding: 40px 0;
 }
 
 .entry-content table {
@@ -116,4 +121,391 @@ html, body {
     border-color: #fff;
     transform: none;
     box-shadow: none;
+}
+
+/* Seção Sobre */
+.about-subtitle {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+}
+
+.about-image {
+    margin-top: 24px;
+    border-radius: 4px;
+}
+
+/* Seção Objetivos */
+.objetivos {
+    background-color: #2a2a2a;
+}
+
+.objetivos .section-title {
+    text-align: center;
+}
+
+.objetivos .row:last-child {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.objetivos .row:last-child > [class*="col-"] {
+    display: flex;
+    align-items: stretch;
+}
+
+.objetivo-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    padding: 24px;
+    margin-bottom: 24px;
+    text-align: center;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.objetivo-card:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.objetivo-icon {
+    font-size: 32px;
+    color: #fff;
+    margin-bottom: 16px;
+}
+
+.objetivo-title {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.objetivo-desc {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Seção Mais do que eventos */
+.mais-que-eventos {
+    background-color: #1a1a1a;
+}
+
+.mais-que-eventos .section-title {
+    text-align: center;
+}
+
+.mais-que-eventos-text {
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 16px;
+}
+
+.mais-que-eventos-text:last-child {
+    margin-bottom: 0;
+}
+
+/* Seção Eventos */
+.schedule-subtitle {
+    margin-bottom: 40px;
+    font-size: 16px;
+}
+
+/* Seção Patrocinadores */
+.partner-title {
+    color: #313131;
+}
+
+.partner-subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 32px;
+    font-size: 16px;
+}
+
+.partner-cta {
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.partner-cta p {
+    margin-bottom: 8px;
+    font-size: 16px;
+    color: #333;
+}
+
+.partner-cta .btn-white {
+    margin-top: 8px;
+}
+
+/* Seção Contribution */
+.contribution {
+    background-color: #1a1a1a;
+}
+
+.contribution .section-title {
+    text-align: center;
+    color: #fff;
+}
+
+/* Botão Inscrição no Menu */
+.nav-inscricao {
+    margin-left: 8px;
+}
+
+.btn-nav-inscricao {
+    display: inline-block;
+    padding: 6px 16px;
+    background-color: #28a745;
+    color: #fff !important;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: background-color 0.2s ease;
+}
+
+.btn-nav-inscricao:hover,
+.btn-nav-inscricao:focus {
+    background-color: #1e7e34;
+    text-decoration: none;
+}
+
+/* Blog Cards */
+.blog-card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    margin-bottom: 24px;
+}
+
+.blog-card-link:hover,
+.blog-card-link:focus {
+    text-decoration: none;
+    color: inherit;
+}
+
+.blog-card {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 24px;
+    height: 100%;
+    transition: all 0.2s ease;
+}
+
+.blog-card:hover {
+    border-color: #999;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.blog-card-date {
+    color: #888;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.blog-card-date i {
+    margin-right: 4px;
+}
+
+.blog-card-title {
+    color: #333;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 12px;
+}
+
+.blog-card-summary {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.blog-card-read {
+    color: #28a745;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* Author Cards */
+.authors-grid {
+    margin-bottom: 40px;
+}
+
+.author-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    margin-bottom: 20px;
+}
+
+.author-card:hover,
+.author-card:focus {
+    text-decoration: none;
+    color: inherit;
+}
+
+.author-card-inner {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+.author-card:hover .author-card-inner {
+    border-color: #999;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.author-name {
+    color: #333;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 0 4px;
+}
+
+.author-stats {
+    color: #888;
+    font-size: 13px;
+    margin: 0;
+}
+
+/* Collaborate Section */
+.collaborate-section {
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid #ddd;
+}
+
+.collaborate-section h3 {
+    color: #333;
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.collaborate-list {
+    list-style: none;
+    padding: 0;
+}
+
+.collaborate-list li {
+    padding: 6px 0;
+    color: #555;
+    font-weight: 400;
+}
+
+.collaborate-list li::before {
+    content: "\2022";
+    color: #28a745;
+    font-weight: 700;
+    margin-right: 8px;
+}
+
+/* Footer */
+.site-footer {
+    background-color: #1a1a1a;
+    color: #ccc;
+    text-align: left;
+    padding: 48px 0 0;
+    border-top: 3px solid #28a745;
+}
+
+.footer-main {
+    padding-bottom: 32px;
+}
+
+.footer-brand img {
+    margin-bottom: 16px;
+    opacity: 0.9;
+}
+
+.footer-heading {
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin: 0 0 20px;
+}
+
+.footer-desc {
+    color: #999;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-top: 0;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #999;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s ease;
+}
+
+.footer-links a:hover,
+.footer-links a:focus {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-bottom p {
+    color: #666;
+    font-size: 12px;
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+/* Responsivo */
+@media (max-width: 767px) {
+    .nav-inscricao {
+        margin: 8px 15px;
+    }
+
+    .btn-nav-inscricao {
+        display: block;
+        text-align: center;
+        padding: 10px 16px;
+    }
+
+    .blog-card {
+        padding: 16px;
+    }
+
+    .blog-card-title {
+        font-size: 16px;
+    }
+
+    .footer-heading {
+        margin-top: 24px;
+    }
 }

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Git e GitHub para iniciantes: versione seu código e colabore com a comunidade - Grupy São Marcos</title>
+    <meta name="description" content="Grupy São Marcos é uma comunidade de desenvolvedores e pessoas interessadas em tecnologia da região de São Marcos - RS. Encontros presenciais gratuitos, compartilhamento de conhecimento e fortalecimento do ecossistema tecnológico local.">
+    <meta name="keywords" content="Grupy São Marcos, Python São Marcos, comunidade de tecnologia, desenvolvimento São Marcos, eventos de tecnologia, comunidade dev, São Marcos RS">
+    <meta name="author" content="Grupy São Marcos">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Grupy São Marcos | Comunidade de Tecnologia e Desenvolvimento">
+    <meta property="og:description" content="Comunidade de desenvolvedores de São Marcos - RS. Encontros presenciais gratuitos, conhecimento e conexões na região.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://grupy-sao-marcos.github.io/">
+    <meta property="og:image" content="/theme/images/logogrupy.svg">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="Grupy São Marcos">
+
+    <!-- css -->
+    <link rel="stylesheet"
+        href="/theme/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/theme/bower_components/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="/theme/css/main.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+    <link
+        href="/feeds/all.atom.xml"
+        type="application/atom+xml" rel="alternate" title="Grupy São Marcos Atom Feed" />
+</head>
+
+<body data-spy="scroll" data-target="#site-nav">
+<nav id="site-nav" class="navbar navbar-fixed-top navbar-custom">
+    <div class="container">
+        <div class="navbar-header">
+
+            <!-- logo -->
+            <div class="site-branding">
+                <a class="logo" href="/">
+
+                    <!-- logo image  -->
+                    <img src="/theme/images/logogrupy.svg" alt="Logo" height="56px">
+
+                </a>
+            </div>
+
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-items"
+                aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+        </div><!-- /.navbar-header -->
+
+        <div class="collapse navbar-collapse" id="navbar-items">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#objetivos">Objetivos</a></li>
+                <li><a href="#facts">Próximo Evento</a></li>
+                <li><a href="#schedule">Eventos</a></li>
+                <li><a href="#partner">Apoiadores</a></li>
+                <li class="active"><a href="/pages/blog.html">Blog</a></li>
+                <li class="nav-inscricao"><a class="btn-nav-inscricao" target="_blank" href="https://forms.gle/BU4CBbREi12s1MJ68">Inscreva-se</a></li>
+            </ul>
+        </div>
+    </div><!-- /.container -->
+</nav><header id="site-header" class="site-article valign-center">
+    <div class="intro blog">
+        <h1>
+          Git e GitHub para iniciantes: versione seu código e colabore com a comunidade</br>
+          <small>
+              <a href="/author/perceu-bertoletti.html">Perceu Bertoletti</a>            - 23/08/2026
+          </small>
+        </h1>
+    </div>
+</header>
+<section id="article-content" class="valign-center">
+  <article class="container">
+    <div class="container-line">
+
+      <div class="entry-content">
+        <p>
+          <p>Se você já Programou algo e precisou voltar uma versão anterior do código, provavelmente já criou uma pasta chamada <code>projeto_v2</code>, <code>projeto_v3_final</code>, <code>projeto_v3_final_real</code>. Todo mundo já passou por isso.</p>
+<p>O <strong>Git</strong> resolve esse problema de forma profissional. Ele é um sistema de <strong>controle de versão</strong> que registra cada mudança que você faz no código, permitindo voltar a qualquer momento e trabalhar em equipo sem conflitos. O <strong>GitHub</strong> é a plataforma onde você hospeda seus projetos Git e colabora com outras pessoas.</p>
+<h2>Instalando o Git</h2>
+<p>No Linux (Debian/Ubuntu):</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>update
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>git
+</code></pre></div>
+
+<p>No Mac (com Homebrew):</p>
+<div class="highlight"><pre><span></span><code>brew<span class="w"> </span>install<span class="w"> </span>git
+</code></pre></div>
+
+<p>No Windows, baixe o instalador em <a href="https://git-scm.com">git-scm.com</a>.</p>
+<p>Após instalar, configure seu nome e email (esses dados aparecem nas suas contribuições):</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;Seu Nome&quot;</span>
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;seu@email.com&quot;</span>
+</code></pre></div>
+
+<h2>Criando seu primeiro repositório</h2>
+<p>Para iniciar um projeto com Git, crie uma pasta e rode:</p>
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>meu-projeto
+<span class="nb">cd</span><span class="w"> </span>meu-projeto
+git<span class="w"> </span>init
+</code></pre></div>
+
+<p>Isso cria uma pasta oculta <code>.git</code> que guarda todo o histórico do projeto. A partir daqui, o Git começa a rastrear seus arquivos.</p>
+<h2>O ciclo básico: add, commit, push</h2>
+<p>O fluxo de trabalho do Git tem três passos principais:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. Selecionar o que vai ser salvo</span>
+git<span class="w"> </span>add<span class="w"> </span>arquivo.py
+
+<span class="c1"># 2. Registrar uma &quot;foto&quot; do momento</span>
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Adiciona funcionalidade de login&quot;</span>
+
+<span class="c1"># 3. Enviar para o GitHub</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+</code></pre></div>
+
+<p>Pense no <code>commit</code> como um <strong>ponto de salvação</strong> no jogo. Você pode criar quantos commits quiser e voltar a qualquer um deles.</p>
+<h2>Trabalhando com branches</h2>
+<p>Uma <strong>branch</strong> é uma linha de desenvolvimento separada. Em vez de mexer direto no código principal, você cria uma branch para experimentar, e só mescla (merge) quando estiver pronto.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Criar e mudar para uma nova branch</span>
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>nova-funcionalidade
+
+<span class="c1"># ... fazer alterações ...</span>
+
+<span class="c1"># Adicionar e commitar</span>
+git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Implementa busca de artigos&quot;</span>
+
+<span class="c1"># Enviar a branch para o GitHub</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>nova-funcionalidade
+</code></pre></div>
+
+<p>No GitHub, você abre um <strong>Pull Request</strong> (PR) para que outra pessoa revise seu código antes de unir à branch principal.</p>
+<h2>Contribuindo com projetos open source</h2>
+<p>Contribuir com open source parece assustador, mas o fluxo é simples:</p>
+<ol>
+<li><strong>Fork</strong> do repositório (cria uma cópia no seu GitHub)</li>
+<li><strong>Clone</strong> do fork para sua máquina</li>
+<li>Criar uma branch para sua contribuição</li>
+<li>Fazer as alterações e commitar</li>
+<li>Enviar para o fork e abrir um Pull Request</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Clonar seu fork</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/seu-usuario/projeto.git
+<span class="nb">cd</span><span class="w"> </span>projeto
+
+<span class="c1"># Criar branch para sua contribuição</span>
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>melhoria-no-readme
+
+<span class="c1"># ... alterar arquivos ...</span>
+
+git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Corrige typo no README&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>melhoria-no-readme
+</code></pre></div>
+
+<p>O repositório do Grupy São Marcos é aberto e aceita contribuições. Se você encontrou um erro no site, quer escrever um artigo ou melhorar algo, é só seguir esse fluxo.</p>
+<h2>Comandos essenciais</h2>
+<p>Aqui vai uma lista dos comandos que você vai usar no dia a dia:</p>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>git status</code></td>
+<td>Mostra o estado atual do repositório</td>
+</tr>
+<tr>
+<td><code>git log --oneline</code></td>
+<td>Lista os commits de forma resumida</td>
+</tr>
+<tr>
+<td><code>git diff</code></td>
+<td>Mostra o que mudou desde o último commit</td>
+</tr>
+<tr>
+<td><code>git checkout -b nome</code></td>
+<td>Cria e muda para uma nova branch</td>
+</tr>
+<tr>
+<td><code>git merge branch</code></td>
+<td>Une uma branch à atual</td>
+</tr>
+<tr>
+<td><code>git stash</code></td>
+<td>Guarda alterações temporariamente</td>
+</tr>
+<tr>
+<td><code>git pull</code></td>
+<td>Baixa as atualizações do repositório remoto</td>
+</tr>
+</tbody>
+</table>
+<h2>Dicas para começar</h2>
+<ul>
+<li><strong>Commit frequentemente</strong>: commits pequenos e descritivos são muito mais fáceis de entender do que um único commit gigante.</li>
+<li><strong>Escreva mensagens claras</strong>: "Corrige bug no login" é melhor que "update".</li>
+<li><strong>Não tenha medo de errar</strong>: Git permite desfazer quase qualquer coisa. Se você estragar algo, provavelmente tem um comando para resolver.</li>
+<li><strong>Pratique</strong>: crie um repositório pessoal no GitHub e comece a versionar seus projetos.</li>
+</ul>
+<p>O Git tem uma curva de aprendizado no início, mas depois que você pega o jeito, não consegue imaginar programar sem ele. E o GitHub abre portas para colaborar com desenvolvedores do mundo inteiro — inclusive aqui em São Marcos.</p>
+        </p>
+      </div><!-- /.entry-content -->
+    </div>
+  </article>
+</section>
+<footer class="site-footer">
+    <div class="container">
+        <div class="row footer-main">
+            <div class="col-md-4 footer-brand">
+                <img src="/theme/images/logogrupy.svg" alt="Logo Grupy São Marcos" height="48px">
+                <p class="footer-desc">Comunidade de tecnologia e desenvolvimento de São Marcos - RS</p>
+            </div>
+            <div class="col-md-4">
+                <h4 class="footer-heading">Comunidade</h4>
+                <ul class="footer-links">
+                    <li><a href="/#about">Sobre</a></li>
+                    <li><a href="/#objetivos">Objetivos</a></li>
+                    <li><a href="/#schedule">Eventos</a></li>
+                    <li><a href="/pages/blog.html">Blog</a></li>
+                    <li><a href="/authors.html">Colaboradores</a></li>
+                    <li><a href="/#partner">Apoiadores</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h4 class="footer-heading">Contato</h4>
+                <ul class="footer-links">
+                    <li><a href="https://github.com/grupy-sao-marcos" target="_blank" rel="noopener">GitHub</a></li>
+                    <li><a href="https://github.com/grupy-sao-marcos/call4papers/issues" target="_blank" rel="noopener">Call4Papers</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Grupy São Marcos. Comunidade aberta e colaborativa.</p>
+        </div>
+    </div>
+</footer>    <!-- script -->
+    <script src="/theme/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/theme/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script
+        src="/theme/bower_components/smooth-scroll/dist/js/smooth-scroll.min.js"></script>
+    <script src="/theme/js/main.js"></script>
+    <!-- Matomo -->
+    <script>
+    if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+        var _paq = window._paq = window._paq || [];
+        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+            var u="https://grupy-sao-marcos.matomo.cloud/";
+            _paq.push(['setTrackerUrl', u+'matomo.php']);
+            _paq.push(['setSiteId', '1']);
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+            g.async=true; g.src='https://cdn.matomo.cloud/grupy-sao-marcos.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
+        })();
+    }
+    </script>
+    <!-- End Matomo Code -->
+</body>
+
+</html>
