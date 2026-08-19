@@ -122,4 +122,4 @@ print(sem_duplicatas)  # [1, 2, 3]
 
 Dominar essas estruturas resolve a maioria dos problemas do dia a dia. O truque é pensar no dado que você precisa guardar e escolher a ferramenta certa. Nos próximos artigos vamos usar bastante essas estruturas em exemplos reais.
 
-Tem alguma dúvida ou sugestão de tema? Deixe nos comentários ou contribua com um artigo no nosso [repositorio](https://github.com/grupy-sao-marcos/grupy-sao-marcos.github.io).
+Tem alguma dúvida ou sugestão de tema? Deixe nos comentários ou contribua com um artigo no nosso [repositório](https://github.com/grupy-sao-marcos/grupy-sao-marcos.github.io).

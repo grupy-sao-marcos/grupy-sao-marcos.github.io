@@ -135,4 +135,4 @@ Depende do tamanho do projeto. Em scripts pequenos, anotações podem ser exager
 
 Comece anotando as **funções públicas** e as **dataclasses** dos seus projetos. Não precisa anotar tudo de uma vez — aos poucos a prática vira hábito e a qualidade do código melhora naturalmente.
 
-Gostou do tema? Em breve escreveremos sobre testes automatizados, outro pilar das boas práticas. Sugira temas ou contribua no nosso [repositorio](https://github.com/grupy-sao-marcos/grupy-sao-marcos.github.io).
+Gostou do tema? Em breve escreveremos sobre testes automatizados, outro pilar das boas práticas. Sugira temas ou contribua no nosso [repositório](https://github.com/grupy-sao-marcos/grupy-sao-marcos.github.io).

@@ -8,7 +8,7 @@ Authors: Perceu Bertoletti
 Summary: Primeiro evento de 2026 com um modelo um pouco diferente
 Inscricao: https://forms.gle/R5VxUr7qLJe4LeZFA
 
-Estamos organizando os seguintes conteudos:
+Estamos organizando os seguintes conteúdos:
 
 |Horario|Atividade|Palestrante| 
 |:-------:|:------|:-------|

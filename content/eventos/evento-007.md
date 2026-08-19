@@ -5,14 +5,14 @@ Category: Evento
 Tags: evento, encontro
 Slug: setimo-encontro
 Authors: Luiz Felipe Dal Zotto, Gustavo Miotto
-Summary: Terceiro evento de 2025, Vamos conhecer mais um keynote que ajuda e move o cenario de tecnologia de são marcos.
+Summary: Terceiro evento de 2025, Vamos conhecer mais um keynote que ajuda e move o cenario de tecnologia de São Marcos.
 Inscricao: https://forms.gle/ZxQo8yQERhi9fbUR6
 
-Estamos organizando os seguintes conteudos:
+Estamos organizando os seguintes conteúdos:
 
  - 08:55 Abertura
  - 09:00 Conversa sobre flutter: Luiz Felipe Dal Zotto
- - 10:00 Coffe Break
+ - 10:00 Coffee break
  - 11:00 Keynote: Gustavo Miotto
  - 12:00 Encerramento
 

@@ -5,15 +5,15 @@ Category: Evento
 Tags: evento, encontro
 Slug: sexto-encontro
 Authors: Cid Marcos Jr, Bruno Dal'lago
-Summary: Segundo evento de 2025, nesse encontro vamos fazer uma mesa redonda de tira duvidas com desenvolvedores que estiverem e quiserem participar.
+Summary: Segundo evento de 2025, nesse encontro vamos fazer uma mesa redonda de tira-dúvidas com desenvolvedores que estiverem e quiserem participar.
 Inscricao: https://forms.gle/greK3bBRs4FKDuGW8
 
-Estamos organizando os seguintes conteudos:
+Estamos organizando os seguintes conteúdos:
 
  - 09:00 Abertura
- - 09:05 Introdução a desenvolvimento com APis
- - 09:30 Desenvolvimento de Jogos, Maquina de estados
- - 10:15 Coffe Break
+ - 09:05 Introdução ao desenvolvimento com APIs
+ - 09:30 Desenvolvimento de Jogos, Máquina de estados
+ - 10:15 Coffee break
  - 11:00 Mesa Redonda: Carreira de desenvolvedor
  - 12:05 Encerramento
 

@@ -123,14 +123,14 @@ def encontrar_tarefa(tarefa_id):
 def ver_tarefa(tarefa_id):
     tarefa = encontrar_tarefa(tarefa_id)
     if tarefa is None:
-        return jsonify({"erro": "Tarefa nao encontrada"}), 404
+        return jsonify({"erro": "Tarefa não encontrada"}), 404
     return jsonify(tarefa)
 
 @app.route("/tarefas/<int:tarefa_id>", methods=["PUT"])
 def atualizar_tarefa(tarefa_id):
     tarefa = encontrar_tarefa(tarefa_id)
     if tarefa is None:
-        return jsonify({"erro": "Tarefa nao encontrada"}), 404
+        return jsonify({"erro": "Tarefa não encontrada"}), 404
 
     dados = request.get_json()
     tarefa["titulo"] = dados.get("titulo", tarefa["titulo"])
@@ -180,4 +180,4 @@ A partir daqui o caminho é longo e divertido:
 
 O Flask é perfeito para começar, pois ele não impõe estrutura e deixa você aprender cada conceito aos poucos. Em breve traremos um artigo mostrando como integrar sua API a um banco de dados.
 
-Gostou? Compartilhe com a comunidade e envie sua versão da API no nosso [repositorio](https://github.com/grupy-sao-marcos/grupy-sao-marcos.github.io).
+Gostou? Compartilhe com a comunidade e envie sua versão da API no nosso [repositório](https://github.com/grupy-sao-marcos/grupy-sao-marcos.github.io).

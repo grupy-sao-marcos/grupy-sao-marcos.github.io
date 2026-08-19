@@ -5,7 +5,7 @@ Category: Blog
 Authors: Perceu Bertoletti
 Summary: Aprenda a ler, filtrar e gerar arquivos CSV com o módulo csv da biblioteca padrão do Python, sem instalar nada.
 
-Planilhas e bancos de dados costumam ser exportados para um formato chamado **CSV** (*Comma-Separated Values*). É um arquivo de texto simples onde cada linha é uma tabela e cada coluna é separada por vírgula:
+Planilhas e bancos de dados costumam ser exportados para um formato chamado **CSV** (*Comma-Separated Values*). É um arquivo de texto simples onde cada linha é um registro e cada coluna é separada por vírgula:
 
 ```text
 nome,idade,cidade
@@ -167,4 +167,4 @@ O módulo `csv` resolve a grande maioria dos casos de leitura e escrita de tabel
 
 Com isso você pode automatizar a troca de dados entre sistemas, gerar relatórios e alimentar análises — tudo com a biblioteca padrão do Python.
 
-Usou o CSV em alguma automação interessante? Conta pra gente nos comentários ou contribua com um artigo no nosso [repositorio](https://github.com/grupy-sao-marcos/grupy-sao-marcos.github.io).
+Usou o CSV em alguma automação interessante? Conta pra gente nos comentários ou contribua com um artigo no nosso [repositório](https://github.com/grupy-sao-marcos/grupy-sao-marcos.github.io).

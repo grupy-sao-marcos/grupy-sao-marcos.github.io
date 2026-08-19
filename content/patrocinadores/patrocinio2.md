@@ -7,4 +7,4 @@ Slug: isadora-scain
 image: /images/isadora-scain.jpeg
 Authors: Patrocinio
 link: https://www.instagram.com/arq.isadorascain/
-Summary: Escritorio de arquitetura.
+Summary: Escritório de arquitetura.

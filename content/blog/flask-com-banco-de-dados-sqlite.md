@@ -118,7 +118,7 @@ def atualizar_tarefa(tarefa_id):
         "SELECT * FROM tarefas WHERE id = ?", (tarefa_id,)
     ).fetchone()
     if tarefa is None:
-        return jsonify({"erro": "Tarefa nao encontrada"}), 404
+        return jsonify({"erro": "Tarefa não encontrada"}), 404
     return jsonify(dict(tarefa))
 
 
@@ -183,4 +183,4 @@ Você já tem uma API funcional com dados persistidos usando apenas a biblioteca
 
 No próximo artigo vamos dar um passo atrás e aprender a gerar **páginas HTML** com Flask e o motor de templates **Jinja2**, transformando sua API em um site de verdade.
 
-Gostou do conteúdo? Deixe seu comentário ou contribua com um artigo no nosso [repositorio](https://github.com/grupy-sao-marcos/grupy-sao-marcos.github.io).
+Gostou do conteúdo? Deixe seu comentário ou contribua com um artigo no nosso [repositório](https://github.com/grupy-sao-marcos/grupy-sao-marcos.github.io).

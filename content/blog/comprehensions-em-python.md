@@ -25,9 +25,9 @@ dobrados = [n * 2 for n in numeros]
 # resultado: [2, 4, 6, 8, 10]
 ```
 
-A sintaxe é `[expressao for item in iteravel]`. Pense como uma frase: "para cada item no iterável, aplique a expressão e guarde o resultado".
+A sintaxe é `[expressão for item in iterável]`. Pense como uma frase: "para cada item no iterável, aplique a expressão e guarde o resultado".
 
-### Filtrando com条件
+### Filtrando com condição
 
 Você pode adicionar uma condição no final para filtrar elementos:
 
@@ -63,14 +63,14 @@ flat = [n for linha in matriz for n in linha]
 # resultado: [1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
 
-Cuidado: comprehension aninhada pode ficar difícil de ler. Se ficar confuso,prefira o `for` tradicional.
+Cuidado: comprehension aninhada pode ficar difícil de ler. Se ficar confuso, prefira o `for` tradicional.
 
 ## Dict comprehension
 
 Funciona igual, mas cria um **dicionário**:
 
 ```python
-# Criar um dicionário de平方
+# Criar um dicionário de quadrados
 quadrados = {n: n**2 for n in range(1, 6)}
 # resultado: {1: 1, 2: 4, 3: 9, 4: 16, 5: 25}
 

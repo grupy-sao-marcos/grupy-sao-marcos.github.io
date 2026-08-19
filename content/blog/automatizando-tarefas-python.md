@@ -89,7 +89,7 @@ hoje = datetime.now()
 amanha = hoje + timedelta(days=1)
 
 print(hoje.strftime("%d/%m/%Y %H:%M"))  # 14/08/2026 09:00
-print("Amanha:", amanha.strftime("%d/%m/%Y"))
+print("Amanhã:", amanha.strftime("%d/%m/%Y"))
 ```
 
 ## Buscando dados na web
@@ -131,4 +131,4 @@ A melhor forma de aprender automação é começando pequeno. Escolha uma tarefa
 
 Com o tempo, você vai perceber que o Python não serve apenas para construir grandes sistemas, mas também para **eliminar o trabalho repetitivo** e dar mais tempo para o que realmente importa.
 
-Tem alguma automação que você gostaria de ver por aqui? Sugira nos comentários ou contribua com um artigo no nosso [repositorio](https://github.com/grupy-sao-marcos/grupy-sao-marcos.github.io).
+Tem alguma automação que você gostaria de ver por aqui? Sugira nos comentários ou contribua com um artigo no nosso [repositório](https://github.com/grupy-sao-marcos/grupy-sao-marcos.github.io).

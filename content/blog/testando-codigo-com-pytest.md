@@ -130,7 +130,7 @@ import pytest
 
 def dividir(a: float, b: float) -> float:
     if b == 0:
-        raise ValueError("Divisao por zero nao permitida")
+        raise ValueError("Divisão por zero não permitida")
     return a / b
 
 
@@ -171,4 +171,4 @@ pytest tests
 
 Comece testando as funções mais importantes do seu projeto. Aos poucos, cobrir tudo vira um hábito natural.
 
-Testou seu código e encontrou um erro? Conta pra gente nos comentários ou contribua com um artigo no nosso [repositorio](https://github.com/grupy-sao-marcos/grupy-sao-marcos.github.io).
+Testou seu código e encontrou um erro? Conta pra gente nos comentários ou contribua com um artigo no nosso [repositório](https://github.com/grupy-sao-marcos/grupy-sao-marcos.github.io).

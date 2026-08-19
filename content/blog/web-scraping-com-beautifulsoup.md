@@ -168,4 +168,4 @@ O `status_code == 200` verifica que a página foi retornada com sucesso antes de
 
 Scraping é uma ferramenta incrível, mas use-a com **responsabilidade**: para aprender, para dados públicos e sempre respeitando o dono do site. Quando houver uma API oficial, ela é sempre a melhor opção.
 
-Quer ver mais exemplos de automação? Sugira nos comentários ou contribua com um artigo no nosso [repositorio](https://github.com/grupy-sao-marcos/grupy-sao-marcos.github.io).
+Quer ver mais exemplos de automação? Sugira nos comentários ou contribua com um artigo no nosso [repositório](https://github.com/grupy-sao-marcos/grupy-sao-marcos.github.io).

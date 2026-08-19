@@ -5,14 +5,14 @@ Category: Evento
 Tags: evento, encontro
 Slug: quinto-encontro
 Authors: Perceu Bertoletti, Rogerio Rizzon
-Summary: Primeiro evento de 2025 que contara com palestras e keynotes sempre com o classico coffebreak para network.
+Summary: Primeiro evento de 2025 que contará com palestras e keynotes sempre com o clássico coffee break para networking.
 Inscricao: https://forms.gle/cuDcf3AAAcWHraT98
 
-Nesse 5º evento do grupy são marcos, estamos organizando os seguintes conteudos:
+Nesse 5º evento do grupy São Marcos, estamos organizando os seguintes conteúdos:
 
  - 09:00 Abertura
  - 09:05 Introdução a programação criativa
- - 10:15 Coffe Break
+ - 10:15 Coffee break
  - 11:00 Keynote: Rogerio Rizzon
  - 12:05 Encerramento
 

@@ -6,13 +6,13 @@ Tags: evento, encontro
 Slug: quarto-encontro
 Authors: Sergio Fochesatto, Cid Marcos Jr
 Inscricao: https://forms.gle/u4qt41hLMu1gfzGQA
-Summary: Quarto e ultimo evento de 2024 que contara com palestras e coffebreak ja com o nosso segundo keynote.
+Summary: Quarto e último evento de 2024 que contará com palestras e coffee break já com o nosso segundo keynote.
 
-Nesse quarto evento iremos tomar um corpo maior organizando os seguintes conteudos:
+Nesse quarto evento iremos tomar um corpo maior organizando os seguintes conteúdos:
 
  - 09:00 Abertura
  - 09:05 Introdução a microserviços
- - 10:15 Coffe Break
+ - 10:15 Coffee break
  - 11:00 Keynote: Sergio Fochesatto 
  - 12:05 Encerramento
 

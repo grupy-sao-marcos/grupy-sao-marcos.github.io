@@ -5,7 +5,7 @@ Category: Blog
 Authors: Perceu Bertoletti
 Summary: Aprenda os fundamentos de Git e GitHub para versionar seus projetos e contribuir com projetos open source como o Grupy São Marcos.
 
-Se você já Programou algo e precisou voltar uma versão anterior do código, provavelmente já criou uma pasta chamada `projeto_v2`, `projeto_v3_final`, `projeto_v3_final_real`. Todo mundo já passou por isso.
+Se você já programou algo e precisou voltar uma versão anterior do código, provavelmente já criou uma pasta chamada `projeto_v2`, `projeto_v3_final`, `projeto_v3_final_real`. Todo mundo já passou por isso.
 
 O **Git** resolve esse problema de forma profissional. Ele é um sistema de **controle de versão** que registra cada mudança que você faz no código, permitindo voltar a qualquer momento e trabalhar em equipo sem conflitos. O **GitHub** é a plataforma onde você hospeda seus projetos Git e colabora com outras pessoas.
 

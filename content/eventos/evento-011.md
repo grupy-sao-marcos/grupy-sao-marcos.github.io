@@ -8,7 +8,7 @@ Authors: Sergio Fochesatto, Rodrigo Soldatelli da Rosa, Lenerson Velho Nunes
 Summary: Terceiro evento de 2026
 Inscricao: https://forms.gle/BU4CBbREi12s1MJ68
 
-Estamos organizando os seguintes conteudos:
+Estamos organizando os seguintes conteúdos:
 
 |Horario|Atividade|Palestrante| 
 |:-------:|:------|:-------|

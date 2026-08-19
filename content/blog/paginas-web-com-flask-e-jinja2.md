@@ -76,7 +76,7 @@ Para marcar as tarefas concluídas, use um `if`:
     <li>
         {{ tarefa.titulo }}
         {% if tarefa.concluida %}
-        <strong>(concluida)</strong>
+        <strong>(concluída)</strong>
         {% else %}
         <em>(pendente)</em>
         {% endif %}
@@ -99,7 +99,7 @@ Você não quer copiar a estrutura do `<html>` para cada página. O Jinja2 resol
 <body>
     <header>
         <nav>
-            <a href="{{ url_for('index') }}">Inicio</a>
+            <a href="{{ url_for('index') }}">Início</a>
             <a href="{{ url_for('sobre') }}">Sobre</a>
         </nav>
     </header>
@@ -165,7 +165,7 @@ O Jinja2 também serve para montar formulários. Crie o template `templates/nova
 {% block conteudo %}
 <h1>Nova tarefa</h1>
 <form method="POST">
-    <label for="titulo">Titulo:</label>
+    <label for="titulo">Título:</label>
     <input type="text" name="titulo" id="titulo" required>
     <button type="submit">Salvar</button>
 </form>
@@ -212,4 +212,4 @@ Com essas bases você pode explorar:
 
 Transformar dados em páginas é o coração da web, e o Python faz isso de forma surpreendentemente simples.
 
-Tem alguma página que gostaria de construir? Compartilhe nos comentários ou contribua com um artigo no nosso [repositorio](https://github.com/grupy-sao-marcos/grupy-sao-marcos.github.io).
+Tem alguma página que gostaria de construir? Compartilhe nos comentários ou contribua com um artigo no nosso [repositório](https://github.com/grupy-sao-marcos/grupy-sao-marcos.github.io).

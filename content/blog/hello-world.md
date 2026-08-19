@@ -5,12 +5,12 @@ Category: Blog
 Authors: Perceu Bertoletti
 Summary: Vamos iniciar um movimento de criação de conteúdo no grupo
 
-Que tal contribuir com a nossa comunidade, agora você alem de palestrar, auxiliar com codigo, auxiliar na organização dos eventos, tambem é possivel escrever, revisar e incentivar outros a fazerem o mesmo.
+Que tal contribuir com a nossa comunidade? Agora você além de palestrar, auxiliar com código, auxiliar na organização dos eventos, também é possível escrever, revisar e incentivar outros a fazerem o mesmo.
 
-Agora com o blog é possivel sempre divulgar seu conhecimento de forma simples basta escrever seu artigo em markdown e submeter via pull request no nosso [repositorio](https://github.com/grupy-sao-marcos/grupy-sao-marcos.github.io).
+Agora com o blog é possível sempre divulgar seu conhecimento de forma simples. Basta escrever seu artigo em markdown e submeter via pull request no nosso [repositório](https://github.com/grupy-sao-marcos/grupy-sao-marcos.github.io).
 
-É muito importante que você crie e edite os arquivos dentro da pasta `blog`, os outros arquivos são referente a eventos e detalhes dos patrocinadores, esses markdowns servem como base de dados para a geração das paginas
+É muito importante que você crie e edite os arquivos dentro da pasta `blog`. Os outros arquivos são referentes a eventos e detalhes dos patrocinadores; esses markdowns servem como base de dados para a geração das páginas.
 
-Desde de já, toda a comunidade agradece.
+Desde já, toda a comunidade agradece.
 
 Grupy São Marcos

@@ -5,10 +5,10 @@ Category: Evento
 Tags: evento, encontro
 Slug: segundo-encontro
 Authors: Perceu Bertoletti, Gabriel Taufer
-Summary: Segundo evento que contara com palestras e coffebreak.
+Summary: Segundo evento que contará com palestras e coffee break.
 
-Nesse segundo evento estamos organizando os seguintes conteudos:
+Nesse segundo evento estamos organizando os seguintes conteúdos:
 
  - Desenvolvimento com docker
- - Coffe Break
+ - Coffee break
  - Manipulando dados com pandas
