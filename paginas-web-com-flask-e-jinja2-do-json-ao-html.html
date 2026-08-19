@@ -48,7 +48,7 @@
 
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-items"
                 aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
+                <span class="sr-only">Alternar navegação</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -142,7 +142,7 @@
     <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
         {{ tarefa.titulo }}
         {% if tarefa.concluida %}
-        <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>(concluida)<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>(concluída)<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span>
         {% else %}
         <span class="p">&lt;</span><span class="nt">em</span><span class="p">&gt;</span>(pendente)<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;</span>
         {% endif %}
@@ -162,7 +162,7 @@
 <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">header</span><span class="p">&gt;</span>
         <span class="p">&lt;</span><span class="nt">nav</span><span class="p">&gt;</span>
-            <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{{ url_for(&#39;index&#39;) }}&quot;</span><span class="p">&gt;</span>Inicio<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{{ url_for(&#39;index&#39;) }}&quot;</span><span class="p">&gt;</span>Início<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
             <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{{ url_for(&#39;sobre&#39;) }}&quot;</span><span class="p">&gt;</span>Sobre<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
         <span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
     <span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
@@ -218,7 +218,7 @@
 {% block conteudo %}
 <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Nova tarefa<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;POST&quot;</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;titulo&quot;</span><span class="p">&gt;</span>Titulo:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;titulo&quot;</span><span class="p">&gt;</span>Título:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;titulo&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;titulo&quot;</span> <span class="na">required</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span><span class="p">&gt;</span>Salvar<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
@@ -259,7 +259,7 @@
 <li>O <strong>Django</strong>, que traz essa estrutura toda pronta e empacotada.</li>
 </ul>
 <p>Transformar dados em páginas é o coração da web, e o Python faz isso de forma surpreendentemente simples.</p>
-<p>Tem alguma página que gostaria de construir? Compartilhe nos comentários ou contribua com um artigo no nosso <a href="https://github.com/grupy-sao-marcos/grupy-sao-marcos.github.io">repositorio</a>.</p>
+<p>Tem alguma página que gostaria de construir? Compartilhe nos comentários ou contribua com um artigo no nosso <a href="https://github.com/grupy-sao-marcos/grupy-sao-marcos.github.io">repositório</a>.</p>
         </p>
       </div><!-- /.entry-content -->
     </div>

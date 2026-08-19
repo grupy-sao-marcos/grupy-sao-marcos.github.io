@@ -48,7 +48,7 @@
 
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-items"
                 aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
+                <span class="sr-only">Alternar navegação</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -87,7 +87,7 @@
           <p>Se você já conhece o básico de Python e quer dar os primeiros passos no mundo web, o <a href="https://flask.palletsprojects.com/">Flask</a> é uma ótima porta de entrada. Ele é leve, simples e você consegue criar sua primeira API em poucos minutos.</p>
 <p>Neste artigo vamos construir uma API de tarefas (a clássica <em>todo list</em>) usando JSON.</p>
 <h2>Preparando o ambiente</h2>
-<p>Antes de começar, crie um ambiente virtual (se tiver dúvidas, veja nosso <a href="/primeiro-ambiente-vitual.html">artigo sobre ambientes virtuais</a>) e instale o Flask:</p>
+<p>Antes de começar, crie um ambiente virtual (se tiver dúvidas, veja nosso <a href="/primeiro-ambiente-virtual.html">artigo sobre ambientes virtuais</a>) e instale o Flask:</p>
 <div class="highlight"><pre><span></span><code>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
 <span class="nb">source</span><span class="w"> </span>.venv/bin/activate
 pip<span class="w"> </span>install<span class="w"> </span>flask
@@ -205,14 +205,14 @@ pip<span class="w"> </span>install<span class="w"> </span>flask
 <span class="k">def</span> <span class="nf">ver_tarefa</span><span class="p">(</span><span class="n">tarefa_id</span><span class="p">):</span>
     <span class="n">tarefa</span> <span class="o">=</span> <span class="n">encontrar_tarefa</span><span class="p">(</span><span class="n">tarefa_id</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">tarefa</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;erro&quot;</span><span class="p">:</span> <span class="s2">&quot;Tarefa nao encontrada&quot;</span><span class="p">}),</span> <span class="mi">404</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;erro&quot;</span><span class="p">:</span> <span class="s2">&quot;Tarefa não encontrada&quot;</span><span class="p">}),</span> <span class="mi">404</span>
     <span class="k">return</span> <span class="n">jsonify</span><span class="p">(</span><span class="n">tarefa</span><span class="p">)</span>
 
 <span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/tarefas/&lt;int:tarefa_id&gt;&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;PUT&quot;</span><span class="p">])</span>
 <span class="k">def</span> <span class="nf">atualizar_tarefa</span><span class="p">(</span><span class="n">tarefa_id</span><span class="p">):</span>
     <span class="n">tarefa</span> <span class="o">=</span> <span class="n">encontrar_tarefa</span><span class="p">(</span><span class="n">tarefa_id</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">tarefa</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;erro&quot;</span><span class="p">:</span> <span class="s2">&quot;Tarefa nao encontrada&quot;</span><span class="p">}),</span> <span class="mi">404</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s2">&quot;erro&quot;</span><span class="p">:</span> <span class="s2">&quot;Tarefa não encontrada&quot;</span><span class="p">}),</span> <span class="mi">404</span>
 
     <span class="n">dados</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_json</span><span class="p">()</span>
     <span class="n">tarefa</span><span class="p">[</span><span class="s2">&quot;titulo&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dados</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;titulo&quot;</span><span class="p">,</span> <span class="n">tarefa</span><span class="p">[</span><span class="s2">&quot;titulo&quot;</span><span class="p">])</span>
@@ -254,7 +254,7 @@ curl<span class="w"> </span>-X<span class="w"> </span>DELETE<span class="w"> </s
 <li>Conhecer outros frameworks como o <strong>FastAPI</strong> e o <strong>Django</strong>.</li>
 </ul>
 <p>O Flask é perfeito para começar, pois ele não impõe estrutura e deixa você aprender cada conceito aos poucos. Em breve traremos um artigo mostrando como integrar sua API a um banco de dados.</p>
-<p>Gostou? Compartilhe com a comunidade e envie sua versão da API no nosso <a href="https://github.com/grupy-sao-marcos/grupy-sao-marcos.github.io">repositorio</a>.</p>
+<p>Gostou? Compartilhe com a comunidade e envie sua versão da API no nosso <a href="https://github.com/grupy-sao-marcos/grupy-sao-marcos.github.io">repositório</a>.</p>
         </p>
       </div><!-- /.entry-content -->
     </div>

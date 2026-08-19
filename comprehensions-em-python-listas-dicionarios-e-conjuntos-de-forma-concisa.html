@@ -48,7 +48,7 @@
 
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-items"
                 aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
+                <span class="sr-only">Alternar navegação</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -99,8 +99,8 @@
 <span class="c1"># resultado: [2, 4, 6, 8, 10]</span>
 </code></pre></div>
 
-<p>A sintaxe é <code>[expressao for item in iteravel]</code>. Pense como uma frase: "para cada item no iterável, aplique a expressão e guarde o resultado".</p>
-<h3>Filtrando com条件</h3>
+<p>A sintaxe é <code>[expressão for item in iterável]</code>. Pense como uma frase: "para cada item no iterável, aplique a expressão e guarde o resultado".</p>
+<h3>Filtrando com condição</h3>
 <p>Você pode adicionar uma condição no final para filtrar elementos:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Números pares de uma lista</span>
 <span class="n">pares</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
@@ -127,10 +127,10 @@
 <span class="c1"># resultado: [1, 2, 3, 4, 5, 6, 7, 8, 9]</span>
 </code></pre></div>
 
-<p>Cuidado: comprehension aninhada pode ficar difícil de ler. Se ficar confuso,prefira o <code>for</code> tradicional.</p>
+<p>Cuidado: comprehension aninhada pode ficar difícil de ler. Se ficar confuso, prefira o <code>for</code> tradicional.</p>
 <h2>Dict comprehension</h2>
 <p>Funciona igual, mas cria um <strong>dicionário</strong>:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Criar um dicionário de平方</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Criar um dicionário de quadrados</span>
 <span class="n">quadrados</span> <span class="o">=</span> <span class="p">{</span><span class="n">n</span><span class="p">:</span> <span class="n">n</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)}</span>
 <span class="c1"># resultado: {1: 1, 2: 4, 3: 9, 4: 16, 5: 25}</span>
 
