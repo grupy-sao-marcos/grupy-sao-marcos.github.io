@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>F-strings em Python: formatando textos do jeito fácil - Grupy São Marcos</title>
+    <meta name="description" content="Grupy São Marcos é uma comunidade de desenvolvedores e pessoas interessadas em tecnologia da região de São Marcos - RS. Encontros presenciais gratuitos, compartilhamento de conhecimento e fortalecimento do ecossistema tecnológico local.">
+    <meta name="keywords" content="Grupy São Marcos, Python São Marcos, comunidade de tecnologia, desenvolvimento São Marcos, eventos de tecnologia, comunidade dev, São Marcos RS">
+    <meta name="author" content="Grupy São Marcos">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Grupy São Marcos | Comunidade de Tecnologia e Desenvolvimento">
+    <meta property="og:description" content="Comunidade de desenvolvedores de São Marcos - RS. Encontros presenciais gratuitos, conhecimento e conexões na região.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://grupy-sao-marcos.github.io/">
+    <meta property="og:image" content="/theme/images/logogrupy.svg">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="Grupy São Marcos">
+
+    <!-- css -->
+    <link rel="stylesheet"
+        href="/theme/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/theme/bower_components/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="/theme/css/main.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+    <link
+        href="/feeds/all.atom.xml"
+        type="application/atom+xml" rel="alternate" title="Grupy São Marcos Atom Feed" />
+</head>
+
+<body data-spy="scroll" data-target="#site-nav">
+<nav id="site-nav" class="navbar navbar-fixed-top navbar-custom">
+    <div class="container">
+        <div class="navbar-header">
+
+            <!-- logo -->
+            <div class="site-branding">
+                <a class="logo" href="/">
+
+                    <!-- logo image  -->
+                    <img src="/theme/images/logogrupy.svg" alt="Logo" height="56px">
+
+                </a>
+            </div>
+
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-items"
+                aria-expanded="false">
+                <span class="sr-only">Alternar navegação</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+        </div><!-- /.navbar-header -->
+
+        <div class="collapse navbar-collapse" id="navbar-items">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#objetivos">Objetivos</a></li>
+                <li><a href="#facts">Próximo Evento</a></li>
+                <li><a href="#schedule">Eventos</a></li>
+                <li><a href="#partner">Apoiadores</a></li>
+                <li class="active"><a href="/pages/blog.html">Blog</a></li>
+                <li class="nav-inscricao"><a class="btn-nav-inscricao" target="_blank" href="https://forms.gle/GJgP8EgyrD6GuPrQ6">Inscreva-se</a></li>
+            </ul>
+        </div>
+    </div><!-- /.container -->
+</nav><header id="site-header" class="site-article valign-center">
+    <div class="intro blog">
+        <h1>
+          F-strings em Python: formatando textos do jeito fácil</br>
+          <small>
+              <a href="/author/perceu-bertoletti.html">Perceu Bertoletti</a>            - 28/10/2026
+          </small>
+        </h1>
+    </div>
+</header>
+<section id="article-content" class="valign-center">
+  <article class="container">
+    <div class="container-line">
+
+      <div class="entry-content">
+        <p>
+          <p>Montar textos juntando variáveis é uma das tarefas mais comuns em qualquer programa. Em Python, a forma mais simples e legível de fazer isso são as <strong>f-strings</strong>.</p>
+<h2>O básico</h2>
+<p>Basta colocar um <code>f</code> antes das aspas e as variáveis entre chaves:</p>
+<div class="highlight"><pre><span></span><code><span class="n">nome</span> <span class="o">=</span> <span class="s2">&quot;Ana&quot;</span>
+<span class="n">idade</span> <span class="o">=</span> <span class="mi">30</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">nome</span><span class="si">}</span><span class="s2"> tem </span><span class="si">{</span><span class="n">idade</span><span class="si">}</span><span class="s2"> anos&quot;</span><span class="p">)</span>  <span class="c1"># Ana tem 30 anos</span>
+</code></pre></div>
+
+<p>Dentro das chaves vale qualquer expressão Python:</p>
+<div class="highlight"><pre><span></span><code><span class="n">preco</span> <span class="o">=</span> <span class="mf">19.9</span>
+<span class="n">quantidade</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total: </span><span class="si">{</span><span class="n">preco</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">quantidade</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>    <span class="c1"># Total: 59.699999999999996</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Nome em maiúsculas: </span><span class="si">{</span><span class="n">nome</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># Nome em maiúsculas: ANA</span>
+</code></pre></div>
+
+<h2>Formatando números</h2>
+<p>Aquele <code>59.699999999999996</code> não fica bonito. Depois do <code>:</code> você define o formato:</p>
+<div class="highlight"><pre><span></span><code><span class="n">total</span> <span class="o">=</span> <span class="mf">59.699999999999996</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R$ </span><span class="si">{</span><span class="n">total</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>       <span class="c1"># R$ 59.70</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="mf">1234567.891</span><span class="si">:</span><span class="s2">,.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>   <span class="c1"># 1,234,567.89</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="mf">0.256</span><span class="si">:</span><span class="s2">.1%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>          <span class="c1"># 25.6%</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="mi">42</span><span class="si">:</span><span class="s2">05d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>             <span class="c1"># 00042</span>
+</code></pre></div>
+
+<h2>Alinhando colunas</h2>
+<p>Ótimo para relatórios no terminal:</p>
+<div class="highlight"><pre><span></span><code><span class="n">produtos</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;Café&quot;</span><span class="p">,</span> <span class="mf">18.5</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Pão&quot;</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Queijo colonial&quot;</span><span class="p">,</span> <span class="mf">42.0</span><span class="p">)]</span>
+
+<span class="k">for</span> <span class="n">nome</span><span class="p">,</span> <span class="n">preco</span> <span class="ow">in</span> <span class="n">produtos</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">nome</span><span class="si">:</span><span class="s2">&lt;18</span><span class="si">}{</span><span class="n">preco</span><span class="si">:</span><span class="s2">&gt;8.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>Café                 18.50
+Pão                   0.75
+Queijo colonial      42.00
+</code></pre></div>
+
+<p><code>&lt;</code> alinha à esquerda, <code>&gt;</code> à direita e <code>^</code> centraliza.</p>
+<h2>Formatando datas</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
+
+<span class="n">hoje</span> <span class="o">=</span> <span class="n">date</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">hoje</span><span class="si">:</span><span class="s2">%d/%m/%Y</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># 28/10/2026</span>
+</code></pre></div>
+
+<h2>O truque do <code>=</code> para depurar</h2>
+<p>A partir do Python 3.8, colocar <code>=</code> depois da variável mostra o nome e o valor:</p>
+<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">=}</span><span class="s2">, </span><span class="si">{</span><span class="n">y</span><span class="si">=}</span><span class="s2">, </span><span class="si">{</span><span class="n">x</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">y</span><span class="si">=:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># x=10, y=3, x / y=3.33</span>
+</code></pre></div>
+
+<p>Muito útil para aquele debug rápido.</p>
+<h2>Dica final</h2>
+<p>Se você ainda usa <code>"Olá, " + nome + "!"</code> ou <code>"Olá, %s" % nome</code>, experimente as f-strings: o código fica mais curto, mais legível e mais rápido.</p>
+<p>Sugira temas ou contribua no nosso <a href="https://github.com/grupy-sao-marcos/grupy-sao-marcos.github.io">repositório</a>.</p>
+        </p>
+      </div><!-- /.entry-content -->
+    </div>
+  </article>
+</section>
+<footer class="site-footer">
+    <div class="container">
+        <div class="row footer-main">
+            <div class="col-md-4 footer-brand">
+                <img src="/theme/images/logogrupy.svg" alt="Logo Grupy São Marcos" height="48px">
+                <p class="footer-desc">Comunidade de tecnologia e desenvolvimento de São Marcos - RS</p>
+            </div>
+            <div class="col-md-4">
+                <h4 class="footer-heading">Comunidade</h4>
+                <ul class="footer-links">
+                    <li><a href="/#about">Sobre</a></li>
+                    <li><a href="/#objetivos">Objetivos</a></li>
+                    <li><a href="/#schedule">Eventos</a></li>
+                    <li><a href="/pages/blog.html">Blog</a></li>
+                    <li><a href="/authors.html">Colaboradores</a></li>
+                    <li><a href="/#partner">Apoiadores</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h4 class="footer-heading">Contato</h4>
+                <ul class="footer-links">
+                    <li><a href="https://github.com/grupy-sao-marcos" target="_blank" rel="noopener">GitHub</a></li>
+                    <li><a href="https://github.com/grupy-sao-marcos/call4papers/issues" target="_blank" rel="noopener">Call4Papers</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Grupy São Marcos. Comunidade aberta e colaborativa.</p>
+        </div>
+    </div>
+</footer>    <!-- script -->
+    <script src="/theme/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/theme/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script
+        src="/theme/bower_components/smooth-scroll/dist/js/smooth-scroll.min.js"></script>
+    <script src="/theme/js/main.js"></script>
+    <!-- Matomo -->
+    <script>
+    if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+        var _paq = window._paq = window._paq || [];
+        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+            var u="https://grupy-sao-marcos.matomo.cloud/";
+            _paq.push(['setTrackerUrl', u+'matomo.php']);
+            _paq.push(['setSiteId', '1']);
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+            g.async=true; g.src='https://cdn.matomo.cloud/grupy-sao-marcos.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
+        })();
+    }
+    </script>
+    <!-- End Matomo Code -->
+</body>
+
+</html>

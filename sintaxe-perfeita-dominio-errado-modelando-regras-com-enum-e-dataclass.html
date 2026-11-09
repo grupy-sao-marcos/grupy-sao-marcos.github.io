@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Sintaxe perfeita, domínio errado: modelando regras com Enum e dataclass - Grupy São Marcos</title>
+    <meta name="description" content="Grupy São Marcos é uma comunidade de desenvolvedores e pessoas interessadas em tecnologia da região de São Marcos - RS. Encontros presenciais gratuitos, compartilhamento de conhecimento e fortalecimento do ecossistema tecnológico local.">
+    <meta name="keywords" content="Grupy São Marcos, Python São Marcos, comunidade de tecnologia, desenvolvimento São Marcos, eventos de tecnologia, comunidade dev, São Marcos RS">
+    <meta name="author" content="Grupy São Marcos">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Grupy São Marcos | Comunidade de Tecnologia e Desenvolvimento">
+    <meta property="og:description" content="Comunidade de desenvolvedores de São Marcos - RS. Encontros presenciais gratuitos, conhecimento e conexões na região.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://grupy-sao-marcos.github.io/">
+    <meta property="og:image" content="/theme/images/logogrupy.svg">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="Grupy São Marcos">
+
+    <!-- css -->
+    <link rel="stylesheet"
+        href="/theme/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/theme/bower_components/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="/theme/css/main.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+    <link
+        href="/feeds/all.atom.xml"
+        type="application/atom+xml" rel="alternate" title="Grupy São Marcos Atom Feed" />
+</head>
+
+<body data-spy="scroll" data-target="#site-nav">
+<nav id="site-nav" class="navbar navbar-fixed-top navbar-custom">
+    <div class="container">
+        <div class="navbar-header">
+
+            <!-- logo -->
+            <div class="site-branding">
+                <a class="logo" href="/">
+
+                    <!-- logo image  -->
+                    <img src="/theme/images/logogrupy.svg" alt="Logo" height="56px">
+
+                </a>
+            </div>
+
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-items"
+                aria-expanded="false">
+                <span class="sr-only">Alternar navegação</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+        </div><!-- /.navbar-header -->
+
+        <div class="collapse navbar-collapse" id="navbar-items">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#objetivos">Objetivos</a></li>
+                <li><a href="#facts">Próximo Evento</a></li>
+                <li><a href="#schedule">Eventos</a></li>
+                <li><a href="#partner">Apoiadores</a></li>
+                <li class="active"><a href="/pages/blog.html">Blog</a></li>
+                <li class="nav-inscricao"><a class="btn-nav-inscricao" target="_blank" href="https://forms.gle/GJgP8EgyrD6GuPrQ6">Inscreva-se</a></li>
+            </ul>
+        </div>
+    </div><!-- /.container -->
+</nav><header id="site-header" class="site-article valign-center">
+    <div class="intro blog">
+        <h1>
+          Sintaxe perfeita, domínio errado: modelando regras com Enum e dataclass</br>
+          <small>
+              <a href="/author/perceu-bertoletti.html">Perceu Bertoletti</a>            - 06/11/2026
+          </small>
+        </h1>
+    </div>
+</header>
+<section id="article-content" class="valign-center">
+  <article class="container">
+    <div class="container-line">
+
+      <div class="entry-content">
+        <p>
+          <p>Inspirado na palestra <strong>Sintaxe perfeita, domínio errado</strong>, do 11° encontro: um código pode estar impecável, passar no linter e mesmo assim não representar o problema real. Vamos ver como algumas ferramentas do Python ajudam a aproximar o código do <strong>domínio</strong>.</p>
+<h2>Strings mágicas</h2>
+<p>Veja este código de pedidos:</p>
+<div class="highlight"><pre><span></span><code><span class="n">pedido</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;pago&quot;</span><span class="p">,</span> <span class="s2">&quot;valor&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">50</span><span class="p">}</span>
+
+<span class="k">if</span> <span class="n">pedido</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;pgo&quot;</span><span class="p">:</span>  <span class="c1"># erro de digitação</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enviar pedido&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Ele roda sem erro nenhum, mas o pedido nunca será enviado. E um valor negativo passou sem ninguém perceber.</p>
+<h2>Use Enum para valores fixos</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
+
+
+<span class="k">class</span> <span class="nc">Status</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="n">AGUARDANDO</span> <span class="o">=</span> <span class="s2">&quot;aguardando&quot;</span>
+    <span class="n">PAGO</span> <span class="o">=</span> <span class="s2">&quot;pago&quot;</span>
+    <span class="n">ENVIADO</span> <span class="o">=</span> <span class="s2">&quot;enviado&quot;</span>
+
+
+<span class="n">status</span> <span class="o">=</span> <span class="n">Status</span><span class="o">.</span><span class="n">PAGO</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">status</span> <span class="o">==</span> <span class="n">Status</span><span class="o">.</span><span class="n">PAGO</span><span class="p">)</span>  <span class="c1"># True</span>
+</code></pre></div>
+
+<p>Agora um <code>Status.PGO</code> gera erro na hora, e o editor sugere as opções válidas.</p>
+<h2>Proteja as regras na dataclass</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">Pedido</span><span class="p">:</span>
+    <span class="n">valor</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">status</span><span class="p">:</span> <span class="n">Status</span> <span class="o">=</span> <span class="n">Status</span><span class="o">.</span><span class="n">AGUARDANDO</span>
+
+    <span class="k">def</span> <span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">valor</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;O valor do pedido deve ser positivo&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">pagar</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">!=</span> <span class="n">Status</span><span class="o">.</span><span class="n">AGUARDANDO</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Só é possível pagar pedidos aguardando pagamento&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="n">Status</span><span class="o">.</span><span class="n">PAGO</span>
+
+
+<span class="n">pedido</span> <span class="o">=</span> <span class="n">Pedido</span><span class="p">(</span><span class="n">valor</span><span class="o">=</span><span class="mf">120.0</span><span class="p">)</span>
+<span class="n">pedido</span><span class="o">.</span><span class="n">pagar</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pedido</span><span class="o">.</span><span class="n">status</span><span class="p">)</span>  <span class="c1"># Status.PAGO</span>
+
+<span class="n">Pedido</span><span class="p">(</span><span class="n">valor</span><span class="o">=-</span><span class="mi">50</span><span class="p">)</span>  <span class="c1"># ValueError: O valor do pedido deve ser positivo</span>
+</code></pre></div>
+
+<p>A regra "só se paga um pedido que está aguardando" agora vive <strong>dentro</strong> do <code>Pedido</code>, e não espalhada em <code>if</code> por todo o sistema.</p>
+<h2>Use os nomes do negócio</h2>
+<p>Se o pessoal da empresa fala em "pedido", "faturar" e "despachar", use esses nomes no código. Um <code>processar_dados(d)</code> não diz nada; um <code>faturar(pedido)</code> diz tudo.</p>
+<h2>Dica final</h2>
+<p>Antes de escrever código, converse com quem entende do negócio. A sintaxe o Python e o linter conferem para você; o domínio, só você.</p>
+<p>Contribua com novos artigos no nosso <a href="https://github.com/grupy-sao-marcos/grupy-sao-marcos.github.io">repositório</a>.</p>
+        </p>
+      </div><!-- /.entry-content -->
+    </div>
+  </article>
+</section>
+<footer class="site-footer">
+    <div class="container">
+        <div class="row footer-main">
+            <div class="col-md-4 footer-brand">
+                <img src="/theme/images/logogrupy.svg" alt="Logo Grupy São Marcos" height="48px">
+                <p class="footer-desc">Comunidade de tecnologia e desenvolvimento de São Marcos - RS</p>
+            </div>
+            <div class="col-md-4">
+                <h4 class="footer-heading">Comunidade</h4>
+                <ul class="footer-links">
+                    <li><a href="/#about">Sobre</a></li>
+                    <li><a href="/#objetivos">Objetivos</a></li>
+                    <li><a href="/#schedule">Eventos</a></li>
+                    <li><a href="/pages/blog.html">Blog</a></li>
+                    <li><a href="/authors.html">Colaboradores</a></li>
+                    <li><a href="/#partner">Apoiadores</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h4 class="footer-heading">Contato</h4>
+                <ul class="footer-links">
+                    <li><a href="https://github.com/grupy-sao-marcos" target="_blank" rel="noopener">GitHub</a></li>
+                    <li><a href="https://github.com/grupy-sao-marcos/call4papers/issues" target="_blank" rel="noopener">Call4Papers</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Grupy São Marcos. Comunidade aberta e colaborativa.</p>
+        </div>
+    </div>
+</footer>    <!-- script -->
+    <script src="/theme/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/theme/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script
+        src="/theme/bower_components/smooth-scroll/dist/js/smooth-scroll.min.js"></script>
+    <script src="/theme/js/main.js"></script>
+    <!-- Matomo -->
+    <script>
+    if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+        var _paq = window._paq = window._paq || [];
+        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+            var u="https://grupy-sao-marcos.matomo.cloud/";
+            _paq.push(['setTrackerUrl', u+'matomo.php']);
+            _paq.push(['setSiteId', '1']);
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+            g.async=true; g.src='https://cdn.matomo.cloud/grupy-sao-marcos.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
+        })();
+    }
+    </script>
+    <!-- End Matomo Code -->
+</body>
+
+</html>

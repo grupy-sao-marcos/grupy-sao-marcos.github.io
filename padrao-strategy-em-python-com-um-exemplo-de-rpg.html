@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Padrão Strategy em Python com um exemplo de RPG - Grupy São Marcos</title>
+    <meta name="description" content="Grupy São Marcos é uma comunidade de desenvolvedores e pessoas interessadas em tecnologia da região de São Marcos - RS. Encontros presenciais gratuitos, compartilhamento de conhecimento e fortalecimento do ecossistema tecnológico local.">
+    <meta name="keywords" content="Grupy São Marcos, Python São Marcos, comunidade de tecnologia, desenvolvimento São Marcos, eventos de tecnologia, comunidade dev, São Marcos RS">
+    <meta name="author" content="Grupy São Marcos">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Grupy São Marcos | Comunidade de Tecnologia e Desenvolvimento">
+    <meta property="og:description" content="Comunidade de desenvolvedores de São Marcos - RS. Encontros presenciais gratuitos, conhecimento e conexões na região.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://grupy-sao-marcos.github.io/">
+    <meta property="og:image" content="/theme/images/logogrupy.svg">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="Grupy São Marcos">
+
+    <!-- css -->
+    <link rel="stylesheet"
+        href="/theme/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/theme/bower_components/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="/theme/css/main.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+    <link
+        href="/feeds/all.atom.xml"
+        type="application/atom+xml" rel="alternate" title="Grupy São Marcos Atom Feed" />
+</head>
+
+<body data-spy="scroll" data-target="#site-nav">
+<nav id="site-nav" class="navbar navbar-fixed-top navbar-custom">
+    <div class="container">
+        <div class="navbar-header">
+
+            <!-- logo -->
+            <div class="site-branding">
+                <a class="logo" href="/">
+
+                    <!-- logo image  -->
+                    <img src="/theme/images/logogrupy.svg" alt="Logo" height="56px">
+
+                </a>
+            </div>
+
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-items"
+                aria-expanded="false">
+                <span class="sr-only">Alternar navegação</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+        </div><!-- /.navbar-header -->
+
+        <div class="collapse navbar-collapse" id="navbar-items">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#objetivos">Objetivos</a></li>
+                <li><a href="#facts">Próximo Evento</a></li>
+                <li><a href="#schedule">Eventos</a></li>
+                <li><a href="#partner">Apoiadores</a></li>
+                <li class="active"><a href="/pages/blog.html">Blog</a></li>
+                <li class="nav-inscricao"><a class="btn-nav-inscricao" target="_blank" href="https://forms.gle/GJgP8EgyrD6GuPrQ6">Inscreva-se</a></li>
+            </ul>
+        </div>
+    </div><!-- /.container -->
+</nav><header id="site-header" class="site-article valign-center">
+    <div class="intro blog">
+        <h1>
+          Padrão Strategy em Python com um exemplo de RPG</br>
+          <small>
+              <a href="/author/perceu-bertoletti.html">Perceu Bertoletti</a>            - 02/11/2026
+          </small>
+        </h1>
+    </div>
+</header>
+<section id="article-content" class="valign-center">
+  <article class="container">
+    <div class="container-line">
+
+      <div class="entry-content">
+        <p>
+          <p>No 9° encontro tivemos a palestra <strong>Padrões de Projeto em RPGs de Turno</strong>, e jogos são mesmo um ótimo jeito de entender padrões de projeto. Neste post vamos ver um dos mais úteis no dia a dia: o <strong>Strategy</strong>.</p>
+<h2>O problema</h2>
+<p>Imagine um RPG onde cada personagem ataca de um jeito: o guerreiro usa a espada, o mago lança magia, o arqueiro dispara flechas. O primeiro impulso é encher o código de <code>if</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">atacar</span><span class="p">(</span><span class="n">personagem</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">personagem</span><span class="o">.</span><span class="n">classe</span> <span class="o">==</span> <span class="s2">&quot;guerreiro&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">10</span>
+    <span class="k">elif</span> <span class="n">personagem</span><span class="o">.</span><span class="n">classe</span> <span class="o">==</span> <span class="s2">&quot;mago&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">15</span>
+    <span class="k">elif</span> <span class="n">personagem</span><span class="o">.</span><span class="n">classe</span> <span class="o">==</span> <span class="s2">&quot;arqueiro&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">8</span>
+</code></pre></div>
+
+<p>Funciona, mas cada nova classe de personagem obriga a mexer nessa função. Com o tempo ela vira um monstro maior que o chefe final.</p>
+<h2>A solução com Strategy</h2>
+<p>A ideia do Strategy é separar o <strong>comportamento</strong> em objetos próprios e deixar o personagem apenas usar a estratégia que recebeu:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Protocol</span>
+
+
+<span class="k">class</span> <span class="nc">Ataque</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">executar</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="o">...</span>
+
+
+<span class="k">class</span> <span class="nc">Espada</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">executar</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">10</span>
+
+
+<span class="k">class</span> <span class="nc">BolaDeFogo</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">executar</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">15</span>
+
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">Personagem</span><span class="p">:</span>
+    <span class="n">nome</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">ataque</span><span class="p">:</span> <span class="n">Ataque</span>
+
+    <span class="k">def</span> <span class="nf">atacar</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nome</span><span class="si">}</span><span class="s2"> causou </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">ataque</span><span class="o">.</span><span class="n">executar</span><span class="p">()</span><span class="si">}</span><span class="s2"> de dano!&quot;</span>
+
+
+<span class="n">heroi</span> <span class="o">=</span> <span class="n">Personagem</span><span class="p">(</span><span class="s2">&quot;Bruna&quot;</span><span class="p">,</span> <span class="n">Espada</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">heroi</span><span class="o">.</span><span class="n">atacar</span><span class="p">())</span>  <span class="c1"># Bruna causou 10 de dano!</span>
+
+<span class="n">heroi</span><span class="o">.</span><span class="n">ataque</span> <span class="o">=</span> <span class="n">BolaDeFogo</span><span class="p">()</span>  <span class="c1"># trocou de estratégia em pleno combate</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">heroi</span><span class="o">.</span><span class="n">atacar</span><span class="p">())</span>  <span class="c1"># Bruna causou 15 de dano!</span>
+</code></pre></div>
+
+<h2>O jeito ainda mais pythônico</h2>
+<p>Em Python, funções são objetos. Se a estratégia é só um comportamento, uma função já resolve:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">espada</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">return</span> <span class="mi">10</span>
+
+
+<span class="k">def</span> <span class="nf">flecha</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">return</span> <span class="mi">8</span>
+
+
+<span class="n">estrategias</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;espada&quot;</span><span class="p">:</span> <span class="n">espada</span><span class="p">,</span> <span class="s2">&quot;flecha&quot;</span><span class="p">:</span> <span class="n">flecha</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">estrategias</span><span class="p">[</span><span class="s2">&quot;flecha&quot;</span><span class="p">]())</span>  <span class="c1"># 8</span>
+</code></pre></div>
+
+<h2>Quando usar</h2>
+<ul>
+<li>Quando existem várias formas de fazer a mesma coisa;</li>
+<li>Quando o comportamento precisa mudar em tempo de execução;</li>
+<li>Quando aquele <code>if/elif</code> não para de crescer.</li>
+</ul>
+<p>Gostou? Sugira o próximo padrão que devemos explicar no nosso <a href="https://github.com/grupy-sao-marcos/grupy-sao-marcos.github.io">repositório</a>.</p>
+        </p>
+      </div><!-- /.entry-content -->
+    </div>
+  </article>
+</section>
+<footer class="site-footer">
+    <div class="container">
+        <div class="row footer-main">
+            <div class="col-md-4 footer-brand">
+                <img src="/theme/images/logogrupy.svg" alt="Logo Grupy São Marcos" height="48px">
+                <p class="footer-desc">Comunidade de tecnologia e desenvolvimento de São Marcos - RS</p>
+            </div>
+            <div class="col-md-4">
+                <h4 class="footer-heading">Comunidade</h4>
+                <ul class="footer-links">
+                    <li><a href="/#about">Sobre</a></li>
+                    <li><a href="/#objetivos">Objetivos</a></li>
+                    <li><a href="/#schedule">Eventos</a></li>
+                    <li><a href="/pages/blog.html">Blog</a></li>
+                    <li><a href="/authors.html">Colaboradores</a></li>
+                    <li><a href="/#partner">Apoiadores</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h4 class="footer-heading">Contato</h4>
+                <ul class="footer-links">
+                    <li><a href="https://github.com/grupy-sao-marcos" target="_blank" rel="noopener">GitHub</a></li>
+                    <li><a href="https://github.com/grupy-sao-marcos/call4papers/issues" target="_blank" rel="noopener">Call4Papers</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Grupy São Marcos. Comunidade aberta e colaborativa.</p>
+        </div>
+    </div>
+</footer>    <!-- script -->
+    <script src="/theme/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/theme/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script
+        src="/theme/bower_components/smooth-scroll/dist/js/smooth-scroll.min.js"></script>
+    <script src="/theme/js/main.js"></script>
+    <!-- Matomo -->
+    <script>
+    if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+        var _paq = window._paq = window._paq || [];
+        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+            var u="https://grupy-sao-marcos.matomo.cloud/";
+            _paq.push(['setTrackerUrl', u+'matomo.php']);
+            _paq.push(['setSiteId', '1']);
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+            g.async=true; g.src='https://cdn.matomo.cloud/grupy-sao-marcos.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
+        })();
+    }
+    </script>
+    <!-- End Matomo Code -->
+</body>
+
+</html>
